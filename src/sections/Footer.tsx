@@ -38,8 +38,8 @@ const Content = styled(ContentWrapper)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  padding: 96px 24px 16px;
+  gap: 0;
+  padding: 96px 24px 20px;
   color: ${colors.text.offwhite};
   text-align: center;
   overflow: visible;
@@ -72,6 +72,7 @@ const Button = styled.img`
 
 const Socials = styled.div`
   display: flex;
+  margin-block: 36px;
   flex-wrap: wrap;
   justify-content: center;
   gap: 48px;
