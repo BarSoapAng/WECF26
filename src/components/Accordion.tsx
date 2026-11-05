@@ -94,8 +94,8 @@ const Trigger = styled(BodyRegular2)`
 const Icon = styled.span<{ $open: boolean }>`
   display: inline-block;
   flex-shrink: 0;
-  transform: rotate(${({ $open }) => ($open ? "45deg" : "0deg")});
-  transition: transform 350ms ease-in-out;
+  transform: rotate(${({ $open }) => ($open ? "-45deg" : "0deg")});
+  transition: transform 250ms ease-in-out;
 
   @media (prefers-reduced-motion: reduce) {
     transition: none;
