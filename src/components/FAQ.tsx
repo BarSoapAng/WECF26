@@ -33,9 +33,9 @@ function FAQ() {
   return (
     <Questions>
       <Decorations aria-hidden="true">
-        <img className="yellow-leaf" src={faqYellowLeaf} alt="" />
-        <img className="orange-leaf" src={faqLeafOrange} alt="" />
-        <img className="tape" src={decorativeWashiTape} alt="" />
+        <YellowLeaf src={faqYellowLeaf} alt="" />
+        <OrangeLeaf src={faqLeafOrange} alt="" />
+        <WashiTape src={decorativeWashiTape} alt="" />
         <Sparkle size={80} x="-8%" y="18%" speed={3.2} />
         <Sparkle size={80} x="90%" y="calc(100% + 24px)" speed={2.6} />
       </Decorations>
@@ -82,40 +82,39 @@ const Decorations = styled.div`
   inset: 0;
   pointer-events: none;
   user-select: none;
+`;
 
-  img {
-    position: absolute;
-    height: auto;
-  }
-
-  .yellow-leaf {
-    width: 34%;
-    right: -24%;
-    top: -32px;
-  }
-
-  .orange-leaf {
-    width: 42%;
-    left: -22%;
-    bottom: 0;
-    transform: translateY(45%);
-  }
-
-  .tape {
-    width: 19%;
-    right: -7%;
-    bottom: -2%;
-    transform: rotate(8deg);
-  }
+const YellowLeaf = styled.img`
+  position: absolute;
+  width: 34%;
+  height: auto;
+  right: -24%;
+  top: -32px;
 
   ${mediaQueries.mediumTablet} {
-    .yellow-leaf {
-      right: -18%;
-    }
-
-    .orange-leaf {
-      left: -16%;
-      transform: translateY(25%);
-    }
+    right: -18%;
   }
+`;
+
+const OrangeLeaf = styled.img`
+  position: absolute;
+  width: 42%;
+  height: auto;
+  left: -22%;
+  bottom: 0;
+  transform: translateY(45%);
+
+  ${mediaQueries.mediumTablet} {
+    left: -16%;
+    transform: translateY(25%);
+  }
+`;
+
+const WashiTape = styled.img`
+  position: absolute;
+  width: 19%;
+  height: auto;
+  right: -7%;
+  bottom: -2%;
+  transform: rotate(8deg);
 `;
