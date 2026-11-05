@@ -69,7 +69,7 @@ const Questions = styled(ContentWrapper)`
     inset: 0;
     z-index: 3;
     border-radius: inherit;
-    background: url(${venueNoise}) center / 100% 100%;
+    background: url(${venueNoise}) center / cover;
     pointer-events: none;
   }
 
