@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { decorativeWashiTape, venueBigGoose, venueMap } from "../assets"
+import { decorativeButton, decorativeWashiTape, venueBigGoose, venueMap } from "../assets"
 import { ContentWrapper, SectionWrapper, Sparkle } from "../components"
 import { mediaQueries } from "../lib/responsive"
 import { BodyRegular2, colors, Header2 } from "../lib/styles"
@@ -13,12 +13,15 @@ function Venue() {
         <BodyRegular2>
           WEC will run exclusively within PSE, with competition rooms located on floor 4.
         </BodyRegular2>
-        <Map
-          src={venueMap}
-          alt="PSE floor 4 venue map: Bio-engineering in room 4043, Re-engineering in 4053, judges in 4417, Consulting in 4433, and Programming in 4437."
-          width={1040}
-          height={515}
-        />
+        <MapFrame>
+          <Map
+            src={venueMap}
+            alt="PSE floor 4 venue map: Bio-engineering in room 4043, Re-engineering in 4053, judges in 4417, Consulting in 4433, and Programming in 4437."
+            width={1040}
+            height={515}
+          />
+          <Button src={decorativeButton} alt="" aria-hidden="true" />
+        </MapFrame>
         <Decorations aria-hidden="true">
           <img className="top-tape" src={decorativeWashiTape} alt="" />
           <img className="bottom-tape" src={decorativeWashiTape} alt="" />
@@ -54,11 +57,25 @@ const Content = styled(ContentWrapper)`
   }
 `;
 
+const MapFrame = styled.div`
+  position: relative;
+  margin-top: 8px;
+`;
+
 const Map = styled.img`
   display: block;
   width: 100%;
   height: auto;
-  margin-top: 8px;
+`;
+
+const Button = styled.img`
+  position: absolute;
+  width: 15%;
+  height: auto;
+  left: -10%;
+  bottom: -24%;
+  z-index: 1;
+  pointer-events: none;
 `;
 
 const Goose = styled.img`

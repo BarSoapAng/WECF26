@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { ContentWrapper } from "./base/Layout"
 import Accordion from "./Accordion"
 import Sparkle from "./Sparkle"
-import { decorativeButton, decorativeWashiTape, faqLeafOrange, faqYellowLeaf } from "../assets"
+import { decorativeWashiTape, faqLeafOrange, faqYellowLeaf } from "../assets"
 import { mediaQueries } from "../lib/responsive"
 import { Header2, colors, Header1 } from "../lib/styles"
 
@@ -33,12 +33,11 @@ function FAQ() {
   return (
     <Questions>
       <Decorations aria-hidden="true">
-        <img className="button" src={decorativeButton} alt="" />
         <img className="yellow-leaf" src={faqYellowLeaf} alt="" />
         <img className="orange-leaf" src={faqLeafOrange} alt="" />
         <img className="tape" src={decorativeWashiTape} alt="" />
         <Sparkle size={80} x="-8%" y="18%" speed={3.2} />
-        <Sparkle size={80} x="90%" y="105%" speed={2.6} />
+        <Sparkle size={80} x="90%" y="calc(100% + 24px)" speed={2.6} />
       </Decorations>
       <Header1 id="faq-title">Frequently Asked Questions</Header1>
       <div>
@@ -85,12 +84,6 @@ const Decorations = styled.div`
     height: auto;
   }
 
-  .button {
-    width: 15%;
-    left: -7%;
-    top: -48px;
-  }
-
   .yellow-leaf {
     width: 34%;
     right: -24%;
@@ -100,7 +93,8 @@ const Decorations = styled.div`
   .orange-leaf {
     width: 42%;
     left: -22%;
-    bottom: -22%;
+    bottom: 0;
+    transform: translateY(45%);
   }
 
   .tape {
@@ -111,17 +105,13 @@ const Decorations = styled.div`
   }
 
   ${mediaQueries.mediumTablet} {
-    .button {
-      top: -24px;
-    }
-
     .yellow-leaf {
       right: -18%;
     }
 
     .orange-leaf {
       left: -16%;
-      bottom: -12%;
+      transform: translateY(25%);
     }
   }
 `;

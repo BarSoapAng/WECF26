@@ -51,6 +51,7 @@ const Content = styled(ContentWrapper)`
 
 const Wordmark = styled.div`
   position: relative;
+  width: max-content;
 `;
 
 const Tape = styled.img`

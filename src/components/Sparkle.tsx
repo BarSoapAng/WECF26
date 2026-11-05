@@ -8,16 +8,17 @@ type SparkleProps = {
   y?: CSSProperties["top"]
   /** Duration of one animation cycle in seconds. */
   speed?: number
+  zIndex?: CSSProperties["zIndex"]
 }
 
-function Sparkle({ size = 80, x = 0, y = 0, speed = 3 }: SparkleProps) {
+function Sparkle({ size = 80, x = 0, y = 0, speed = 3, zIndex = 2 }: SparkleProps) {
   return (
     <Star
       src={decorativeSparkle}
       alt=""
       aria-hidden="true"
       draggable={false}
-      style={{ width: size, left: x, top: y, animationDuration: `${Math.max(0.1, speed)}s` }}
+      style={{ width: size, left: x, top: y, zIndex, animationDuration: `${Math.max(0.1, speed)}s` }}
     />
   )
 }
@@ -42,7 +43,6 @@ const Star = styled.img`
   height: auto;
   pointer-events: none;
   user-select: none;
-  z-index: 2;
   animation: ${twinkle} 3s ease-in-out infinite;
 
   @media (prefers-reduced-motion: reduce) {
