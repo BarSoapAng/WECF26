@@ -105,7 +105,7 @@ const Icon = styled.span<{ $open: boolean }>`
 const Panel = styled.div<{ $height: number }>`
   height: ${({ $height }) => $height}px;
   overflow: hidden;
-  transition: height 350ms ease-in-out;
+  transition: height 250ms ease-in-out;
 
   > div > div {
     padding-bottom: 28px;
