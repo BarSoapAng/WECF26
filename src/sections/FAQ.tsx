@@ -13,9 +13,9 @@ function FAQSection() {
 export default FAQSection
 
 const Background = styled(SectionWrapper)`
-  padding: 96px 0 0;
+  padding: 72px 0 0;
 
   ${mediaQueries.tablet} {
-    padding-top: 64px;
+    padding-top: 48px;
   }
 `;
