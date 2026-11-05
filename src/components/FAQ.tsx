@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { ContentWrapper } from "./base/Layout"
 import Accordion from "./Accordion"
 import { mediaQueries } from "../lib/responsive"
-import { BodyRegular1, colors, Header2 } from "../lib/styles"
+import { Header2, colors, Header1 } from "../lib/styles"
 
 const faqItems = [
   {
@@ -30,11 +30,11 @@ const faqItems = [
 function FAQ() {
   return (
     <Questions>
-      <Header2 id="faq-title">Frequently Asked Questions</Header2>
+      <Header1 id="faq-title">Frequently Asked Questions</Header1>
       <div>
         <Accordion items={faqItems} />
       </div>
-      <BodyRegular1>Sign up now!</BodyRegular1>
+      <Header2>Sign up now!</Header2>
     </Questions>
   )
 }
@@ -45,7 +45,7 @@ const Questions = styled(ContentWrapper)`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 74%;
+  width: calc(100% - 32px);
   max-width: 1080px;
   padding: 64px;
   border-radius: 8px;
@@ -55,10 +55,6 @@ const Questions = styled(ContentWrapper)`
 
   > h1, > h2 {
     text-align: center;
-  }
-
-  ${mediaQueries.tablet} {
-    padding: 32px;
   }
 
   ${mediaQueries.mediumTablet} {

@@ -1,18 +1,18 @@
 import styled from "styled-components"
 import { ContentWrapper, SectionWrapper } from "../components"
 import { mediaQueries } from "../lib/responsive"
-import { BodyRegular2, colors, FooterCaption, FooterTitle } from "../lib/styles"
+import { BodyRegular2, BodyBold, colors, FooterCaption, FooterTitle } from "../lib/styles"
 
 function Footer() {
   return (
     <Background as="footer">
       <Content>
         <FooterTitle>WEC</FooterTitle>
-        <FooterCaption as="p">Waterloo Engineering Competition</FooterCaption>
+        <FooterCaption>Waterloo Engineering Competition</FooterCaption>
         <Socials aria-label="Social and contact information">
-          <BodyRegular2 as="span">Instagram</BodyRegular2>
-          <BodyRegular2 as="span">LinkedIn</BodyRegular2>
-          <BodyRegular2 as="span">Email Us</BodyRegular2>
+          <BodyBold as="a" href="#">Instagram</BodyBold>
+          <BodyBold as="a" href="#">LinkedIn</BodyBold>
+          <BodyBold as="a" href="#">Email Us</BodyBold>
         </Socials>
         <BodyRegular2>
           © 2026 Waterloo Engineering Competition. Made with love by EngSoc 🍁
