@@ -1,11 +1,6 @@
 import styled from "styled-components"
 import { colors, Header1 } from "../lib/styles"
 
-const Background = styled.footer`
-  width: 100%;
-  background-color: ${colors.background.orange};
-`;
-
 function Footer() {
   return (
     <Background>
@@ -17,3 +12,8 @@ function Footer() {
 }
 
 export default Footer
+
+const Background = styled.footer`
+  width: 100%;
+  background-color: ${colors.background.orange};
+`;
