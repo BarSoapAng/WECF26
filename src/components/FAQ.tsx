@@ -70,6 +70,7 @@ const Questions = styled(ContentWrapper)`
     z-index: 3;
     border-radius: inherit;
     background: url(${faqNoise}) center / cover;
+    mix-blend-mode: soft-light;
     pointer-events: none;
   }
 
