@@ -31,7 +31,9 @@ function FAQ() {
   return (
     <Questions>
       <Header2 id="faq-title">Frequently Asked Questions</Header2>
-      <Accordion items={faqItems} />
+      <div>
+        <Accordion items={faqItems} />
+      </div>
       <BodyRegular1>Sign up now!</BodyRegular1>
     </Questions>
   )
@@ -40,17 +42,19 @@ function FAQ() {
 export default FAQ
 
 const Questions = styled(ContentWrapper)`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 74%;
   max-width: 1080px;
-  padding: 48px 60px;
+  padding: 64px;
+  border-radius: 8px;
+  background-color: #FFF2D5;
+  box-shadow: -48px 42px 0 0 rgb(0 0 0 / 22%);
   color: ${colors.text.brown};
 
   > h1, > h2 {
     text-align: center;
-  }
-
-  > :last-child {
-    margin-top: 24px;
   }
 
   ${mediaQueries.tablet} {

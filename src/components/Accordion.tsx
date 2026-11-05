@@ -77,16 +77,12 @@ const Trigger = styled.span`
   align-items: center;
   gap: 16px;
   width: 100%;
-  padding: 28px 0;
+  padding: 36px 0;
   border: 0;
   background: none;
   color: inherit;
   text-align: left;
   cursor: pointer;
-
-  ${mediaQueries.tablet} {
-    padding: 20px 0;
-  }
 `;
 
 const Icon = styled.span<{ $open: boolean }>`
@@ -111,11 +107,7 @@ const Panel = styled.div<{ $height: number }>`
   transition: height 250ms ease-in-out;
 
   > div > div {
-    padding-bottom: 28px;
-
-    ${mediaQueries.tablet} {
-      padding-bottom: 20px;
-    }
+    padding-bottom: 36px;
   }
 
   @media (prefers-reduced-motion: reduce) {
