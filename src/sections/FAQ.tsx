@@ -1,11 +1,21 @@
+import styled from "styled-components"
 import { FAQ, SectionWrapper } from "../components"
+import { mediaQueries } from "../lib/responsive"
 
 function FAQSection() {
   return (
-    <SectionWrapper id="faq" aria-labelledby="faq-title">
+    <Background id="faq" aria-labelledby="faq-title">
       <FAQ />
-    </SectionWrapper>
+    </Background>
   )
 }
 
 export default FAQSection
+
+const Background = styled(SectionWrapper)`
+  padding: 72px 0 0;
+
+  ${mediaQueries.tablet} {
+    padding-top: 48px;
+  }
+`;

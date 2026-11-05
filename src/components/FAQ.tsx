@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import { ContentWrapper } from "./base/Layout"
 import Accordion from "./Accordion"
+import Sparkle from "./Sparkle"
+import { decorativeButton, decorativeWashiTape, faqLeafOrange, faqYellowLeaf, faqNoise } from "../assets"
 import { mediaQueries } from "../lib/responsive"
 import { Header2, colors, Header1 } from "../lib/styles"
 
@@ -30,6 +32,17 @@ const faqItems = [
 function FAQ() {
   return (
     <Questions>
+      <Decorations aria-hidden="true">
+        <YellowLeaf src={faqYellowLeaf} alt="" />
+        <OrangeLeaf src={faqLeafOrange} alt="" />
+        <WashiTape src={decorativeWashiTape} alt="" />
+        <Sparkle size={85} x="-9%" y="11.5%" speed={3} intensity={1.3} />
+      </Decorations>
+      <MobileDecorations aria-hidden="true">
+        <MobileTape src={decorativeWashiTape} alt="" />
+        <MobileButton src={decorativeButton} alt="" />
+      </MobileDecorations>
+      <Sparkle size={90} x="88%" y="calc(100% + 28px)" speed={2.6} hideOnMobile={false} />
       <Header1 id="faq-title">Frequently Asked Questions</Header1>
       <div>
         <Accordion items={faqItems} />
@@ -45,20 +58,94 @@ const Questions = styled(ContentWrapper)`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: calc(100% - 32px);
+  width: 74%;
   max-width: 1080px;
   padding: 64px;
   border-radius: 8px;
   background-color: #FFF2D5;
   box-shadow: -48px 42px 0 0 rgb(0 0 0 / 22%);
   color: ${colors.text.brown};
+  overflow: visible;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: url(${faqNoise}) center / 2650px 2181px;
+    mix-blend-mode: soft-light;
+    opacity: 0.7;
+    pointer-events: none;
+  }
 
   > h1, > h2 {
     text-align: center;
   }
 
   ${mediaQueries.mediumTablet} {
-    width: calc(100% - 32px);
+    width: calc(100% - 64px);
     padding: 24px 16px;
   }
+`;
+
+const Decorations = styled.div`
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+
+  ${mediaQueries.tablet} {
+    display: none;
+  }
+`;
+
+const MobileDecorations = styled(Decorations)`
+  display: none;
+
+  ${mediaQueries.tablet} {
+    display: block;
+  }
+`;
+
+const MobileTape = styled.img`
+  position: absolute;
+  width: 32%;
+  max-width: 110px;
+  right: -7%;
+  top: -24px;
+  transform: rotate(90deg);
+`;
+
+const MobileButton = styled.img`
+  position: absolute;
+  width: 24%;
+  max-width: 80px;
+  left: -6%;
+  bottom: 0;
+  transform: translateY(65%);
+`;
+
+const YellowLeaf = styled.img`
+  position: absolute;
+  width: 34%;
+  right: -22.5%;
+  top: -15%;
+`;
+
+const OrangeLeaf = styled.img`
+  position: absolute;
+  width: 55%;
+  left: -29%;
+  bottom: 3%;
+  transform: translateY(45%);z
+`;
+
+const WashiTape = styled.img`
+  position: absolute;
+  width: 19%;
+  height: auto;
+  right: -6%;
+  bottom: -2.3%;
+  transform: rotate(7deg);
 `;
