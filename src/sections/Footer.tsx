@@ -12,7 +12,7 @@ function Footer() {
           <Tape src={decorativeWashiTape} alt="" aria-hidden="true" />
           <FooterTitle>WEC</FooterTitle>
           <Button src={decorativeButton} alt="" aria-hidden="true" />
-          <Sparkle size={80} x="-8%" y="100%" speed={3.8} />
+          <Sparkle size={140} x="-8%" y="100%" speed={3.5} intensity={0.8} />
         </Wordmark>
         <FooterCaption>Waterloo Engineering Competition</FooterCaption>
         <Socials aria-label="Social and contact information">
@@ -57,16 +57,16 @@ const Wordmark = styled.div`
 
 const Tape = styled.img`
   position: absolute;
-  width: 32%;
-  left: -17%;
-  top: -24%;
+  width: 31%;
+  left: -14%;
+  top: -5%;
   pointer-events: none;
 `;
 
 const Button = styled.img`
   position: absolute;
-  width: 24%;
-  right: -26%;
+  width: 21%;
+  right: -21%;
   bottom: -8%;
   pointer-events: none;
 `;
