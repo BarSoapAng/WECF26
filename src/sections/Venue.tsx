@@ -76,6 +76,10 @@ const Button = styled.img`
   bottom: -24%;
   z-index: 1;
   pointer-events: none;
+
+  ${mediaQueries.mediumTablet} {
+    display: none;
+  }
 `;
 
 const Goose = styled.img`
@@ -88,14 +92,18 @@ const Goose = styled.img`
   pointer-events: none;
 
   ${mediaQueries.mediumTablet} {
-    top: -20%;
+    display: none;
   }
 `;
 
 const Decorations = styled.div`
   position: absolute;
   inset: 0;
+
   pointer-events: none;
+  ${mediaQueries.mediumTablet} {
+    display: none;
+  }
 
   .top-tape, .bottom-tape {
     position: absolute;

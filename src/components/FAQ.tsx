@@ -37,8 +37,8 @@ function FAQ() {
         <OrangeLeaf src={faqLeafOrange} alt="" />
         <WashiTape src={decorativeWashiTape} alt="" />
         <Sparkle size={80} x="-8%" y="18%" speed={3.2} />
-        <Sparkle size={80} x="90%" y="calc(100% + 24px)" speed={2.6} />
       </Decorations>
+      <Sparkle size={80} x="90%" y="calc(100% + 24px)" speed={2.6} />
       <Header1 id="faq-title">Frequently Asked Questions</Header1>
       <div>
         <Accordion items={faqItems} />
@@ -59,13 +59,21 @@ const Questions = styled(ContentWrapper)`
   padding: 64px;
   border-radius: 8px;
   background-color: #FFF2D5;
-  background-image: url(${faqNoise});
-  background-position: center;
-  background-size: 2650px 2181px;
-  background-blend-mode: soft-light;
   box-shadow: -48px 42px 0 0 rgb(0 0 0 / 22%);
   color: ${colors.text.brown};
   overflow: visible;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: url(${faqNoise}) center / 2650px 2181px;
+    mix-blend-mode: soft-light;
+    opacity: 0.7;
+    pointer-events: none;
+  }
 
   > h1, > h2 {
     text-align: center;
@@ -82,6 +90,10 @@ const Decorations = styled.div`
   inset: 0;
   pointer-events: none;
   user-select: none;
+
+  ${mediaQueries.mediumTablet} {
+    display: none;
+  }
 `;
 
 const YellowLeaf = styled.img`
@@ -90,10 +102,6 @@ const YellowLeaf = styled.img`
   height: auto;
   right: -24%;
   top: -32px;
-
-  ${mediaQueries.mediumTablet} {
-    right: -18%;
-  }
 `;
 
 const OrangeLeaf = styled.img`
@@ -103,11 +111,6 @@ const OrangeLeaf = styled.img`
   left: -22%;
   bottom: 0;
   transform: translateY(45%);
-
-  ${mediaQueries.mediumTablet} {
-    left: -16%;
-    transform: translateY(25%);
-  }
 `;
 
 const WashiTape = styled.img`

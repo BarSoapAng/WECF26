@@ -61,6 +61,10 @@ const Tape = styled.img`
   left: -14%;
   top: -5%;
   pointer-events: none;
+
+  ${mediaQueries.mediumTablet} {
+    display: none;
+  }
 `;
 
 const Button = styled.img`
@@ -69,6 +73,10 @@ const Button = styled.img`
   right: -21%;
   bottom: -8%;
   pointer-events: none;
+
+  ${mediaQueries.mediumTablet} {
+    display: none;
+  }
 `;
 
 const Socials = styled.div`

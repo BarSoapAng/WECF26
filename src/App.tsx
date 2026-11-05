@@ -30,6 +30,6 @@ const VenueFAQFooterBackground = styled.div`
     position: absolute;
     inset: min(32vw, 440px) 0 0;
     z-index: -1;
-    background: url(${faqFooterFloor}) center / 100% 100% no-repeat;
+    background: url(${faqFooterFloor}) center / 200% 100% no-repeat;
   }
 `;
