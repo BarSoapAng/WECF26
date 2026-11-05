@@ -1,12 +1,8 @@
-import { Header1 } from "./lib/styles"
+import Footer from "./sections/Footer"
 
 function App() {
   return (
-    <main>
-      <Header1>
-        MEOW
-      </Header1>
-    </main>
+    <Footer />
   )
 }
 
