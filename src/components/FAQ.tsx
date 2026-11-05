@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { ContentWrapper } from "./base/Layout"
 import Accordion from "./Accordion"
 import Sparkle from "./Sparkle"
-import { decorativeWashiTape, faqLeafOrange, faqYellowLeaf } from "../assets"
+import { decorativeWashiTape, faqLeafOrange, faqYellowLeaf, venueNoise } from "../assets"
 import { mediaQueries } from "../lib/responsive"
 import { Header2, colors, Header1 } from "../lib/styles"
 
@@ -62,6 +62,16 @@ const Questions = styled(ContentWrapper)`
   box-shadow: -48px 42px 0 0 rgb(0 0 0 / 22%);
   color: ${colors.text.brown};
   overflow: visible;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    background: url(${venueNoise}) center / 100% 100%;
+    pointer-events: none;
+  }
 
   > h1, > h2 {
     text-align: center;
