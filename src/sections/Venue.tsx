@@ -23,8 +23,8 @@ function Venue() {
           <Button src={decorativeButton} alt="" aria-hidden="true" />
         </MapFrame>
         <Decorations aria-hidden="true">
-          <img className="top-tape" src={decorativeWashiTape} alt="" />
-          <img className="bottom-tape" src={decorativeWashiTape} alt="" />
+          <TopTape src={decorativeWashiTape} alt="" />
+          <BottomTape src={decorativeWashiTape} alt="" />
           <Sparkle size={80} x="112%" y="75%" speed={3} />
         </Decorations>
       </Content>
@@ -105,20 +105,22 @@ const Decorations = styled.div`
     display: none;
   }
 
-  .top-tape, .bottom-tape {
-    position: absolute;
-    width: 20%;
-    height: auto;
-    transform: rotate(90deg);
-  }
+`;
 
-  .top-tape {
-    top: -32px;
-    right: -9%;
-  }
+const TopTape = styled.img`
+  position: absolute;
+  width: 20%;
+  height: auto;
+  transform: rotate(90deg);
+  top: -32px;
+  right: -9%;
+`;
 
-  .bottom-tape {
-    bottom: -14px;
-    left: -9%;
-  }
+const BottomTape = styled.img`
+  position: absolute;
+  width: 20%;
+  height: auto;
+  transform: rotate(90deg);
+  bottom: -14px;
+  left: -9%;
 `;
