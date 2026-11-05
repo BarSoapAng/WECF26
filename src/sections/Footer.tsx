@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { ContentWrapper, SectionWrapper, Sparkle } from "../components"
 import { decorativeButton, decorativeWashiTape } from "../assets"
 import { mediaQueries } from "../lib/responsive"
-import { BodyRegular2, BodyBold, colors, FooterCaption, FooterTitle } from "../lib/styles"
+import { BodyRegular2, BodyBold, FooterCaption, FooterTitle } from "../lib/styles"
 
 function Footer() {
   return (
@@ -40,7 +40,7 @@ const Content = styled(ContentWrapper)`
   align-items: center;
   gap: 0;
   padding: 96px 24px 20px;
-  color: ${colors.text.offwhite};
+  color: #FFFFFF;
   text-align: center;
   overflow: visible;
 
