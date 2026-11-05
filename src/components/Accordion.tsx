@@ -98,8 +98,13 @@ const Trigger = styled(BodyRegular2)`
 const Icon = styled.span<{ $open: boolean }>`
   display: inline-block;
   flex-shrink: 0;
+  font-size: 32px;
   transform: rotate(${({ $open }) => ($open ? "-45deg" : "0deg")});
   transition: transform 250ms ease-in-out;
+
+  ${mediaQueries.tablet} {
+    font-size: 18px;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     transition: none;
