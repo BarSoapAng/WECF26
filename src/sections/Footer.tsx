@@ -62,7 +62,7 @@ const Tape = styled.img`
   top: -5%;
   pointer-events: none;
 
-  ${mediaQueries.mediumTablet} {
+  ${mediaQueries.tablet} {
     display: none;
   }
 `;
@@ -74,7 +74,7 @@ const Button = styled.img`
   bottom: -8%;
   pointer-events: none;
 
-  ${mediaQueries.mediumTablet} {
+  ${mediaQueries.tablet} {
     display: none;
   }
 `;

@@ -91,7 +91,7 @@ const Decorations = styled.div`
   pointer-events: none;
   user-select: none;
 
-  ${mediaQueries.mediumTablet} {
+  ${mediaQueries.tablet} {
     display: none;
   }
 `;

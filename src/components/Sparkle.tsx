@@ -52,7 +52,7 @@ const Star = styled.img<{ $intensity: number; $hideOnMobile: boolean }>`
   user-select: none;
   animation: ${twinkle} 3s ease-in-out infinite;
 
-  ${mediaQueries.mediumTablet} {
+  ${mediaQueries.tablet} {
     display: ${({ $hideOnMobile }) => ($hideOnMobile ? "none" : "block")};
   }
 

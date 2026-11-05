@@ -78,7 +78,7 @@ const Button = styled.img`
   z-index: 1;
   pointer-events: none;
 
-  ${mediaQueries.mediumTablet} {
+  ${mediaQueries.tablet} {
     display: none;
   }
 `;
@@ -92,7 +92,7 @@ const Goose = styled.img`
   z-index: -1;
   pointer-events: none;
 
-  ${mediaQueries.mediumTablet} {
+  ${mediaQueries.tablet} {
     display: none;
   }
 `;
@@ -102,7 +102,8 @@ const Decorations = styled.div`
   inset: 0;
 
   pointer-events: none;
-  ${mediaQueries.mediumTablet} {
+
+  ${mediaQueries.tablet} {
     display: none;
   }
 
