@@ -49,6 +49,10 @@ const Socials = styled.div`
   justify-content: center;
   gap: 48px;
 
+  a:hover {
+    text-decoration: underline;
+  }
+
   ${mediaQueries.mediumTablet} {
     gap: 24px;
   }
