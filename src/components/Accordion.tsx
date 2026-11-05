@@ -1,5 +1,5 @@
-import { useId, useState } from "react"
-import type { ReactNode } from "react"
+import { useId, useLayoutEffect, useRef, useState } from "react"
+import type { ComponentPropsWithoutRef, ReactNode } from "react"
 import styled from "styled-components"
 import { mediaQueries } from "../lib/responsive"
 import { BodyRegular2 } from "../lib/styles"
@@ -24,26 +24,47 @@ function Accordion({ items }: Props) {
           onClick={() => setOpenIndex(openIndex === index ? null : index)}
         >
           <span>{title}</span>
-          <span aria-hidden="true">{openIndex === index ? "×" : "+"}</span>
+          <Icon aria-hidden="true" $open={openIndex === index}>
+            <span>+</span>
+            <span>×</span>
+          </Icon>
         </Trigger>
       </h3>
-      <Panel
+      <AccordionPanel
         id={`${id}-panel-${index}`}
         role="region"
         aria-labelledby={`${id}-trigger-${index}`}
         aria-hidden={openIndex !== index}
         inert={openIndex !== index}
-        $open={openIndex === index}
+        open={openIndex === index}
       >
-        <div>
-          <BodyRegular2 as="div">{content}</BodyRegular2>
-        </div>
-      </Panel>
+        <BodyRegular2 as="div">{content}</BodyRegular2>
+      </AccordionPanel>
     </Item>
   ))
 }
 
 export default Accordion
+
+function AccordionPanel({ open, children, ...props }: ComponentPropsWithoutRef<"div"> & { open: boolean }) {
+  const contentRef = useRef<HTMLDivElement>(null)
+  const [height, setHeight] = useState(0)
+
+  useLayoutEffect(() => {
+    const content = contentRef.current
+    if (!content) return
+
+    const observer = new ResizeObserver(() => setHeight(content.getBoundingClientRect().height))
+    observer.observe(content)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <Panel {...props} $height={open ? height : 0}>
+      <div ref={contentRef}>{children}</div>
+    </Panel>
+  )
+}
 
 const Item = styled.div`
   border-bottom: 1px solid color-mix(in srgb, currentColor 30%, transparent);
@@ -71,15 +92,36 @@ const Trigger = styled(BodyRegular2)`
   }
 `;
 
-const Panel = styled.div<{ $open: boolean }>`
-  display: grid;
-  grid-template-rows: ${({ $open }) => ($open ? "1fr" : "0fr")};
-  transition: grid-template-rows 250ms ease;
+const Icon = styled.span<{ $open: boolean }>`
+  display: inline-grid;
+  flex-shrink: 0;
+  transform: rotate(${({ $open }) => ($open ? "90deg" : "0deg")});
+  transition: transform 350ms ease-in-out;
 
-  > div {
-    min-height: 0;
-    overflow: hidden;
+  > span {
+    grid-area: 1 / 1;
+    transition: opacity 350ms ease-in-out;
   }
+
+  > span:first-child {
+    opacity: ${({ $open }) => ($open ? 0 : 1)};
+  }
+
+  > span:last-child {
+    opacity: ${({ $open }) => ($open ? 1 : 0)};
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &, > span {
+      transition: none;
+    }
+  }
+`;
+
+const Panel = styled.div<{ $height: number }>`
+  height: ${({ $height }) => $height}px;
+  overflow: hidden;
+  transition: height 350ms ease-in-out;
 
   > div > div {
     padding-bottom: 28px;
