@@ -25,8 +25,7 @@ function Accordion({ items }: Props) {
         >
           <span>{title}</span>
           <Icon aria-hidden="true" $open={openIndex === index}>
-            <span>+</span>
-            <span>×</span>
+            +
           </Icon>
         </Trigger>
       </h3>
@@ -93,28 +92,13 @@ const Trigger = styled(BodyRegular2)`
 `;
 
 const Icon = styled.span<{ $open: boolean }>`
-  display: inline-grid;
+  display: inline-block;
   flex-shrink: 0;
-  transform: rotate(${({ $open }) => ($open ? "90deg" : "0deg")});
+  transform: rotate(${({ $open }) => ($open ? "45deg" : "0deg")});
   transition: transform 350ms ease-in-out;
 
-  > span {
-    grid-area: 1 / 1;
-    transition: opacity 350ms ease-in-out;
-  }
-
-  > span:first-child {
-    opacity: ${({ $open }) => ($open ? 0 : 1)};
-  }
-
-  > span:last-child {
-    opacity: ${({ $open }) => ($open ? 1 : 0)};
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    &, > span {
-      transition: none;
-    }
+    transition: none;
   }
 `;
 
