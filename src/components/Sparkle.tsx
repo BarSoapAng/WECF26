@@ -56,7 +56,7 @@ const Star = styled.img<{ $size: CSSProperties["width"]; $intensity: number; $hi
   animation: ${twinkle} 3s ease-in-out infinite;
 
   ${mediaQueries.tablet} {
-    width: calc(var(--sparkle-size) * 0.5);
+    width: calc(var(--sparkle-size) * 0.75);
     display: ${({ $hideOnMobile }) => ($hideOnMobile ? "none" : "block")};
   }
 
