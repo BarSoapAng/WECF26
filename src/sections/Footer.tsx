@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { FiInstagram, FiLinkedin, FiMail } from "react-icons/fi"
 import { ContentWrapper, SectionWrapper, Sparkle } from "../components"
 import { decorativeButton, decorativeWashiTape } from "../assets"
 import { mediaQueries } from "../lib/responsive"
@@ -16,9 +17,18 @@ function Footer() {
         </Wordmark>
         <FooterCaption>Waterloo Engineering Competition</FooterCaption>
         <Socials aria-label="Social and contact information">
-          <BodyBold as="a" href="#">Instagram</BodyBold>
-          <BodyBold as="a" href="#">LinkedIn</BodyBold>
-          <BodyBold as="a" href="#">Email Us</BodyBold>
+          <SocialLink href="https://www.instagram.com/uwengcomp/" aria-label="Instagram">
+            <BodyBold as="span">Instagram</BodyBold>
+            <FiInstagram size={24} aria-hidden="true" />
+          </SocialLink>
+          <SocialLink href="https://www.linkedin.com/company/uwengsoc" aria-label="LinkedIn">
+            <BodyBold as="span">LinkedIn</BodyBold>
+            <FiLinkedin size={24} aria-hidden="true" />
+          </SocialLink>
+          <SocialLink href="mailto:wec.a@engsoc.uwaterloo.ca" aria-label="Email Us">
+            <BodyBold as="span">Email Us</BodyBold>
+            <FiMail size={24} aria-hidden="true" />
+          </SocialLink>
         </Socials>
         <BodyRegular2>
           © 2026 Waterloo Engineering Competition. Made with love by EngSoc 🍁
@@ -92,5 +102,24 @@ const Socials = styled.div`
 
   ${mediaQueries.mediumTablet} {
     gap: 24px;
+  }
+`;
+
+const SocialLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+
+  svg {
+    display: none;
+  }
+
+  ${mediaQueries.tablet} {
+    span {
+      display: none;
+    }
+
+    svg {
+      display: block;
+    }
   }
 `;
