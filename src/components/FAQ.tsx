@@ -59,20 +59,13 @@ const Questions = styled(ContentWrapper)`
   padding: 64px;
   border-radius: 8px;
   background-color: #FFF2D5;
+  background-image: url(${faqNoise});
+  background-position: center;
+  background-size: 2650px 2181px;
+  background-blend-mode: soft-light;
   box-shadow: -48px 42px 0 0 rgb(0 0 0 / 22%);
   color: ${colors.text.brown};
   overflow: visible;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    border-radius: inherit;
-    background: url(${faqNoise}) center / 2650px 2181px;
-    mix-blend-mode: soft-light;
-    pointer-events: none;
-  }
 
   > h1, > h2 {
     text-align: center;
