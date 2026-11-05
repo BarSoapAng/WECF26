@@ -1,5 +1,6 @@
 import styled from "styled-components"
-import { ContentWrapper, SectionWrapper } from "../components"
+import { ContentWrapper, SectionWrapper, Sparkle } from "../components"
+import { decorativeButton, decorativeWashiTape } from "../assets"
 import { mediaQueries } from "../lib/responsive"
 import { BodyRegular2, BodyBold, colors, FooterCaption, FooterTitle } from "../lib/styles"
 
@@ -7,7 +8,12 @@ function Footer() {
   return (
     <Background as="footer">
       <Content>
-        <FooterTitle>WEC</FooterTitle>
+        <Wordmark>
+          <Tape src={decorativeWashiTape} alt="" aria-hidden="true" />
+          <FooterTitle>WEC</FooterTitle>
+          <Button src={decorativeButton} alt="" aria-hidden="true" />
+          <Sparkle size={80} x="-8%" y="100%" speed={3.8} />
+        </Wordmark>
         <FooterCaption>Waterloo Engineering Competition</FooterCaption>
         <Socials aria-label="Social and contact information">
           <BodyBold as="a" href="#">Instagram</BodyBold>
@@ -26,7 +32,6 @@ export default Footer
 
 const Background = styled(SectionWrapper)`
   width: 100%;
-  background-color: ${colors.background.orange};
 `;
 
 const Content = styled(ContentWrapper)`
@@ -37,10 +42,31 @@ const Content = styled(ContentWrapper)`
   padding: 96px 24px 16px;
   color: ${colors.text.offwhite};
   text-align: center;
+  overflow: visible;
 
   ${mediaQueries.tablet} {
     padding-top: 64px;
   }
+`;
+
+const Wordmark = styled.div`
+  position: relative;
+`;
+
+const Tape = styled.img`
+  position: absolute;
+  width: 32%;
+  left: -17%;
+  top: -24%;
+  pointer-events: none;
+`;
+
+const Button = styled.img`
+  position: absolute;
+  width: 24%;
+  right: -26%;
+  bottom: -8%;
+  pointer-events: none;
 `;
 
 const Socials = styled.div`
