@@ -18,13 +18,14 @@ type SparkleProps = {
 function Sparkle({ size = 80, x = 0, y = 0, speed = 3, intensity = 1, zIndex = 2, hideOnMobile = true }: SparkleProps) {
   return (
     <Star
+      $size={size}
       $intensity={intensity}
       $hideOnMobile={hideOnMobile}
       src={decorativeSparkle}
       alt=""
       aria-hidden="true"
       draggable={false}
-      style={{ width: size, left: x, top: y, zIndex, animationDuration: `${Math.max(0.1, speed)}s` }}
+      style={{ left: x, top: y, zIndex, animationDuration: `${Math.max(0.1, speed)}s` }}
     />
   )
 }
@@ -44,15 +45,18 @@ const twinkle = keyframes`
   }
 `;
 
-const Star = styled.img<{ $intensity: number; $hideOnMobile: boolean }>`
+const Star = styled.img<{ $size: CSSProperties["width"]; $intensity: number; $hideOnMobile: boolean }>`
+  --sparkle-size: ${({ $size }) => typeof $size === "number" ? `${$size}px` : $size};
   --intensity: ${({ $intensity }) => Math.max(0, $intensity)};
   position: absolute;
+  width: var(--sparkle-size);
   height: auto;
   pointer-events: none;
   user-select: none;
   animation: ${twinkle} 3s ease-in-out infinite;
 
   ${mediaQueries.tablet} {
+    width: calc(var(--sparkle-size) * 0.5);
     display: ${({ $hideOnMobile }) => ($hideOnMobile ? "none" : "block")};
   }
 

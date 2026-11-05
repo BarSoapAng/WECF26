@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { ContentWrapper } from "./base/Layout"
 import Accordion from "./Accordion"
 import Sparkle from "./Sparkle"
-import { decorativeWashiTape, faqLeafOrange, faqYellowLeaf, faqNoise } from "../assets"
+import { decorativeButton, decorativeWashiTape, faqLeafOrange, faqYellowLeaf, faqNoise } from "../assets"
 import { mediaQueries } from "../lib/responsive"
 import { Header2, colors, Header1 } from "../lib/styles"
 
@@ -38,6 +38,10 @@ function FAQ() {
         <WashiTape src={decorativeWashiTape} alt="" />
         <Sparkle size={80} x="-8%" y="18%" speed={3.2} />
       </Decorations>
+      <MobileDecorations aria-hidden="true">
+        <MobileTape src={decorativeWashiTape} alt="" />
+        <MobileButton src={decorativeButton} alt="" />
+      </MobileDecorations>
       <Sparkle size={80} x="90%" y="calc(100% + 24px)" speed={2.6} hideOnMobile={false} />
       <Header1 id="faq-title">Frequently Asked Questions</Header1>
       <div>
@@ -94,6 +98,32 @@ const Decorations = styled.div`
   ${mediaQueries.tablet} {
     display: none;
   }
+`;
+
+const MobileDecorations = styled(Decorations)`
+  display: none;
+
+  ${mediaQueries.tablet} {
+    display: block;
+  }
+`;
+
+const MobileTape = styled.img`
+  position: absolute;
+  width: 32%;
+  max-width: 110px;
+  right: -7%;
+  top: -24px;
+  transform: rotate(90deg);
+`;
+
+const MobileButton = styled.img`
+  position: absolute;
+  width: 24%;
+  max-width: 80px;
+  left: -6%;
+  bottom: 0;
+  transform: translateY(65%);
 `;
 
 const YellowLeaf = styled.img`
