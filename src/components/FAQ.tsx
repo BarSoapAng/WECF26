@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { ContentWrapper } from "./base/Layout"
 import Accordion from "./Accordion"
 import Sparkle from "./Sparkle"
-import { decorativeWashiTape, faqLeafOrange, faqYellowLeaf, venueNoise } from "../assets"
+import { decorativeWashiTape, faqLeafOrange, faqYellowLeaf, faqNoise } from "../assets"
 import { mediaQueries } from "../lib/responsive"
 import { Header2, colors, Header1 } from "../lib/styles"
 
@@ -69,7 +69,7 @@ const Questions = styled(ContentWrapper)`
     inset: 0;
     z-index: 3;
     border-radius: inherit;
-    background: url(${venueNoise}) center / cover;
+    background: url(${faqNoise}) center / cover;
     pointer-events: none;
   }
 
