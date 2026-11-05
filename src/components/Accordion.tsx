@@ -10,7 +10,7 @@ type Props = {
 
 function Accordion({ items }: Props) {
   const id = useId()
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const [openIndices, setOpenIndices] = useState<number[]>([0])
 
   return items.map(({ title, content }, index) => (
     <Item key={title}>
@@ -19,12 +19,16 @@ function Accordion({ items }: Props) {
           as="button"
           type="button"
           id={`${id}-trigger-${index}`}
-          aria-expanded={openIndex === index}
+          aria-expanded={openIndices.includes(index)}
           aria-controls={`${id}-panel-${index}`}
-          onClick={() => setOpenIndex(openIndex === index ? null : index)}
+          onClick={() => setOpenIndices((previous) =>
+            previous.includes(index)
+              ? previous.filter((openIndex) => openIndex !== index)
+              : [...previous, index]
+          )}
         >
           <span>{title}</span>
-          <Icon aria-hidden="true" $open={openIndex === index}>
+          <Icon aria-hidden="true" $open={openIndices.includes(index)}>
             +
           </Icon>
         </Trigger>
@@ -33,9 +37,9 @@ function Accordion({ items }: Props) {
         id={`${id}-panel-${index}`}
         role="region"
         aria-labelledby={`${id}-trigger-${index}`}
-        aria-hidden={openIndex !== index}
-        inert={openIndex !== index}
-        open={openIndex === index}
+        aria-hidden={!openIndices.includes(index)}
+        inert={!openIndices.includes(index)}
+        open={openIndices.includes(index)}
       >
         <BodyRegular2 as="div">{content}</BodyRegular2>
       </AccordionPanel>
