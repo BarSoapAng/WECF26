@@ -85,6 +85,7 @@ const Button = styled.img`
 
 const Goose = styled.img`
   position: absolute;
+  max-width: none;
   width: 72%;
   height: auto;
   left: -38%;
