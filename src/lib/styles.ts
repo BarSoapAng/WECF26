@@ -13,7 +13,7 @@ export const colors = {
 
 export const Title = styled.h1`
   margin: 0px;
-  font-family: "Castledown";
+  font-family: "Morfe";
   font-size: 56px;
   font-weight: 700;
   line-height: 145%;
@@ -28,7 +28,7 @@ export const Title = styled.h1`
 
 export const Header1 = styled.h1`
   margin: 0px;
-  font-family: "Castledown";
+  font-family: "Morfe";
   font-style: normal;
   font-size: 48px;
   font-weight: 900;
@@ -46,7 +46,7 @@ export const Header1 = styled.h1`
 
 export const Header2 = styled.h2`
   margin: 0px;
-  font-family: "Castledown";
+  font-family: "Morfe";
   font-size: 36px;
   font-weight: 900;
   line-height: 120%;
@@ -59,7 +59,7 @@ export const Header2 = styled.h2`
 
 export const Header3 = styled.h3`
   margin: 0px;
-  font-family: "Castledown";
+  font-family: "Morfe";
   font-size: 24px;
   font-weight: 900;
   line-height: 120%;
@@ -72,7 +72,7 @@ export const Header3 = styled.h3`
 
 export const LargeBody = styled.p`
   margin: 0px;
-  font-family: "Satoshi";
+  font-family: "Host Grotesk";
   font-size: 20px;
   font-weight: 400;
   line-height: 160%;
@@ -81,7 +81,7 @@ export const LargeBody = styled.p`
 
 export const LargeBodyMedium = styled.p`
   margin: 0px;
-  font-family: "Satoshi";
+  font-family: "Host Grotesk";
   font-size: 20px;
   font-weight: 500;
   line-height: 160%;
@@ -92,7 +92,7 @@ export const Medium = styled.p`
   margin: 0;
   padding: 0;
   height: 30px;
-  font-family: "Castledown";
+  font-family: "Morfe";
   font-size: 20px;
   font-weight: 900;
   line-height: normal;
@@ -101,7 +101,7 @@ export const Medium = styled.p`
 
 export const LargeBodyBold = styled.p`
   margin: 0px;
-  font-family: "Satoshi";
+  font-family: "Host Grotesk";
   font-size: 20px;
   font-weight: 700;
   line-height: 160%;
@@ -115,7 +115,7 @@ export const LargeBodyBold = styled.p`
 export const Body = styled.p`
   padding: 0px;
   margin: 0px;
-  font-family: "Satoshi";
+  font-family: "Host Grotesk";
   font-size: 20px;
   font-weight: 400;
   line-height: 160%;
@@ -129,7 +129,7 @@ export const Body = styled.p`
 export const BodyRegular = styled.p`
   padding: 0px;
   margin: 0px;
-  font-family: "Satoshi";
+  font-family: "Host Grotesk";
   font-size: 16px;
   font-weight: 400;
   line-height: 160%;
@@ -138,7 +138,7 @@ export const BodyRegular = styled.p`
 
 export const BodyBold = styled.p`
   margin: 0px;
-  font-family: "Satoshi";
+  font-family: "Host Grotesk";
   font-size: 16px;
   font-weight: 700;
   padding: 0px;
@@ -153,7 +153,7 @@ export const BodyBold = styled.p`
 
 export const BodyHeavy = styled.p`
   margin: 0px;
-  font-family: "Satoshi";
+  font-family: "Host Grotesk";
   font-size: 16px;
   font-weight: 900;
   line-height: 130%;
@@ -162,7 +162,7 @@ export const BodyHeavy = styled.p`
 
 export const Caption = styled.p`
   margin: 0px;
-  font-family: "Satoshi";
+  font-family: "Host Grotesk";
   font-size: 14px;
   font-weight: 400;
   line-height: 100%;
@@ -171,7 +171,7 @@ export const Caption = styled.p`
 
 export const Overline = styled.p`
   margin: 0px;
-  font-family: "Satoshi";
+  font-family: "Host Grotesk";
   font-size: 18px;
   font-weight: 500;
   line-height: 160%;
@@ -185,7 +185,7 @@ export const Overline = styled.p`
 export const ButtonText = styled.p`
   margin: 0;
   padding: 0;
-  font-family: "Castledown";
+  font-family: "Morfe";
   font-size: 20px;
   font-weight: 900;
   line-height: 24px;
@@ -196,7 +196,7 @@ export const ButtonText = styled.p`
 export const ButtonTextMobile = styled.p`
   margin: 0;
   padding: 0;
-  font-family: "Castledown";
+  font-family: "Morfe";
   font-size: 16px;
   font-weight: 900;
   line-height: 24px;
