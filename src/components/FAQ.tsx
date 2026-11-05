@@ -38,7 +38,7 @@ function FAQ() {
         <WashiTape src={decorativeWashiTape} alt="" />
         <Sparkle size={80} x="-8%" y="18%" speed={3.2} />
       </Decorations>
-      <Sparkle size={80} x="90%" y="calc(100% + 24px)" speed={2.6} />
+      <Sparkle size={80} x="90%" y="calc(100% + 24px)" speed={2.6} hideOnMobile={false} />
       <Header1 id="faq-title">Frequently Asked Questions</Header1>
       <div>
         <Accordion items={faqItems} />

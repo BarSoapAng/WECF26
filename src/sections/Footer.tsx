@@ -12,7 +12,7 @@ function Footer() {
           <Tape src={decorativeWashiTape} alt="" aria-hidden="true" />
           <FooterTitle>WEC</FooterTitle>
           <Button src={decorativeButton} alt="" aria-hidden="true" />
-          <Sparkle size={140} x="-8%" y="100%" speed={3.5} intensity={0.8} />
+          <Sparkle size={140} x="-8%" y="100%" speed={3.5} intensity={0.8} hideOnMobile={false} />
         </Wordmark>
         <FooterCaption>Waterloo Engineering Competition</FooterCaption>
         <Socials aria-label="Social and contact information">

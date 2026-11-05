@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react"
 import styled, { keyframes } from "styled-components"
 import { decorativeSparkle } from "../assets"
+import { mediaQueries } from "../lib/responsive"
 
 type SparkleProps = {
   size?: CSSProperties["width"]
@@ -11,12 +12,14 @@ type SparkleProps = {
   /** Animation strength: 0 is still, 1 is the default, and higher values are stronger. */
   intensity?: number
   zIndex?: CSSProperties["zIndex"]
+  hideOnMobile?: boolean
 }
 
-function Sparkle({ size = 80, x = 0, y = 0, speed = 3, intensity = 1, zIndex = 2 }: SparkleProps) {
+function Sparkle({ size = 80, x = 0, y = 0, speed = 3, intensity = 1, zIndex = 2, hideOnMobile = true }: SparkleProps) {
   return (
     <Star
       $intensity={intensity}
+      $hideOnMobile={hideOnMobile}
       src={decorativeSparkle}
       alt=""
       aria-hidden="true"
@@ -41,13 +44,17 @@ const twinkle = keyframes`
   }
 `;
 
-const Star = styled.img<{ $intensity: number }>`
+const Star = styled.img<{ $intensity: number; $hideOnMobile: boolean }>`
   --intensity: ${({ $intensity }) => Math.max(0, $intensity)};
   position: absolute;
   height: auto;
   pointer-events: none;
   user-select: none;
   animation: ${twinkle} 3s ease-in-out infinite;
+
+  ${mediaQueries.mediumTablet} {
+    display: ${({ $hideOnMobile }) => ($hideOnMobile ? "none" : "block")};
+  }
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
