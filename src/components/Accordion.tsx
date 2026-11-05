@@ -2,7 +2,7 @@ import { useId, useLayoutEffect, useRef, useState } from "react"
 import type { ComponentPropsWithoutRef, ReactNode } from "react"
 import styled from "styled-components"
 import { mediaQueries } from "../lib/responsive"
-import { BodyRegular2 } from "../lib/styles"
+import { BodyBold, BodyRegular1 } from "../lib/styles"
 
 type Props = {
   items: { title: string; content: ReactNode }[]
@@ -14,25 +14,23 @@ function Accordion({ items }: Props) {
 
   return items.map(({ title, content }, index) => (
     <Item key={title}>
-      <h3>
-        <Trigger
-          as="button"
-          type="button"
-          id={`${id}-trigger-${index}`}
-          aria-expanded={openIndices.includes(index)}
-          aria-controls={`${id}-panel-${index}`}
-          onClick={() => setOpenIndices((previous) =>
-            previous.includes(index)
-              ? previous.filter((openIndex) => openIndex !== index)
-              : [...previous, index]
-          )}
-        >
-          <span>{title}</span>
-          <Icon aria-hidden="true" $open={openIndices.includes(index)}>
-            +
-          </Icon>
-        </Trigger>
-      </h3>
+      <Trigger
+        as="button"
+        type="button"
+        id={`${id}-trigger-${index}`}
+        aria-expanded={openIndices.includes(index)}
+        aria-controls={`${id}-panel-${index}`}
+        onClick={() => setOpenIndices((previous) =>
+          previous.includes(index)
+            ? previous.filter((openIndex) => openIndex !== index)
+            : [...previous, index]
+        )}
+      >
+        <BodyBold>{title}</BodyBold>
+        <Icon aria-hidden="true" $open={openIndices.includes(index)}>
+          +
+        </Icon>
+      </Trigger>
       <AccordionPanel
         id={`${id}-panel-${index}`}
         role="region"
@@ -41,7 +39,7 @@ function Accordion({ items }: Props) {
         inert={!openIndices.includes(index)}
         open={openIndices.includes(index)}
       >
-        <BodyRegular2 as="div">{content}</BodyRegular2>
+        <BodyRegular1 as="div">{content}</BodyRegular1>
       </AccordionPanel>
     </Item>
   ))
@@ -71,13 +69,9 @@ function AccordionPanel({ open, children, ...props }: ComponentPropsWithoutRef<"
 
 const Item = styled.div`
   border-bottom: 1px solid color-mix(in srgb, currentColor 30%, transparent);
-
-  > h3 {
-    margin: 0;
-  }
 `;
 
-const Trigger = styled(BodyRegular2)`
+const Trigger = styled.span`
   display: flex;
   justify-content: space-between;
   align-items: center;
