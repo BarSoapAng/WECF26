@@ -2,13 +2,13 @@ import styled from "styled-components"
 import { decorativeButton, decorativeWashiTape, venueBigGoose, venueMap } from "../assets"
 import { ContentWrapper, SectionWrapper, Sparkle } from "../components"
 import { mediaQueries } from "../lib/responsive"
-import { BodyRegular2, colors, Header2 } from "../lib/styles"
+import { BodyRegular2, colors, Header1 } from "../lib/styles"
 
 function Venue() {
   return (
     <Background id="venue" aria-labelledby="venue-title">
       <Content>
-        <Header2 id="venue-title">Venue Map</Header2>
+        <Header1 id="venue-title">Venue Map</Header1>
         <BodyRegular2>
           WEC will run exclusively within PSE, with competition rooms located on floor 4.
         </BodyRegular2>
@@ -25,7 +25,7 @@ function Venue() {
         <Decorations aria-hidden="true">
           <TopTape src={decorativeWashiTape} alt="" />
           <BottomTape src={decorativeWashiTape} alt="" />
-          <Sparkle size={80} x="112%" y="75%" speed={3} />
+          <Sparkle size={80} x="109%" y="75%" speed={2.5} />
         </Decorations>
       </Content>
     </Background>
@@ -50,6 +50,7 @@ const Content = styled(ContentWrapper)`
   max-width: 1040px;
   color: ${colors.text.black};
   text-align: center;
+  z-index: auto;
   overflow: visible;
 
   ${mediaQueries.mediumTablet} {
@@ -59,7 +60,6 @@ const Content = styled(ContentWrapper)`
 
 const MapFrame = styled.div`
   position: relative;
-  isolation: isolate;
   margin-top: 8px;
 `;
 
@@ -71,11 +71,11 @@ const Map = styled.img`
 
 const Button = styled.img`
   position: absolute;
-  width: 15%;
+  width: 14%;
   height: auto;
-  left: -10%;
-  bottom: -24%;
-  z-index: 1;
+  left: -9.5%;
+  bottom: -22.5%;
+  z-index: 21;
   pointer-events: none;
 
   ${mediaQueries.tablet} {
@@ -85,11 +85,10 @@ const Button = styled.img`
 
 const Goose = styled.img`
   position: absolute;
-  max-width: none;
-  width: 72%;
-  height: auto;
-  left: -38%;
-  top: -40%;
+  max-width: 1500px;
+  width: 150%;
+  left: -118%;
+  bottom: -172%;
   z-index: -1;
   pointer-events: none;
 
@@ -101,7 +100,6 @@ const Goose = styled.img`
 const Decorations = styled.div`
   position: absolute;
   inset: 0;
-
   pointer-events: none;
 
   ${mediaQueries.tablet} {
@@ -123,7 +121,7 @@ const BottomTape = styled.img`
   position: absolute;
   width: 20%;
   height: auto;
-  transform: rotate(90deg);
+  transform: rotate(83deg);
   bottom: -14px;
   left: -9%;
 `;

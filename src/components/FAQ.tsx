@@ -36,13 +36,13 @@ function FAQ() {
         <YellowLeaf src={faqYellowLeaf} alt="" />
         <OrangeLeaf src={faqLeafOrange} alt="" />
         <WashiTape src={decorativeWashiTape} alt="" />
-        <Sparkle size={80} x="-8%" y="18%" speed={3.2} />
+        <Sparkle size={85} x="-9%" y="11.5%" speed={3} intensity={1.3} />
       </Decorations>
       <MobileDecorations aria-hidden="true">
         <MobileTape src={decorativeWashiTape} alt="" />
         <MobileButton src={decorativeButton} alt="" />
       </MobileDecorations>
-      <Sparkle size={80} x="90%" y="calc(100% + 24px)" speed={2.6} hideOnMobile={false} />
+      <Sparkle size={90} x="88%" y="calc(100% + 28px)" speed={2.6} hideOnMobile={false} />
       <Header1 id="faq-title">Frequently Asked Questions</Header1>
       <div>
         <Accordion items={faqItems} />
@@ -129,25 +129,23 @@ const MobileButton = styled.img`
 const YellowLeaf = styled.img`
   position: absolute;
   width: 34%;
-  height: auto;
-  right: -24%;
-  top: -32px;
+  right: -22.5%;
+  top: -15%;
 `;
 
 const OrangeLeaf = styled.img`
   position: absolute;
-  width: 42%;
-  height: auto;
-  left: -22%;
-  bottom: 0;
-  transform: translateY(45%);
+  width: 55%;
+  left: -29%;
+  bottom: 3%;
+  transform: translateY(45%);z
 `;
 
 const WashiTape = styled.img`
   position: absolute;
   width: 19%;
   height: auto;
-  right: -7%;
-  bottom: -2%;
-  transform: rotate(8deg);
+  right: -6%;
+  bottom: -2.3%;
+  transform: rotate(7deg);
 `;
