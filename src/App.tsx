@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { faqFooterFloor } from "./assets"
 import { PageWrapper } from "./components"
+import CompetitionStreams from "./sections/CompetitionStreams"
 import FAQ from "./sections/FAQ"
 import Footer from "./sections/Footer"
 import Venue from "./sections/Venue"
@@ -8,6 +9,7 @@ import Venue from "./sections/Venue"
 function App() {
   return (
     <PageWrapper>
+      <CompetitionStreams />
       {/* <VenueFAQFooterBackground> */}
         {/* <Venue />
         <FAQ />

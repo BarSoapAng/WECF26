@@ -18,16 +18,16 @@ export { default as aboutOrangeLeaf } from "./about/orange-leaf.png";
 export { default as aboutYellowLeaf } from "./about/yellow-leaf.png";
 
 // COMPETITION STREAMS
-export { default as competitionStreams1To2 } from "./competition-streams/1-2.png";
-export { default as competitionStreams2To3 } from "./competition-streams/2-3.png";
-export { default as competitionStreams3To4 } from "./competition-streams/3-4.png";
-export { default as competitionStreams4To5 } from "./competition-streams/4-5.png";
-export { default as competitionStreamsFloor } from "./competition-streams/floor.png";
-export { default as competitionStreamsOrangeLeaf1 } from "./competition-streams/orange-leaf-1.png";
-export { default as competitionStreamsOrangeLeaf2 } from "./competition-streams/orange-leaf-2.png";
-export { default as competitionStreamsTopviewTree } from "./competition-streams/topview-tree.png";
-export { default as competitionStreamsYellowLeaf1 } from "./competition-streams/yellow-leaf-1.png";
-export { default as competitionStreamsYellowLeaf2 } from "./competition-streams/yellow-leaf-2.png";
+export { default as competitionStreams1To2 } from "./competition-streams/1-2.webp";
+export { default as competitionStreams2To3 } from "./competition-streams/2-3.webp";
+export { default as competitionStreams3To4 } from "./competition-streams/3-4.webp";
+export { default as competitionStreams4To5 } from "./competition-streams/4-5.webp";
+export { default as competitionStreamsFloor } from "./competition-streams/floor.webp";
+export { default as competitionStreamsOrangeLeaf1 } from "./competition-streams/orange-leaf-1.webp";
+export { default as competitionStreamsOrangeLeaf2 } from "./competition-streams/orange-leaf-2.webp";
+export { default as competitionStreamsTopviewTree } from "./competition-streams/topview-tree.webp";
+export { default as competitionStreamsYellowLeaf1 } from "./competition-streams/yellow-leaf-1.webp";
+export { default as competitionStreamsYellowLeaf2 } from "./competition-streams/yellow-leaf-2.webp";
 
 // SCHEDULE
 export { default as scheduleSun } from "./schedule/sun.png";
