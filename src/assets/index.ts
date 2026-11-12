@@ -34,11 +34,11 @@ export { default as scheduleSun } from "./schedule/sun.png";
 export { default as scheduleSunray } from "./schedule/sunray.png";
 
 // VENUE
-export { default as venueBigGoose } from "./venue/big-goose.png";
-export { default as venueMap } from "./venue/venue-map.png";
+export { default as venueBigGoose } from "./venue/big-goose.webp";
+export { default as venueMap } from "./venue/venue-map.webp";
 
 // FAQ
-export { default as faqNoise } from "./FAQ/noise.png";
-export { default as faqFooterFloor } from "./FAQ/faq-footer-floor.png";
-export { default as faqLeafOrange } from "./FAQ/faq-leaf-orange.png";
-export { default as faqYellowLeaf } from "./FAQ/faq-yellow-leaf.png";
+export { default as faqNoise } from "./FAQ/noise.webp";
+export { default as faqFooterFloor } from "./FAQ/faq-footer-floor.webp";
+export { default as faqLeafOrange } from "./FAQ/faq-leaf-orange.webp";
+export { default as faqYellowLeaf } from "./FAQ/faq-yellow-leaf.webp";
