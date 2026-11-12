@@ -85,6 +85,7 @@ const Questions = styled(ContentWrapper)`
 
   ${mediaQueries.tablet} {
     gap: 24px;
+    box-shadow: -16px 16px 0 0 rgb(0 0 0 / 22%);
   }
 
   ${mediaQueries.mediumTablet} {
