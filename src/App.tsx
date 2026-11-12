@@ -1,34 +1,39 @@
+import { useLayoutEffect, useRef } from "react"
 import styled from "styled-components"
-import { faqFooterFloor } from "./assets"
-import { PageWrapper } from "./components"
-import FAQ from "./sections/FAQ"
-import Footer from "./sections/Footer"
-import Venue from "./sections/Venue"
+import PageWrapper from "./components/base/Layout/PageWrapper"
+import { deviceBreakpoints, mediaQueries } from "./lib/responsive"
+import Hero from "./sections/Hero"
+import About from "./sections/About"
 
 function App() {
+  const pageRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    const page = pageRef.current!
+    const resize = () => {
+      const width = page.clientWidth
+      page.style.setProperty("--desktop-scale", String(width > deviceBreakpoints.tablet ? Math.min(1, width / 1512) : 1))
+    }
+    resize()
+    const observer = new ResizeObserver(resize)
+    observer.observe(page)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <PageWrapper>
-      {/* <VenueFAQFooterBackground> */}
-        {/* <Venue />
-        <FAQ />
-        <Footer /> */}
-      {/* </VenueFAQFooterBackground> */}
+    <PageWrapper ref={pageRef}>
+      <Canvas>
+        <Hero />
+        <About />
+      </Canvas>
     </PageWrapper>
   )
 }
 
 export default App
 
-const VenueFAQFooterBackground = styled.div`
-  position: relative;
-  isolation: isolate;
-  width: 100%;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: min(32vw, 440px) 0 0;
-    z-index: -1;
-    background: url(${faqFooterFloor}) center / 270% 100% no-repeat;
-  }
+const Canvas = styled.main`
+  width: max(100%, 1512px);
+  zoom: var(--desktop-scale, 1);
+  ${mediaQueries.tablet} { width: 100%; zoom: 1; }
 `;

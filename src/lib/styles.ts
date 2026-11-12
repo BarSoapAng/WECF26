@@ -39,7 +39,7 @@ export const Header1 = styled.h1`
 
 export const Header2 = styled.h2`
   margin: 0px;
-  font-family: "Host Grotesk";
+  font-family: "Morfe";
   font-size: 36px;
   font-weight: 400;
   letter-spacing: -2%;

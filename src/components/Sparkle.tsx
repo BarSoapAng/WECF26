@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react"
 import styled, { keyframes } from "styled-components"
-import { decorativeSparkle } from "../assets"
+import { decorativeSparkle } from "../assets/optimized"
 import { mediaQueries } from "../lib/responsive"
 
 type SparkleProps = {
@@ -53,7 +53,9 @@ const Star = styled.img<{ $size: CSSProperties["width"]; $intensity: number; $hi
   height: auto;
   pointer-events: none;
   user-select: none;
-  animation: ${twinkle} 3s ease-in-out infinite;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 8px #ffe88c);
+  animation: ${({ $intensity }) => $intensity === 0 ? "none" : twinkle} 3s ease-in-out infinite;
 
   ${mediaQueries.tablet} {
     width: calc(var(--sparkle-size) * 0.75);

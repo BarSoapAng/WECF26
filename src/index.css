@@ -1,5 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300..800&display=swap');
 @import 'tailwindcss';
+
+@font-face {
+  font-family: "Host Grotesk";
+  src: url("/font/host-grotesk-latin.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "Morfe";
@@ -19,6 +26,8 @@
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  /* Keep font/layout changes from nudging a restored scroll position. */
+  overflow-anchor: none;
 }
 
 * {
