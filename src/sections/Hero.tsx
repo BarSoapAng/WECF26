@@ -72,16 +72,16 @@ export default function Hero() {
         <Sparkle x={374.77} y={921.77} size={89.22} intensity={0} />
         <MobileSparkles>
           <Sparkle
-            x={604}
-            y={690}
-            size={125.33}
+            x="36%"
+            y="12%"
+            size={64}
             intensity={0}
             hideOnMobile={false}
           />
           <Sparkle
-            x={651}
-            y={354}
-            size={125.33}
+            x="87%"
+            y="66%"
+            size={64}
             intensity={0}
             hideOnMobile={false}
           />
@@ -140,7 +140,7 @@ const HeroSection = styled.section`
   overflow: hidden;
   background: #7b3830;
   ${mediaQueries.tablet} {
-    height: 874px;
+    height: calc(320px + min(62vw, 322.4px));
   }
 `;
 
@@ -162,29 +162,38 @@ const Scene = styled.div`
     height: 700px;
   }
   ${mediaQueries.tablet} {
-    left: calc(50% - 651px);
+    width: min(100%, 520px);
+    height: min(80vw, 416px);
+    left: 50%;
+    top: 320px;
+    transform: translateX(-50%);
     img {
       max-width: none;
     }
     & > img:nth-child(1) {
-      left: -116px;
-      top: 16px;
-      width: 1468px;
+      left: -100%;
+      top: -264px;
+      width: 300%;
+      height: calc(100% + 264px);
+      object-fit: cover;
+      clip-path: inset(0 0 min(32vw, 166.4px) 0);
     }
     & > img:nth-child(2) {
-      left: -31px;
-      top: 137px;
-      width: 1166px;
+      left: -35%;
+      top: -150px;
+      width: 170%;
     }
     & > img:nth-child(3) {
-      left: -2652px;
-      top: -10px;
+      left: calc(50% - 3303px);
+      top: -330px;
       width: 6336px;
+      mask-image: linear-gradient(#000 290px, transparent 370px);
     }
     & > img:nth-child(4) {
-      left: -116px;
-      top: 628px;
-      width: 1442px;
+      left: -50%;
+      top: 55%;
+      width: 200%;
+      height: min(18vw, 93.6px);
     }
     & > img:nth-child(7),
     & > img:nth-child(8),
@@ -194,25 +203,25 @@ const Scene = styled.div`
       display: none;
     }
     & > img:nth-child(5) {
-      left: 666px;
-      top: 760px;
-      width: 98px;
+      left: 14%;
+      top: 58%;
+      width: 12%;
     }
     & > img:nth-child(6) {
-      left: 715px;
-      top: 308px;
-      width: 141px;
+      left: 77%;
+      top: -1%;
+      width: 14%;
     }
     & > img:nth-child(9) {
-      left: 268px;
-      top: 401px;
-      width: 567px;
+      left: -3%;
+      top: -8%;
+      width: 78%;
     }
     & > img:nth-child(13) {
-      left: 652px;
-      top: 362px;
-      width: 400px;
-      height: 563px;
+      left: 51%;
+      top: 8%;
+      width: 45%;
+      height: auto;
     }
   }
 `;
@@ -315,8 +324,8 @@ const HeroCopy = styled.div`
   max-width: 1312px;
   color: ${colors.text.lilac};
   ${mediaQueries.tablet} {
-    width: 292px;
-    max-width: calc(100% - 60px);
+    width: calc(100% - 40px);
+    max-width: 360px;
     margin-top: 0;
     color: ${colors.text.brown};
   }
@@ -335,12 +344,13 @@ const Heading = styled.div`
   }
   ${mediaQueries.tablet} {
     text-shadow: none;
+    text-align: center;
     h1 {
-      font-size: 40px;
-      line-height: 49px;
+      font-size: clamp(32px, 10vw, 40px);
+      line-height: clamp(40px, 12.25vw, 49px);
     }
     h1 > span {
-      font-size: 51.43px;
+      font-size: clamp(41.14px, 12.8575vw, 51.43px);
     }
   }
 `;
@@ -362,9 +372,11 @@ const Date = styled.div`
     margin-top: 16px;
     text-shadow: none;
     justify-content: center;
-    gap: 8px;
+    flex-wrap: nowrap;
+    gap: clamp(4px, 1.5vw, 8px);
     & > * {
-      font-size: 18px;
+      flex-shrink: 0;
+      font-size: clamp(14px, 4vw, 18px);
       line-height: 24px;
       letter-spacing: -0.36px;
     }

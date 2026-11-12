@@ -13,6 +13,7 @@ function App() {
     const resize = () => {
       const width = page.clientWidth
       page.style.setProperty("--desktop-scale", String(width > deviceBreakpoints.tablet ? Math.min(1, width / 1512) : 1))
+      page.style.setProperty("--mobile-art-scale", String(Math.min(1, (width - 32) / 419)))
     }
     resize()
     const observer = new ResizeObserver(resize)
@@ -33,6 +34,7 @@ function App() {
 export default App
 
 const Canvas = styled.main`
+  background: #7b3830;
   width: max(100%, 1512px);
   zoom: var(--desktop-scale, 1);
   ${mediaQueries.tablet} { width: 100%; zoom: 1; }

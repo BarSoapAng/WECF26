@@ -59,7 +59,13 @@ const Content = styled.div`
   max-width: 1112px;
   margin: 0 auto;
   padding-top: 60px;
-  ${mediaQueries.tablet} { width: calc(100% - 60px); padding-top: 30px; display: flex; flex-direction: column; gap: 36px; }
+  ${mediaQueries.tablet} {
+    width: calc(100% - 60px);
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: calc(8px + 28px * var(--mobile-art-scale, 1));
+  }
 `;
 
 const Copy = styled.div`
@@ -90,7 +96,12 @@ const Collage = styled.div`
   position: relative;
   width: 548px;
   height: 758.491px;
-  ${mediaQueries.tablet} { transform: none; width: 342px; height: 487.95px; max-width: 100%; align-self: center; }
+  ${mediaQueries.tablet} {
+    width: 342px;
+    height: 487.95px;
+    zoom: var(--mobile-art-scale, 1);
+    align-self: center;
+  }
 `;
 
 const Photo = styled.div<{ $x: number; $y: number; $rotation: number }>`
