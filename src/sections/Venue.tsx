@@ -25,7 +25,7 @@ function Venue() {
         <Decorations aria-hidden="true">
           <TopTape src={decorativeWashiTape} alt="" />
           <BottomTape src={decorativeWashiTape} alt="" />
-          <Sparkle size={80} x="109%" y="75%" speed={2.5} />
+          <Sparkle size={120} x="109%" y="75%" speed={2.5} />
         </Decorations>
       </Content>
     </Background>

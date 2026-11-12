@@ -36,13 +36,13 @@ function FAQ() {
         <YellowLeaf src={faqYellowLeaf} alt="" />
         <OrangeLeaf src={faqLeafOrange} alt="" />
         <WashiTape src={decorativeWashiTape} alt="" />
-        <Sparkle size={85} x="-9%" y="11.5%" speed={3} intensity={1.3} />
+        <Sparkle size={90} x="-9%" y="11.5%" speed={3} intensity={1.3} />
       </Decorations>
       <MobileDecorations aria-hidden="true">
         <MobileTape src={decorativeWashiTape} alt="" />
         <MobileButton src={decorativeButton} alt="" />
       </MobileDecorations>
-      <Sparkle size={90} x="88%" y="calc(100% + 28px)" speed={2.6} hideOnMobile={false} />
+      <Sparkle size={100} x="88%" y="calc(100% + 28px)" speed={2.6} hideOnMobile={false} />
       <Header1 id="faq-title">Frequently Asked Questions</Header1>
       <div>
         <Accordion items={faqItems} />
@@ -135,14 +135,14 @@ const YellowLeaf = styled.img`
   position: absolute;
   width: 34%;
   right: -22.5%;
-  top: -15%;
+  top: max(-14vw, -21%);
 `;
 
 const OrangeLeaf = styled.img`
   position: absolute;
   width: 55%;
   left: -29%;
-  bottom: 3%;
+  bottom: max(6vw, 2%);
   transform: translateY(45%);z
 `;
 

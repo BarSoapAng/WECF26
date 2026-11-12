@@ -4,15 +4,16 @@ import { PageWrapper } from "./components"
 import FAQ from "./sections/FAQ"
 import Footer from "./sections/Footer"
 import Venue from "./sections/Venue"
+import { mediaQueries } from "./lib/responsive"
 
 function App() {
   return (
     <PageWrapper>
-      {/* <VenueFAQFooterBackground> */}
-        {/* <Venue />
+      {/* <VenueFAQFooterBackground>
+        <Venue />
         <FAQ />
-        <Footer /> */}
-      {/* </VenueFAQFooterBackground> */}
+        <Footer />
+      </VenueFAQFooterBackground> */}
     </PageWrapper>
   )
 }
@@ -30,5 +31,9 @@ const VenueFAQFooterBackground = styled.div`
     inset: min(32vw, 440px) 0 0;
     z-index: -1;
     background: url(${faqFooterFloor}) center / 270% 100% no-repeat;
+
+    ${mediaQueries.tablet} {
+      top: 470px;
+    }
   }
 `;
