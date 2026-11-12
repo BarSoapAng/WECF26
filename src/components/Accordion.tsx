@@ -69,6 +69,12 @@ function AccordionPanel({ open, children, ...props }: ComponentPropsWithoutRef<"
 
 const Item = styled.div`
   border-bottom: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+
+  ${mediaQueries.tablet} {
+    &:first-child > button {
+      padding-top: 0;
+    }
+  }
 `;
 
 const Trigger = styled.span`
@@ -83,6 +89,14 @@ const Trigger = styled.span`
   color: inherit;
   text-align: left;
   cursor: pointer;
+
+  ${mediaQueries.tablet} {
+    padding: 24px 0;
+
+    &[aria-expanded="true"] {
+      padding-bottom: 16px;
+    }
+  }
 `;
 
 const Icon = styled.span<{ $open: boolean }>`
@@ -108,6 +122,12 @@ const Panel = styled.div<{ $height: number }>`
 
   > div > div {
     padding-bottom: 36px;
+  }
+
+  ${mediaQueries.tablet} {
+    > div > div {
+      padding-bottom: 24px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

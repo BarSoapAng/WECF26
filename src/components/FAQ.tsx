@@ -83,6 +83,10 @@ const Questions = styled(ContentWrapper)`
     text-align: center;
   }
 
+  ${mediaQueries.tablet} {
+    gap: 24px;
+  }
+
   ${mediaQueries.mediumTablet} {
     width: calc(100% - 64px);
     padding: 24px 16px;
