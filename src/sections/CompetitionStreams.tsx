@@ -26,6 +26,8 @@ import { BodyBold, BodyRegular1, BodyRegular2, colors, Header1 } from "../lib/st
  *   with the screen like they do in Figma.
  * - When the streams scroll into view, the footprints appear one at a time,
  *   1 -> 2 -> 3 -> 4 -> 5, like the goose is walking (from the Figma spec notes).
+ * - The leaves loop through a "falling" animation seen from above: they fade in,
+ *   shrink and spin as they drop away, then fade out (also from the spec notes).
  */
 
 type Stream = {
@@ -54,13 +56,13 @@ const streams: Stream[] = [
     ],
   },
   {
-    title: "Re-Engineering",
+    title: "Re-engineering",
     description: [
       "Teams must apply the re-engineering process to an existing technology or design in order to add new functionality or enhance its original functionality. The teams will construct a report and present their solution to judges. Re-engineering focuses on applying creativity, practicality, and ingenuity to real-world repurposing contexts.",
     ],
   },
   {
-    title: "Bio-Engineering",
+    title: "Bio-engineering",
     description: [
       "Teams must solve a bio-engineering problem by applying bio-engineering techniques. Topics are typically related to healthcare, biological ecology, cellular engineering, etc. The teams will construct a report and present their solution to judges.",
     ],
@@ -573,34 +575,78 @@ const Leaves = styled.div`
   }
 `;
 
+/*
+ * Falling leaf, seen from above: a leaf closer to you looks bigger, so it starts
+ * slightly large, then shrinks and spins as it drops towards the floor and fades
+ * out. Uses the separate `scale`/`rotate` properties so the `transform` flip on
+ * the image stays untouched. `--spin` sets how far and which way each leaf turns.
+ */
+const fall = keyframes`
+  0% {
+    opacity: 0;
+    scale: 1.15;
+    rotate: 0deg;
+  }
+  15% {
+    opacity: 1;
+    scale: 1.08;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 0.6;
+    rotate: var(--spin);
+  }
+`;
+
 const Leaf = styled.img`
   position: absolute;
   height: auto;
   max-width: none;
   user-select: none;
   transform: scaleY(-1);
+  animation: ${fall} var(--duration) ease-in-out var(--delay) infinite both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 `;
 
+/* Different speeds, directions and start points so the leaves never sync up. */
 const TopRightLeaf = styled(Leaf)`
   left: 92.45cqw;
   top: 3.85cqw;
   width: 23.6cqw;
+  --duration: 9s;
+  --delay: -2s;
+  --spin: 140deg;
 `;
 
 const LeftLeaf = styled(Leaf)`
   left: -19.18cqw;
   top: 53.53cqw;
   width: 23.59cqw;
+  --duration: 11s;
+  --delay: -7s;
+  --spin: -120deg;
 `;
 
 const RightLeaf = styled(Leaf)`
   left: 95.99cqw;
   bottom: 21.89cqw;
   width: 22.49cqw;
+  --duration: 10s;
+  --delay: -4.5s;
+  --spin: -150deg;
 `;
 
 const BottomLeftLeaf = styled(Leaf)`
   left: -14.6cqw;
   bottom: -10.58cqw;
   width: 20.16cqw;
+  --duration: 8.5s;
+  --delay: -1s;
+  --spin: 110deg;
 `;
