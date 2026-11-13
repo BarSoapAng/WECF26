@@ -17,24 +17,34 @@ import { mediaQueries } from "../lib/responsive"
 import { BodyBold, BodyRegular1, BodyRegular2, colors, Header1 } from "../lib/styles"
 
 /*
+ * COMPETITION STREAMS SECTION
+ *
  * Layout notes (desktop design is 1512px wide, content column is 1112px):
- * - Above `medium`, the five streams sit in a 3-column, 2-row grid that recreates
- *   the zigzag. Footprint trails live inside the stream they sit next to, so they
- *   move with the text instead of overlapping it when lines wrap.
- * - At `medium` and below, the streams stack in order and the trails/leaves hide.
+ * - Above `medium` (1024px), the five streams sit in a 3-column, 2-row grid that
+ *   recreates the zigzag. Footprint trails live inside the stream they sit next to,
+ *   so they move with the text instead of overlapping it when lines wrap.
+ * - At `medium` and below, the streams stack in order (1 to 5) and the
+ *   trails/leaves hide, matching the mobile design.
  * - `cqw` units are % of the section (or content) width, so the decorations scale
- *   with the screen like they do in Figma.
+ *   with the screen like they do in Figma. 100cqw = the full width of the nearest
+ *   parent with `container-type: inline-size`.
  * - When the streams scroll into view, the footprints appear one at a time,
  *   1 -> 2 -> 3 -> 4 -> 5, like the goose is walking (from the Figma spec notes).
  * - The leaves loop through a "falling" animation seen from above: they fade in,
  *   shrink and spin as they drop away, then fade out (also from the spec notes).
+ *
+ * File layout: data (text + footprint positions) -> React components -> styles.
  */
 
+/* ---------- Text content ---------- */
+
+// One competition stream. `description` is a list so a stream can have several paragraphs (stream 1 has two).
 type Stream = {
   title: string
   description: string[]
 }
 
+// Copy taken from the Figma design, in stream order 1 to 5.
 const streams: Stream[] = [
   {
     title: "Junior/Senior Design",
@@ -56,27 +66,33 @@ const streams: Stream[] = [
     ],
   },
   {
-    title: "Re-engineering",
+    title: "Re-Engineering",
     description: [
       "Teams must apply the re-engineering process to an existing technology or design in order to add new functionality or enhance its original functionality. The teams will construct a report and present their solution to judges. Re-engineering focuses on applying creativity, practicality, and ingenuity to real-world repurposing contexts.",
     ],
   },
   {
-    title: "Bio-engineering",
+    title: "Bio-Engineering",
     description: [
       "Teams must solve a bio-engineering problem by applying bio-engineering techniques. Topics are typically related to healthcare, biological ecology, cellular engineering, etc. The teams will construct a report and present their solution to judges.",
     ],
   },
 ]
 
+/* ---------- Footprint positions ---------- */
+
 /*
  * Each trail image holds several footprints. A trail is drawn once per footprint,
  * each copy clipped to one print (top, right, bottom, left as % of the image), so
  * the prints can appear one by one without needing a separate file for each.
  * Prints are listed in walking order.
+ *
+ * These numbers were measured from the trail images themselves. If a trail image
+ * is ever re-exported, they need to be measured again.
  */
-type Inset = [number, number, number, number]
+type Inset = [number, number, number, number] // [top, right, bottom, left] in %
 
+// Trail from stream 1 down-right towards stream 2.
 const trail1To2: Inset[] = [
   [2.7, 64.8, 72.1, 10.3],
   [34.1, 71.9, 40.9, 3.6],
@@ -85,6 +101,7 @@ const trail1To2: Inset[] = [
   [42.1, 9.5, 33.9, 67.5],
   [77.6, 0, 0, 78.9],
 ]
+// Trail from stream 2 up-right towards stream 3.
 const trail2To3: Inset[] = [
   [65.6, 63.2, 12.9, 6.3],
   [59.4, 25.0, 19.7, 44.9],
@@ -92,6 +109,7 @@ const trail2To3: Inset[] = [
   [33.0, 7.5, 45.9, 62.4],
   [6.4, 7.3, 71.9, 62.0],
 ]
+// Trail from stream 3 down towards stream 4.
 const trail3To4: Inset[] = [
   [6.7, 41.2, 79.6, 41.9],
   [23.9, 23.9, 61.3, 58.9],
@@ -101,6 +119,7 @@ const trail3To4: Inset[] = [
   [73.7, 55.2, 11.0, 27.2],
   [75.2, 33.0, 9.9, 49.7],
 ]
+// Trail from stream 4 left towards stream 5.
 const trail4To5: Inset[] = [
   [29.2, 9.5, 52.9, 74.2],
   [53.2, 12.8, 28.8, 70.0],
@@ -111,6 +130,7 @@ const trail4To5: Inset[] = [
   [31.4, 82.0, 50.5, 1.2],
 ]
 
+// Walking speed. Change these to make the goose walk faster or slower.
 const STEP_SECONDS = 0.2 // time between footprints
 const PAUSE_SECONDS = 0.3 // extra pause when the goose reaches a stream
 
@@ -119,12 +139,18 @@ type TrailProps = {
   prints: Inset[]
   /** Position of this trail in the walk (0 = trail 1 -> 2). */
   order: number
-  className?: string
+  className?: string // lets styled(FootprintTrail) pass in its size/position styles
 }
 
+// All trails in walking order, used to work out when each trail should start.
 const allTrails = [trail1To2, trail2To3, trail3To4, trail4To5]
 
+/* ---------- Components ---------- */
+
+// One footprint trail. Draws the same image once per footprint, each copy clipped
+// to a single print and given its own animation delay.
 function FootprintTrail({ src, prints, order, className }: TrailProps) {
+  // How many footprints come before this trail, so its first print waits for them.
   const stepsBefore = allTrails.slice(0, order).reduce((total, trail) => total + trail.length, 0)
 
   return (
@@ -136,8 +162,11 @@ function FootprintTrail({ src, prints, order, className }: TrailProps) {
           src={src}
           alt=""
           style={{
+            // Show only this one print.
             clipPath: `inset(${top}% ${right}% ${bottom}% ${left}%)`,
+            // Grow from the centre of the print, not the centre of the whole image.
             transformOrigin: `${left + (100 - left - right) / 2}% ${top + (100 - top - bottom) / 2}%`,
+            // Wait for every earlier print, plus a short pause per finished trail.
             animationDelay: `${(stepsBefore + index) * STEP_SECONDS + order * PAUSE_SECONDS}s`,
           }}
         />
@@ -146,10 +175,12 @@ function FootprintTrail({ src, prints, order, className }: TrailProps) {
   )
 }
 
+// One stream's text: the numbered circle, the title and the description paragraphs.
 function StreamText({ stream, number }: { stream: Stream; number: number }) {
   return (
     <StreamBody>
       <StreamHeading>
+        {/* aria-hidden because the <ol> already tells screen readers the number */}
         <Badge aria-hidden="true">
           <BodyBold as="span">{number}</BodyBold>
         </Badge>
@@ -169,6 +200,8 @@ function CompetitionStreams() {
   const listRef = useRef<HTMLOListElement>(null)
 
   // Start the walk the first time the streams are a quarter of the way on screen.
+  // It adds data-walking="true" to the list, which the Footprint styles react to.
+  // It only runs once: the observer stops watching after the first time.
   useEffect(() => {
     const list = listRef.current
     if (!list) return
@@ -188,6 +221,7 @@ function CompetitionStreams() {
 
   return (
     <Background id="competition-streams" aria-labelledby="competition-streams-title">
+      {/* Decorative background layers: brick floor + yellow treetop bands */}
       <Backdrop aria-hidden="true">
         <Floor />
         <TopBand src={competitionStreamsTopviewTree} alt="" />
@@ -203,7 +237,13 @@ function CompetitionStreams() {
           </BodyRegular1>
         </Intro>
 
+        {/*
+          The streams are in order 1 to 5 here (so screen readers and mobile read
+          them in order); the grid styles move them into the zigzag on desktop.
+          Each trail sits inside the stream it is drawn next to.
+        */}
         <StreamList ref={listRef}>
+          {/* Top left. The 1 -> 2 trail sits below its text. */}
           <StreamOne>
             <WideText>
               <StreamText stream={design} number={1} />
@@ -211,26 +251,31 @@ function CompetitionStreams() {
             <Trail1To2 src={competitionStreams1To2} prints={trail1To2} order={0} />
           </StreamOne>
 
+          {/* Middle column. 2 -> 3 trail above the text, 4 -> 5 trail below it. */}
           <StreamTwo>
             <Trail2To3 src={competitionStreams2To3} prints={trail2To3} order={1} />
             <StreamText stream={consulting} number={2} />
             <Trail4To5 src={competitionStreams4To5} prints={trail4To5} order={3} />
           </StreamTwo>
 
+          {/* Top right. The 3 -> 4 trail sits below its text. */}
           <StreamThree>
             <StreamText stream={programming} number={3} />
             <Trail3To4 src={competitionStreams3To4} prints={trail3To4} order={2} />
           </StreamThree>
 
+          {/* Bottom right. */}
           <StreamFour>
             <StreamText stream={reEngineering} number={4} />
           </StreamFour>
 
+          {/* Bottom left. */}
           <StreamFive>
             <StreamText stream={bioEngineering} number={5} />
           </StreamFive>
         </StreamList>
 
+        {/* Decorative ginkgo leaves (desktop only) */}
         <Leaves aria-hidden="true">
           <TopRightLeaf src={competitionStreamsOrangeLeaf2} alt="" />
           <LeftLeaf src={competitionStreamsOrangeLeaf1} alt="" />
@@ -246,6 +291,9 @@ export default CompetitionStreams
 
 /* ---------- Section + background ---------- */
 
+// The whole section. `container-type` lets children size things with `cqw`
+// (% of this section's width). The brown shows above the top treetop band,
+// matching the "What is WEC?" section above.
 const Background = styled(SectionWrapper)`
   container-type: inline-size;
   padding: 60px 0;
@@ -260,6 +308,8 @@ const Background = styled(SectionWrapper)`
   }
 `;
 
+// Holds the background layers behind the content. It covers the whole section,
+// and the bands are allowed to stick out above and below it.
 const Backdrop = styled.div`
   position: absolute;
   inset: 0;
@@ -267,6 +317,8 @@ const Backdrop = styled.div`
 `;
 
 /* Brick floor, starting 140px below the section top on the 1512px design. */
+// repeat-y tiles it downwards if the section gets taller (e.g. narrow screens).
+// On phones the bricks are drawn about 3x bigger, as in the mobile design.
 const Floor = styled.div`
   position: absolute;
   inset: 9.26cqw 0 0;
@@ -280,6 +332,8 @@ const Floor = styled.div`
 /*
  * The yellow treetop bands. Same image, one hugging the top edge, one the bottom.
  * The image is cropped to the part of the band that can ever be on screen.
+ * The top band runs up into the "What is WEC?" section and the bottom band runs
+ * down into Sponsors, as in the design.
  */
 const Band = styled.img`
   position: absolute;
@@ -289,12 +343,14 @@ const Band = styled.img`
   height: auto;
   user-select: none;
 
+  /* Phones: the mobile design uses a bigger, thicker band. */
   ${mediaQueries.mediumTablet} {
     left: -40.09cqw;
     width: 227.53cqw;
   }
 `;
 
+// Anchored to the section's top edge.
 const TopBand = styled(Band)`
   top: -29.54cqw;
 
@@ -303,6 +359,8 @@ const TopBand = styled(Band)`
   }
 `;
 
+// Anchored to the section's bottom edge, so it stays at the bottom however tall
+// the section gets.
 const BottomBand = styled(Band)`
   bottom: -39.24cqw;
 
@@ -313,6 +371,9 @@ const BottomBand = styled(Band)`
 
 /* ---------- Content ---------- */
 
+// Centred content column: 1112px wide on the full-size design, getting narrower
+// on smaller screens. `container-type` here lets the leaves use `cqw` (% of this
+// column's width). `overflow: visible` lets the leaves hang off the edges.
 const Content = styled(ContentWrapper)`
   container-type: inline-size;
   width: min(1112px, 73.55%);
@@ -328,12 +389,14 @@ const Content = styled(ContentWrapper)`
     width: min(760px, calc(100% - 96px));
   }
 
+  /* Phones: 30px side margins, as in the mobile design. */
   ${mediaQueries.tablet} {
     width: min(600px, calc(100% - 60px));
     line-height: 1.31;
   }
 `;
 
+// Section title + intro paragraph.
 const Intro = styled.div`
   position: relative;
   z-index: 2;
@@ -347,12 +410,16 @@ const Intro = styled.div`
   }
 `;
 
+// The title's text box is exactly as tall as the font size in Figma.
 const Title = styled(Header1)`
   line-height: 1;
 `;
 
 /* ---------- Streams ---------- */
 
+// Desktop: 3 equal columns (10px gap on the 1112px design). Each stream is
+// placed into a column/row by the StreamOne...StreamFive styles below.
+// At `medium` and below: one column, streams stacked in order, 36px apart.
 const StreamList = styled.ol`
   position: relative;
   z-index: 2;
@@ -367,6 +434,7 @@ const StreamList = styled.ol`
     grid-template-columns: minmax(0, 1fr);
     row-gap: 36px;
 
+    /* Undo the zigzag placement so the streams just stack. */
     & > li {
       grid-column: 1;
       grid-row: auto;
@@ -380,6 +448,14 @@ const StreamItem = styled.li`
   margin: 0;
 `;
 
+/*
+ * Zigzag placement on desktop:
+ *   column 1: stream 1 (row 1), stream 5 (row 2)
+ *   column 2: stream 2 (spans both rows)
+ *   column 3: stream 3 (row 1), stream 4 (row 2)
+ * Margins nudge each stream up or down to match the design. Negative margins
+ * pull a stream up so it overlaps the row above, like in Figma.
+ */
 /* Margins are % of the column width (364px on the full-size design). */
 const StreamOne = styled(StreamItem)`
   grid-column: 1;
@@ -411,6 +487,8 @@ const StreamFive = styled(StreamItem)`
 `;
 
 /* Stream 1's text runs wider than its column on the full-size design. */
+// Below `large` the columns get narrower, so it stays inside its column to avoid
+// running into stream 2.
 const WideText = styled.div`
   position: relative;
   z-index: 1;
@@ -421,6 +499,7 @@ const WideText = styled.div`
   }
 `;
 
+// Heading (circle + title) and description, stacked 8px apart.
 const StreamBody = styled.div`
   position: relative;
   z-index: 1;
@@ -429,6 +508,7 @@ const StreamBody = styled.div`
   gap: 8px;
 `;
 
+// Desktop: number circle above the title. Stacked layout: circle beside the title.
 const StreamHeading = styled.div`
   display: flex;
   flex-direction: column;
@@ -445,6 +525,7 @@ const StreamHeading = styled.div`
   }
 `;
 
+// Orange number circle: 47px on desktop, 32px on phones.
 const Badge = styled.div`
   display: flex;
   align-items: center;
@@ -461,6 +542,7 @@ const Badge = styled.div`
   }
 `;
 
+// Description paragraphs. The gap between paragraphs is one blank line.
 const Description = styled.div`
   display: flex;
   flex-direction: column;
@@ -481,6 +563,7 @@ const Description = styled.div`
  * next to the text as the columns shrink. Below `large` the text wraps more,
  * so the trails overlap the text less. */
 
+// Wrapper for one trail. Hidden on stacked/mobile layouts.
 const TrailFrame = styled.div`
   position: relative;
   pointer-events: none;
@@ -499,6 +582,7 @@ const TrailSizer = styled.img`
   visibility: hidden;
 `;
 
+// One footprint "stepping" in: fades in while growing from 60% to full size.
 const stepIn = keyframes`
   from {
     opacity: 0;
@@ -510,6 +594,9 @@ const stepIn = keyframes`
   }
 `;
 
+// A single footprint (a clipped copy of the trail image, laid over the sizer).
+// Hidden until the list gets data-walking="true", then it plays `stepIn` after
+// its own delay (set in FootprintTrail).
 const Footprint = styled.img`
   position: absolute;
   inset: 0;
@@ -521,6 +608,7 @@ const Footprint = styled.img`
     animation: ${stepIn} 0.35s ease-out both;
   }
 
+  /* People who turn on "reduce motion" see every footprint straight away. */
   @media (prefers-reduced-motion: reduce) {
     opacity: 1;
 
@@ -530,6 +618,8 @@ const Footprint = styled.img`
   }
 `;
 
+// Size and position of each trail, as % of its stream's column width.
+// Negative margins let a trail tuck under/beside the text like in the design.
 const Trail1To2 = styled(FootprintTrail)`
   width: 87.8%;
   margin: -3.8% 0 0 4.4%;
@@ -564,6 +654,7 @@ const Trail3To4 = styled(FootprintTrail)`
 
 /* ---------- Leaves (positions are % of the 1112px content width) ---------- */
 
+// Layer holding the four leaves, covering the content column. Desktop only.
 const Leaves = styled.div`
   position: absolute;
   inset: 0;
@@ -601,6 +692,8 @@ const fall = keyframes`
   }
 `;
 
+// Shared leaf styles. The leaf images were exported upside down compared to the
+// design, so `scaleY(-1)` flips them back.
 const Leaf = styled.img`
   position: absolute;
   height: auto;
@@ -609,12 +702,19 @@ const Leaf = styled.img`
   transform: scaleY(-1);
   animation: ${fall} var(--duration) ease-in-out var(--delay) infinite both;
 
+  /* People who turn on "reduce motion" see the leaves sitting still. */
   @media (prefers-reduced-motion: reduce) {
     animation: none;
   }
 `;
 
 /* Different speeds, directions and start points so the leaves never sync up. */
+// --duration: how long one fall takes. --delay: negative, so each leaf is already
+// part-way through its fall when the page loads. --spin: how far it turns.
+// Leaves near the top are positioned from the top of the column, and leaves near
+// the bottom from the bottom, so they stay beside the right streams.
+
+// Orange leaf beside the intro paragraph, top right.
 const TopRightLeaf = styled(Leaf)`
   left: 92.45cqw;
   top: 3.85cqw;
@@ -624,6 +724,7 @@ const TopRightLeaf = styled(Leaf)`
   --spin: 140deg;
 `;
 
+// Orange leaf on the left edge, beside the 1 -> 2 trail.
 const LeftLeaf = styled(Leaf)`
   left: -19.18cqw;
   top: 53.53cqw;
@@ -633,6 +734,7 @@ const LeftLeaf = styled(Leaf)`
   --spin: -120deg;
 `;
 
+// Yellow leaf on the right edge, beside stream 4.
 const RightLeaf = styled(Leaf)`
   left: 95.99cqw;
   bottom: 21.89cqw;
@@ -642,6 +744,7 @@ const RightLeaf = styled(Leaf)`
   --spin: -150deg;
 `;
 
+// Yellow leaf at the bottom left, below stream 5.
 const BottomLeftLeaf = styled(Leaf)`
   left: -14.6cqw;
   bottom: -10.58cqw;
