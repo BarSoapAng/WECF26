@@ -65,24 +65,22 @@ export default function Hero() {
         <Artwork src={heroYellowLeaf} $x={26} $y={746} $width={160} />
         <Artwork src={heroOrangeLeaf} $x={1316} $y={257} $width={112} />
         <Artwork src={heroGoose} $x={998} $y={296} $width={485} />
-        <Sparkle x={716.96} y={553.45} size={65.23} intensity={0} />
-        <Sparkle x={1043} y={296} size={100.72} intensity={0} />
-        <Sparkle x={1484} y={647} size={157.9} intensity={0} />
-        <Sparkle x={608} y={347} size={157.9} intensity={0} />
-        <Sparkle x={374.77} y={921.77} size={89.22} intensity={0} />
+        <Sparkle x={716.96} y={553.45} size={65.23} />
+        <Sparkle x={1043} y={296} size={100.72} />
+        <Sparkle x={1484} y={647} size={157.9} />
+        <Sparkle x={608} y={347} size={157.9} />
+        <Sparkle x={374.77} y={921.77} size={89.22} />
         <MobileSparkles>
           <Sparkle
             x="36%"
             y="12%"
             size={64}
-            intensity={0}
             hideOnMobile={false}
           />
           <Sparkle
             x="87%"
             y="66%"
             size={64}
-            intensity={0}
             hideOnMobile={false}
           />
         </MobileSparkles>

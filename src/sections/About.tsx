@@ -26,12 +26,12 @@ export default function About() {
           <YellowLeaf src={aboutYellowLeaf} alt="" />
           <Tape src={decorativeWashiTape} alt="" />
           <Button src={decorativeButton} alt="" />
-          <Sparkle size={157.9} x={0} y={58} intensity={0} />
+          <Sparkle size={157.9} x={0} y={58} />
         </Collage>
       </Content>
       <Tree src={aboutTree} alt="" aria-hidden="true" decoding="async" />
-      <StarTurn $x="94.8%" $y={406} $rotation={25}><Sparkle size={210} intensity={0} /></StarTurn>
-      <StarTurn $x="53.5%" $y={812} $rotation={70}><Sparkle size={190.5} intensity={0} /></StarTurn>
+      <StarTurn $x="94.8%" $y={406} $rotation={25}><Sparkle size={210} /></StarTurn>
+      <StarTurn $x="53.5%" $y={812} $rotation={70}><Sparkle size={190.5} /></StarTurn>
     </Background>
   )
 }
