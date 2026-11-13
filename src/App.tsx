@@ -10,11 +10,11 @@ function App() {
   return (
     <PageWrapper>
       <CompetitionStreams />
-      {/* <VenueFAQFooterBackground> */}
-        {/* <Venue />
+      <VenueFAQFooterBackground>
+        <Venue />
         <FAQ />
-        <Footer /> */}
-      {/* </VenueFAQFooterBackground> */}
+        <Footer />
+      </VenueFAQFooterBackground>
     </PageWrapper>
   )
 }
