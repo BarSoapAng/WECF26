@@ -30,8 +30,8 @@ export { default as competitionStreamsYellowLeaf1 } from "./competition-streams/
 export { default as competitionStreamsYellowLeaf2 } from "./competition-streams/yellow-leaf-2.webp";
 
 // SCHEDULE
-export { default as scheduleSun } from "./schedule/sun.png";
-export { default as scheduleSunray } from "./schedule/sunray.png";
+export { default as scheduleSun } from "./schedule/sun.webp";
+export { default as scheduleSunray } from "./schedule/sunray.webp";
 
 // VENUE
 export { default as venueBigGoose } from "./venue/big-goose.webp";
