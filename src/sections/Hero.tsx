@@ -139,8 +139,7 @@ const HeroSection = styled.section`
   isolation: isolate;
   width: 100%;
   height: 982px;
-  overflow-x: clip;
-  overflow-y: visible;
+  overflow: visible;
   background: #7b3830;
   ${mediaQueries.tablet} {
     height: calc(320px + min(62vw, 322.4px));
@@ -250,16 +249,16 @@ const FireArtwork = styled(Artwork)`
 
   @keyframes fireGlow {
     0%, 100% {
-      filter: drop-shadow(0 0 20px #a855f7a0);
+      filter: drop-shadow(0 0 10px #a855f7a0);
     }
     50% {
-      filter: drop-shadow(0 0 48px #a855f7ff);
+      filter: drop-shadow(0 0 24px #a855f7ff);
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
-    filter: drop-shadow(0 0 28px #a855f7b0);
+    filter: drop-shadow(0 0 14px #a855f7b0);
   }
 `;
 

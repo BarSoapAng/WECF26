@@ -11,6 +11,14 @@ type Props = {
 function Accordion({ items }: Props) {
   const id = useId()
   const [openIndices, setOpenIndices] = useState<number[]>([0])
+  const transitioning = useRef(false)
+
+  useLayoutEffect(() => {
+    const timeout = window.setTimeout(() => {
+      transitioning.current = false
+    }, 250)
+    return () => window.clearTimeout(timeout)
+  }, [openIndices])
 
   return items.map(({ title, content }, index) => (
     <Item key={title}>
@@ -20,11 +28,15 @@ function Accordion({ items }: Props) {
         id={`${id}-trigger-${index}`}
         aria-expanded={openIndices.includes(index)}
         aria-controls={`${id}-panel-${index}`}
-        onClick={() => setOpenIndices((previous) =>
-          previous.includes(index)
-            ? previous.filter((openIndex) => openIndex !== index)
-            : [...previous, index]
-        )}
+        onClick={() => {
+          if (transitioning.current) return
+          transitioning.current = true
+          setOpenIndices((previous) =>
+            previous.includes(index)
+              ? previous.filter((openIndex) => openIndex !== index)
+              : [...previous, index]
+          )
+        }}
       >
         <BodyBold>{title}</BodyBold>
         <Icon aria-hidden="true" $open={openIndices.includes(index)}>
@@ -55,7 +67,7 @@ function AccordionPanel({ open, children, ...props }: ComponentPropsWithoutRef<"
     const content = contentRef.current
     if (!content) return
 
-    const observer = new ResizeObserver(() => setHeight(content.getBoundingClientRect().height))
+    const observer = new ResizeObserver(() => setHeight(content.scrollHeight))
     observer.observe(content)
     return () => observer.disconnect()
   }, [])
@@ -92,10 +104,6 @@ const Trigger = styled.span`
 
   ${mediaQueries.tablet} {
     padding: 24px 0;
-
-    &[aria-expanded="true"] {
-      padding-bottom: 16px;
-    }
   }
 `;
 
