@@ -13,12 +13,14 @@ function Venue() {
           WEC will run exclusively within PSE, with competition rooms located on floor 4.
         </BodyRegular2>
         <MapFrame>
-          <Goose src={venueBigGoose} alt="" aria-hidden="true" />
+          <Goose src={venueBigGoose} alt="" aria-hidden="true" loading="lazy" decoding="async" />
           <Map
             src={venueMap}
             alt="PSE floor 4 venue map: Bio-engineering in room 4043, Re-engineering in 4053, judges in 4417, Consulting in 4433, and Programming in 4437."
             width={1040}
             height={515}
+            loading="lazy"
+            decoding="async"
           />
           <Button src={decorativeButton} alt="" aria-hidden="true" />
         </MapFrame>

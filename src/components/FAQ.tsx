@@ -142,7 +142,7 @@ const OrangeLeaf = styled.img`
   position: absolute;
   width: 55%;
   left: -29%;
-  bottom: max(6vw, 2%);
+  bottom: 2%;
   transform: translateY(45%);z
 `;
 
