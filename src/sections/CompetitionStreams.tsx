@@ -326,6 +326,10 @@ const Floor = styled.div`
 
   ${mediaQueries.mediumTablet} {
     background-size: 370cqw auto;
+    /* Run the floor down behind the bottom band. On phones the band starts a
+       little below the section on the left, which left a straight floor edge
+       and a gap showing between them. */
+    bottom: -25cqw;
   }
 `;
 
