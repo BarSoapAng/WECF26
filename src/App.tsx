@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { faqFooterFloor } from "./assets"
 import { PageWrapper } from "./components"
+import CompetitionStreams from "./sections/CompetitionStreams"
 import FAQ from "./sections/FAQ"
 import Footer from "./sections/Footer"
 import Venue from "./sections/Venue"
@@ -9,11 +10,12 @@ import { mediaQueries } from "./lib/responsive"
 function App() {
   return (
     <PageWrapper>
-      {/* <VenueFAQFooterBackground>
+      <CompetitionStreams />
+      <VenueFAQFooterBackground>
         <Venue />
         <FAQ />
         <Footer />
-      </VenueFAQFooterBackground> */}
+      </VenueFAQFooterBackground>
     </PageWrapper>
   )
 }
