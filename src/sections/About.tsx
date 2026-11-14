@@ -9,10 +9,7 @@ export default function About() {
     <Background id="about" aria-labelledby="about-title">
       <Content>
         <Copy>
-          <AboutHeading id="about-title">
-            <Header2>What is WEC?</Header2>
-            <Header1 as="h2">What is WEC?</Header1>
-          </AboutHeading>
+          <Header2>What is WEC?</Header2>
           <BodyRegular1>The Waterloo Engineering Competition (WEC) is a design competition run in collaboration with the Engineering Society and Sandford Fleming Foundation (SSF).</BodyRegular1>
           <BodyRegular1>The competition covers topics like design, prototyping, circuits, programming, consulting, and much more!</BodyRegular1>
           <BodyRegular1>The top teams from each competition will have the opportunity to represent Waterloo at the Ontario Engineering Competition (OEC), and compete for a chance to advance to the nationals at the Canadian Engineering Competition (CEC).</BodyRegular1>
@@ -41,7 +38,7 @@ const Background = styled.section`
   width: 100%;
   min-height: 939.491px;
   overflow: hidden;
-  background: #7b3830;
+  background: linear-gradient(#7b3830, #7b3830) 0 -4px / 100% calc(100% + 4px) no-repeat;
   color: ${colors.text.offwhite};
   ${mediaQueries.tablet} {
     min-height: auto;
@@ -51,6 +48,7 @@ const Background = styled.section`
 
 const Content = styled.div`
   position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.062fr);
   gap: 48px;
@@ -91,6 +89,7 @@ const AboutHeading = styled.div`
 
 const Collage = styled.div`
   position: relative;
+  z-index: 1;
   width: 548px;
   height: 758.491px;
   ${mediaQueries.tablet} {
@@ -127,6 +126,7 @@ const PhotoPlaceholder = styled.div`
 
 const OrangeLeaf = styled.img`
   position: absolute;
+  z-index: 1;
   width: 217.31px;
   /* The 48px column gap leaves 8px between this leaf and the copy. */
   left: -40px;
@@ -136,6 +136,7 @@ const OrangeLeaf = styled.img`
 
 const YellowLeaf = styled.img`
   position: absolute;
+  z-index: 1;
   width: 275.58px;
   left: 366px;
   top: -41px;
@@ -145,6 +146,7 @@ const YellowLeaf = styled.img`
 
 const Tape = styled.img`
   position: absolute;
+  z-index: 1;
   width: 206px;
   left: -84px;
   top: -34px;
@@ -153,6 +155,7 @@ const Tape = styled.img`
 
 const Button = styled.img`
   position: absolute;
+  z-index: 1;
   width: 162.08px;
   left: 414px;
   top: 432.66px;
@@ -161,6 +164,7 @@ const Button = styled.img`
 
 const StarTurn = styled.div<{ $x: string; $y: number; $rotation: number }>`
   position: absolute;
+  z-index: 1;
   left: ${({ $x }) => $x};
   top: ${({ $y }) => $y}px;
   transform: rotate(${({ $rotation }) => $rotation}deg);
