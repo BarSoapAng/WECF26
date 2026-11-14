@@ -220,7 +220,7 @@ function CompetitionStreams() {
   }, [])
 
   return (
-    <Background id="competition-streams" aria-labelledby="competition-streams-title">
+    <Background id="competition" aria-labelledby="competition-streams-title">
       {/* Decorative background layers: brick floor + yellow treetop bands */}
       <Backdrop aria-hidden="true">
         <Floor />

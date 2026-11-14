@@ -53,7 +53,9 @@ const Star = styled.img<{ $size: CSSProperties["width"]; $intensity: number; $hi
   height: auto;
   pointer-events: none;
   user-select: none;
-  animation: ${twinkle} 3s ease-in-out infinite;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 8px #ffe88c);
+  animation: ${twinkle} var(--sparkle-speed, 3s) ease-in-out infinite;
 
   ${mediaQueries.tablet} {
     width: calc(var(--sparkle-size) * 0.75);
