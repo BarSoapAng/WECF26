@@ -139,7 +139,8 @@ const HeroSection = styled.section`
   isolation: isolate;
   width: 100%;
   height: 982px;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   background: #7b3830;
   ${mediaQueries.tablet} {
     height: calc(320px + min(62vw, 322.4px));
