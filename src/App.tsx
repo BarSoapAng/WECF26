@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { faqFooterFloor } from "./assets"
 import { PageWrapper } from "./components"
 import CompetitionStreams from "./sections/CompetitionStreams"
+import Sponsors from "./sections/Sponsors"
 import Schedule from "./sections/Schedule"
 import Hero from "./sections/Hero"
 import About from "./sections/About"
@@ -34,6 +35,7 @@ function App() {
       <Hero />
       <About />
       <CompetitionStreams />
+      <Sponsors />
       <Schedule />
       <VenueFAQFooterBackground>
         <Venue />

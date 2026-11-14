@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from "styled-components"
 import { decorativeWashiTape, scheduleSun, scheduleSunray } from "../assets"
-import { ContentWrapper, SectionWrapper } from "../components"
+import { ContentWrapper, SectionWrapper, Sparkle } from "../components"
 import { mediaQueries } from "../lib/responsive"
 import { BodyRegular1, colors, Header1 } from "../lib/styles"
 
@@ -11,9 +11,8 @@ import { BodyRegular1, colors, Header1 } from "../lib/styles"
  * Mobile: same table but smaller text, no tape (that's how the mobile Figma has it).
  *
  * A couple of things that might look weird at first:
- * - The sky background is bigger than the section on purpose. It goes up behind the
- *   yellow tree band from Competition Streams and down behind the top of Venue,
- *   because in the design the sky fills that whole area.
+ * - The sky background is bigger than the section on purpose. It goes down behind
+ *   the top of Venue, because in the design the sky fills that whole area.
  * - The sun, rays and tape use "cqw" for their sizes. 1cqw = 1% of the table's
  *   width, so they shrink and grow with the table and stay in the same spot.
  * - From the spec doc: the sun slowly glows bigger and smaller, and the rays
@@ -104,6 +103,8 @@ function Schedule() {
             <SunGlow />
             <TopTape src={decorativeWashiTape} alt="" />
             <BottomTape src={decorativeWashiTape} alt="" />
+            {/* Sparkle to the left of the table (desktop only) */}
+            <Sparkle size={106} x="-10.6cqw" y="26.93cqw" speed={3.6} />
           </Decorations>
         </TableArea>
       </Content>
@@ -118,24 +119,28 @@ export default Schedule
 const Background = styled(SectionWrapper)`
   padding: 96px 0 25px;
 
-  /* The sky. It sticks out 400px above the section and 600px below it so there's
-     no gap with the sections around it. z-index -1 keeps it behind everything. */
+  /* The sky. It sticks out 600px below the section so there's no gap with the
+     top of Venue. (Sponsors covers the sky above this section.) z-index -1 keeps
+     it behind everything. */
   &::before {
     content: "";
     position: absolute;
-    inset: -400px 0 -600px;
+    inset: 0 0 -600px;
     z-index: -1;
     background: linear-gradient(#c3e9e6, #92edf7);
     pointer-events: none;
   }
 
   ${mediaQueries.tablet} {
-    padding: 64px 0 0;
+    padding: 36px 0 0;
   }
 `;
 
 // Same width as the table in Figma (1112px). On phones it leaves 30px on each side.
+// z-index 19 (one below the usual 20) so the sun's glow goes behind the Sponsors
+// cards above instead of on top of them, like in Figma.
 const Content = styled(ContentWrapper)`
+  z-index: 19;
   display: flex;
   flex-direction: column;
   gap: 24px;

@@ -17,6 +17,11 @@ export { default as heroYellowLeaf } from "./hero/yellow-leaf-hero.png";
 export { default as aboutOrangeLeaf } from "./about/orange-leaf.png";
 export { default as aboutYellowLeaf } from "./about/yellow-leaf.png";
 
+// SPONSORS
+export { default as sponsorsWaterlooEngineering } from "./sponsors/waterloo-engineering.png";
+export { default as sponsorsLeafLeft } from "./sponsors/leaf-left.png";
+export { default as sponsorsLeafRight } from "./sponsors/leaf-right.png";
+
 // COMPETITION STREAMS
 export { default as competitionStreams1To2 } from "./competition-streams/1-2.webp";
 export { default as competitionStreams2To3 } from "./competition-streams/2-3.webp";
