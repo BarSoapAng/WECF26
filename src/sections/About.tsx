@@ -43,7 +43,8 @@ const Background = styled.section`
   ${mediaQueries.tablet} {
     min-height: auto;
     margin-top: -12px;
-    padding-bottom: 48px;
+    padding-bottom: 0;
+    margin-bottom: -48px;
   }
 `;
 

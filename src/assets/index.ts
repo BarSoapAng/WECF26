@@ -16,9 +16,9 @@ export { default as heroYellowLeaf } from "./hero/yellow-leaf-hero.png";
 // ABOUT
 export { default as aboutOrangeLeaf } from "./about/orange-leaf.png";
 export { default as aboutYellowLeaf } from "./about/yellow-leaf.png";
-export { default as aboutImg1 } from "./about/about-img-1.jpg";
-export { default as aboutImg2 } from "./about/about-img-2.jpg";
-export { default as aboutImg3 } from "./about/about-img-3.jpg";
+export { default as aboutImg1 } from "./about/about-img-1.webp";
+export { default as aboutImg2 } from "./about/about-img-2.webp";
+export { default as aboutImg3 } from "./about/about-img-3.webp";
 
 // SPONSORS
 export { default as sponsorsWaterlooEngineering } from "./sponsors/waterloo-engineering.png";

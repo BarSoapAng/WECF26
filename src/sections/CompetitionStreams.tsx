@@ -358,18 +358,19 @@ const TopBand = styled(Band)`
   top: -29.54cqw;
 
   ${mediaQueries.mediumTablet} {
-    top: -86.12cqw;
+    width: 180cqw;
+    top: calc(-86.12cqw + (227.53cqw - 180cqw) * 0.4);
   }
 `;
 
 // Continues the tree band into Sponsors. The top offset, width, and responsive
 // sizing match the former Sponsors band exactly, relative to the section boundary.
 const BottomBand = styled(Band)`
-  width: 90cqw;
-  top: calc(100% - 24.61cqw + (111.09cqw - 90cqw) * 0.4);
+  top: calc(100% - 24.61cqw);
 
   ${mediaQueries.mediumTablet} {
     top: auto;
+    left: -40.09cqw;
     width: 180cqw;
     bottom: calc(-104.81cqw + (227.53cqw - 180cqw) * 0.4);
   }
