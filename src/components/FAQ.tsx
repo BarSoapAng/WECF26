@@ -9,23 +9,23 @@ import { Header2, colors, Header1 } from "../lib/styles"
 const faqItems = [
   {
     title: "Who can join WEC?",
-    content: "Any undergraduate Waterloo engineering student that is on term in Fall 2026 may join!",
+    content: "Any undergrad Waterloo engineering student who’s on term in Fall 2026 is welcome to join us! No experience needed, just bring your curiosity.",
   },
   {
     title: "Why join WEC?",
-    content: "Placeholder: Put your engineering skills to the test, meet other students, and tackle a fun challenge with your team.",
+    content: "It’s a great chance to team up with friends and work on a real engineering problem you won’t see in class. You’ll get to build something you’re proud of, hear feedback from people who work in the field, and meet other engineers from different programs and years at the event. And it’s a really fun way to spend a day!",
   },
   {
     title: "Can I compete individually?",
-    content: "Placeholder: Team requirements depend on the competition. More details about individual registration and team matching are coming soon.",
+    content: "WEC is a team competition, so you’ll sign up with your team before the event. Grab some friends or classmates, and you’re all set! You can find team sizes and sign-up steps on the registration page, and we’re happy to help if you have questions.",
   },
   {
     title: "What should I bring to WEC?",
-    content: "Placeholder: Bring your laptop, charger, student ID, and a reusable water bottle. Competition-specific supplies will be announced closer to the event.",
+    content: "Just bring your laptop, charger, WatCard, and a water bottle, and you’re good to go. If your competition needs anything else, we’ll let you know ahead of time so you’re never left guessing.",
   },
   {
     title: "Who judges WEC?",
-    content: "Placeholder: A panel of engineering professionals and community members will review the submissions. Meet the judges closer to the event!",
+    content: "Our judges are Waterloo professors and faculty members who know engineering inside and out. They’ll look through your team’s submission and give you friendly, useful feedback. We can’t wait for you to show them what you’ve built!",
   },
 ]
 
