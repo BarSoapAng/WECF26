@@ -5,7 +5,7 @@ import {
   sponsorsSff,
   sponsorsWaterlooEngineering,
 } from "../assets"
-import { ContentWrapper, SectionWrapper, Sparkle } from "../components"
+import { ClickJitterImage, ContentWrapper, SectionWrapper, Sparkle } from "../components"
 import { mediaQueries } from "../lib/responsive"
 import { BodyRegular1, colors, Header1 } from "../lib/styles"
 
@@ -48,7 +48,7 @@ function Sponsors() {
 
         <Grid>
           {/* Mobile-only leaf that sits behind the first card */}
-          <RightLeaf src={sponsorsLeafRight} alt="" aria-hidden="true" />
+          <RightLeaf src={sponsorsLeafRight} alt="" />
 
           {sponsors.map((sponsor, index) => (
             <Card key={index}>
@@ -57,7 +57,7 @@ function Sponsors() {
           ))}
 
           {/* Mobile-only leaf that sits in front of the third card */}
-          <LeftLeaf src={sponsorsLeafLeft} alt="" aria-hidden="true" />
+          <LeftLeaf src={sponsorsLeafLeft} alt="" />
 
           {/* Sparkle to the left of the bottom row (desktop only) */}
           <Sparkle size={106} x="-107px" y="546px" speed={3} />
@@ -185,11 +185,11 @@ const Logo = styled.img`
    the edge of the phone screen, so the images are just the part you can see,
    and they sit right against the screen edge (30px outside the cards). */
 
-const Leaf = styled.img`
+const Leaf = styled(ClickJitterImage)`
   display: none;
   position: absolute;
   height: auto;
-  pointer-events: none;
+  pointer-events: auto;
 
   ${mediaQueries.tablet} {
     display: block;

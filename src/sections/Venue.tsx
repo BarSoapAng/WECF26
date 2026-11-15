@@ -1,10 +1,26 @@
+import { useRef, useState } from "react"
 import styled from "styled-components"
-import { decorativeButton, decorativeWashiTape, venueBigGoose, venueMap } from "../assets"
-import { ContentWrapper, SectionWrapper, Sparkle } from "../components"
+import { decorativeButton, decorativeWashiTape, venueBigGoose, venueGooseHonk1, venueGooseHonk2, venueGooseHonk3, venueMap } from "../assets"
+import { ClickJitterImage, ContentWrapper, SectionWrapper, Sparkle } from "../components"
 import { mediaQueries } from "../lib/responsive"
 import { BodyRegular2, colors, Header1 } from "../lib/styles"
 
 function Venue() {
+  const honks = [venueGooseHonk1, venueGooseHonk2, venueGooseHonk3]
+  const [isHonking, setIsHonking] = useState(false)
+  const [gooseClicked, setGooseClicked] = useState(false)
+
+  const honk = () => {
+    setGooseClicked(true)
+    if (isHonking) return
+
+    setIsHonking(true)
+    const audio = new Audio(honks[Math.floor(Math.random() * honks.length)])
+    audio.addEventListener("ended", () => setIsHonking(false), { once: true })
+    audio.addEventListener("error", () => setIsHonking(false), { once: true })
+    void audio.play().catch(() => setIsHonking(false))
+  }
+
   return (
     <Background id="venue" aria-labelledby="venue-title">
       <Content>
@@ -13,7 +29,23 @@ function Venue() {
           WEC will run exclusively within PSE, with competition rooms located on floor 4.
         </BodyRegular2>
         <MapFrame>
-          <Goose src={venueBigGoose} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+          <Goose
+            $glowing={!gooseClicked}
+            src={venueBigGoose}
+            alt="Honk the goose"
+            role="button"
+            tabIndex={0}
+            aria-disabled={isHonking}
+            onClick={honk}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault()
+                honk()
+              }
+            }}
+            loading="lazy"
+            decoding="async"
+          />
           <Map
             src={venueMap}
             alt="PSE floor 4 venue map: Bio-engineering in room 4043, Re-engineering in 4053, judges in 4417, Consulting in 4433, and Programming in 4437."
@@ -22,7 +54,7 @@ function Venue() {
             loading="lazy"
             decoding="async"
           />
-          <Button src={decorativeButton} alt="" aria-hidden="true" />
+          <Button src={decorativeButton} alt="" />
         </MapFrame>
         <Decorations aria-hidden="true">
           <TopTape src={decorativeWashiTape} alt="" />
@@ -69,30 +101,37 @@ const Map = styled.img`
   display: block;
   width: 100%;
   height: auto;
+  pointer-events: none;
 `;
 
-const Button = styled.img`
+const Button = styled(ClickJitterImage)`
   position: absolute;
   width: 14%;
   height: auto;
   left: -9.5%;
   bottom: -22.5%;
   z-index: 21;
-  pointer-events: none;
+  pointer-events: auto;
 
   ${mediaQueries.tablet} {
     display: none;
   }
 `;
 
-const Goose = styled.img`
+const Goose = styled.img<{ $glowing: boolean }>`
   position: absolute;
   max-width: 1500px;
   width: 150%;
   left: -118%;
   bottom: -172%;
-  z-index: -1;
-  pointer-events: none;
+  z-index: 1;
+  pointer-events: auto;
+  cursor: pointer;
+  animation: ${({ $glowing }) => $glowing ? "gooseGlow 3.2s ease-in-out infinite" : "none"};
+  @keyframes gooseGlow {
+    0%, 100% { filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.45)); }
+    50% { filter: drop-shadow(0 0 44px rgba(255, 255, 255, 1)); }
+  }
 
   ${mediaQueries.tablet} {
     display: none;

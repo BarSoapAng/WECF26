@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { FiInstagram, FiLinkedin, FiMail } from "react-icons/fi"
-import { ContentWrapper, SectionWrapper, Sparkle } from "../components"
+import { ClickJitterImage, ContentWrapper, SectionWrapper, Sparkle } from "../components"
 import { decorativeButton, decorativeWashiTape } from "../assets"
 import { mediaQueries } from "../lib/responsive"
 import { BodyRegular2, BodyBold, FooterCaption, FooterTitle } from "../lib/styles"
@@ -12,7 +12,7 @@ function Footer() {
         <Wordmark>
           <Tape src={decorativeWashiTape} alt="" aria-hidden="true" />
           <FooterTitle>WEC</FooterTitle>
-          <Button src={decorativeButton} alt="" aria-hidden="true" />
+          <Button src={decorativeButton} alt="" />
           <Sparkle size={140} x="-8%" y="100%" speed={3.5} intensity={0.8} hideOnMobile={false} />
         </Wordmark>
         <FooterCaption>Waterloo Engineering Competition</FooterCaption>
@@ -77,12 +77,12 @@ const Tape = styled.img`
   }
 `;
 
-const Button = styled.img`
+const Button = styled(ClickJitterImage)`
   position: absolute;
   width: 21%;
   right: -21%;
   bottom: -8%;
-  pointer-events: none;
+  pointer-events: auto;
 
   ${mediaQueries.tablet} {
     display: none;

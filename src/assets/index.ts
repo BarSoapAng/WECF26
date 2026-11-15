@@ -45,6 +45,9 @@ export { default as scheduleSunray } from "./schedule/sunray.webp";
 // VENUE
 export { default as venueBigGoose } from "./venue/big-goose.webp";
 export { default as venueMap } from "./venue/venue-map.webp";
+export { default as venueGooseHonk1 } from "./venue/goose-1.mp3";
+export { default as venueGooseHonk2 } from "./venue/goose-2.mp3";
+export { default as venueGooseHonk3 } from "./venue/goose-3.mp3";
 
 // FAQ
 export { default as faqNoise } from "./FAQ/noise.webp";

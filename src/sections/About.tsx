@@ -1,11 +1,14 @@
-﻿import styled from "styled-components"
+import { useState } from "react"
+import styled from "styled-components"
 import { aboutImg1, aboutImg2, aboutImg3 } from "../assets"
 import { aboutOrangeLeaf, aboutYellowLeaf, decorativeButton, decorativeWashiTape } from "../assets/optimized"
 import Sparkle from "../components/Sparkle"
+import ClickJitterImage from "../components/ClickJitterImage"
 import { mediaQueries } from "../lib/responsive"
 import { BodyRegular1, colors, Header1 } from "../lib/styles"
 
 export default function About() {
+  const [leafClicked, setLeafClicked] = useState(false)
   return (
     <Background id="about" aria-labelledby="about-title">
       <Content>
@@ -21,7 +24,7 @@ export default function About() {
           <Photo src={aboutImg2} alt="Waterloo Engineering Competition" $x={103} $y={205} $rotation={0} />
           <Photo src={aboutImg3} alt="Waterloo Engineering Competition" $x={38} $y={382} $rotation={7.5} />
           <OrangeLeaf src={aboutOrangeLeaf} alt="" />
-          <YellowLeaf src={aboutYellowLeaf} alt="" />
+          <YellowLeaf src={aboutYellowLeaf} alt="" $glowing={!leafClicked} onClick={() => setLeafClicked(true)} />
           <Tape src={decorativeWashiTape} alt="" />
           <Button src={decorativeButton} alt="" />
           <Sparkle size={157.9} x={0} y={58} intensity={0.8} speed={2.5} />
@@ -38,8 +41,8 @@ const Background = styled.section`
   width: 100%;
   min-height: 939.491px;
   overflow: hidden;
-  background: linear-gradient(#7b3830, #7b3830) 0 -4px / 100% calc(100% + 4px) no-repeat;
   color: ${colors.text.offwhite};
+  background: linear-gradient(#7b3830, #7b3830) 0 -4px / 100% calc(100% + 4px) no-repeat;
   ${mediaQueries.tablet} {
     min-height: auto;
     margin-top: -12px;
@@ -121,7 +124,7 @@ const Photo = styled.img<{ $x: number; $y: number; $rotation: number }>`
   }
 `;
 
-const OrangeLeaf = styled.img`
+const OrangeLeaf = styled(ClickJitterImage)`
   position: absolute;
   z-index: 1;
   width: 217.31px;
@@ -131,12 +134,18 @@ const OrangeLeaf = styled.img`
   ${mediaQueries.tablet} { width: 120px; left: -6px; top: 124px; }
 `;
 
-const YellowLeaf = styled.img`
+const YellowLeaf = styled(ClickJitterImage)<{ $glowing: boolean }>`
   position: absolute;
   z-index: 1;
+  cursor: pointer;
   width: 275.58px;
   left: 366px;
   top: -41px;
+  animation: ${({ $glowing }) => $glowing ? "leafGlow 3.2s ease-in-out infinite" : "none"};
+  @keyframes leafGlow {
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)); }
+    50% { filter: drop-shadow(0 0 28px rgba(255, 255, 255, 1)); }
+  }
   /* Keep 8px clear of the copy across the 36px mobile row gap. */
   ${mediaQueries.tablet} { width: 140px; left: 232px; top: -28px; }
 `;
@@ -150,7 +159,7 @@ const Tape = styled.img`
   ${mediaQueries.tablet} { width: 101px; left: -47px; top: -35px; }
 `;
 
-const Button = styled.img`
+const Button = styled(ClickJitterImage)`
   position: absolute;
   z-index: 1;
   width: 162.08px;

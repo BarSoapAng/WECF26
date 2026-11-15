@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { ContentWrapper } from "./base/Layout"
 import Accordion from "./Accordion"
 import Sparkle from "./Sparkle"
+import ClickJitterImage from "./ClickJitterImage"
 import { decorativeButton, decorativeWashiTape, faqLeafOrange, faqYellowLeaf, faqNoise } from "../assets"
 import { mediaQueries } from "../lib/responsive"
 import { Header2, colors, Header1 } from "../lib/styles"
@@ -32,13 +33,13 @@ const faqItems = [
 function FAQ() {
   return (
     <Questions>
-      <Decorations aria-hidden="true">
+      <Decorations>
         <YellowLeaf src={faqYellowLeaf} alt="" />
         <OrangeLeaf src={faqLeafOrange} alt="" />
         <WashiTape src={decorativeWashiTape} alt="" />
         <Sparkle size={90} x="-9%" y="11.5%" speed={3} intensity={1.3} />
       </Decorations>
-      <MobileDecorations aria-hidden="true">
+      <MobileDecorations>
         <MobileTape src={decorativeWashiTape} alt="" />
         <MobileButton src={decorativeButton} alt="" />
       </MobileDecorations>
@@ -142,28 +143,31 @@ const MobileTape = styled.img`
   transform: rotate(90deg);
 `;
 
-const MobileButton = styled.img`
+const MobileButton = styled(ClickJitterImage)`
   position: absolute;
   width: 24%;
   max-width: 80px;
   left: -6%;
   bottom: 0;
   transform: translateY(65%);
+  pointer-events: auto;
 `;
 
-const YellowLeaf = styled.img`
+const YellowLeaf = styled(ClickJitterImage)`
   position: absolute;
   width: 34%;
   right: -22.5%;
   top: max(-14vw, -21%);
+  pointer-events: auto;
 `;
 
-const OrangeLeaf = styled.img`
+const OrangeLeaf = styled(ClickJitterImage)`
   position: absolute;
   width: 55%;
   left: -29%;
   bottom: 2%;
-  transform: translateY(45%);z
+  transform: translateY(45%);
+  pointer-events: auto;
 `;
 
 const WashiTape = styled.img`

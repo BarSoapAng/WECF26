@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from "styled-components"
 import { decorativeWashiTape, scheduleSun, scheduleSunray } from "../assets"
-import { ContentWrapper, SectionWrapper, Sparkle } from "../components"
+import { ContentWrapper, SectionWrapper } from "../components"
 import { mediaQueries } from "../lib/responsive"
 import { BodyRegular1, colors, Header1 } from "../lib/styles"
 
@@ -104,8 +104,6 @@ function Schedule() {
             <SunGlow />
             <TopTape src={decorativeWashiTape} alt="" />
             <BottomTape src={decorativeWashiTape} alt="" />
-            {/* Sparkle to the left of the table (desktop only) */}
-            <Sparkle size={106} x="-10.6cqw" y="26.93cqw" speed={3.6} />
           </Decorations>
         </TableArea>
       </Content>

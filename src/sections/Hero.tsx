@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { HiMenu } from "react-icons/hi";
 import {
@@ -11,7 +11,9 @@ import {
   heroSky,
   heroYellowLeaf,
 } from "../assets/optimized";
+import { venueGooseHonk1, venueGooseHonk2, venueGooseHonk3 } from "../assets";
 import instagram from "../assets/header/instagram.svg";
+import FallingLeaf from "../components/FallingLeaf";
 import Sparkle from "../components/Sparkle";
 import { mediaQueries } from "../lib/responsive";
 import { BodyRegular2, colors, Header1, Header2 } from "../lib/styles";
@@ -43,28 +45,58 @@ function NavigationLinks() {
 
 export default function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isHonking, setIsHonking] = useState(false);
+  const honk = () => {
+    if (isHonking) return;
+
+    setIsHonking(true);
+    const honks = [venueGooseHonk1, venueGooseHonk2, venueGooseHonk3];
+    const audio = new Audio(honks[Math.floor(Math.random() * honks.length)]);
+    audio.addEventListener("ended", () => setIsHonking(false), { once: true });
+    audio.addEventListener("error", () => setIsHonking(false), { once: true });
+    void audio.play().catch(() => setIsHonking(false));
+  };
   return (
     <HeroSection id="home" aria-label="Waterloo Engineering Competition">
-      <Scene aria-hidden="true">
+      <Scene>
         <Artwork src={heroSky} $x={-133} $y={58} $width={1778} />
         <Artwork src={heroBackgroundTrees} $x={74} $y={115.62} $width={1457} />
         <Artwork src={heroLeafAndStump} $x={-2598} $y={-98} $width={6709} />
         <Artwork src={heroFloor} $x={-281} $y={672.9} $width={2074.55} />
-        <Artwork src={heroYellowLeaf} $x={552.6} $y={765.51} $width={113.43} />
-        <Artwork src={heroOrangeLeaf} $x={714} $y={320} $width={144} />
-        <Artwork
+        <FallingLeaf src={heroYellowLeaf} x={552.6} y={765.51} width={113.43} delay="-2s" spin={82} rotationDuration={1.1} />
+        <FallingLeaf src={heroOrangeLeaf} x={714} y={320} width={144} delay="-6s" spin={96} rotationDuration={2.2} />
+        <FallingLeaf
           src={heroOrangeLeaf}
-          $x={1316}
-          $y={853}
-          $width={162}
-          $rotation={-35}
+          x={1316}
+          y={853}
+          width={162}
+          rotation={-35}
+          delay="-4s"
+          spin={-88}
+          rotationDuration={1.6}
         />
-        <Artwork src={heroYellowLeaf} $x={1284} $y={525} $width={110} />
-        <FireArtwork src={heroFire} $x={473} $y={282} $width={771} />
-        <Artwork src={heroYellowLeaf} $x={950} $y={772} $width={115} />
-        <Artwork src={heroYellowLeaf} $x={26} $y={746} $width={160} />
-        <Artwork src={heroOrangeLeaf} $x={1316} $y={257} $width={112} />
-        <Artwork src={heroGoose} $x={998} $y={296} $width={485} />
+        <FallingLeaf src={heroYellowLeaf} x={1284} y={525} width={110} delay="-8s" spin={100} rotationDuration={2.8} />
+        <Artwork src={heroFire} $x={473} $y={282} $width={771} />
+        <FallingLeaf src={heroYellowLeaf} x={950} y={772} width={115} delay="-1s" spin={-84} rotationDuration={1.9} />
+        <FallingLeaf src={heroYellowLeaf} x={26} y={746} width={160} delay="-5s" spin={92} rotationDuration={3.1} />
+        <FallingLeaf src={heroOrangeLeaf} x={1316} y={257} width={112} delay="-7s" spin={80} rotationDuration={1.3} />
+        <HeroGoose
+          src={heroGoose}
+          $x={998}
+          $y={296}
+          $width={485}
+          alt="Honk the goose"
+          role="button"
+          tabIndex={0}
+          aria-disabled={isHonking}
+          onClick={honk}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              honk();
+            }
+          }}
+        />
         <Sparkle x={716.96} y={553.45} size={65.23} intensity={0.7} speed={2.4} />
         <Sparkle x={1043} y={296} size={100.72} intensity={1.2} speed={3.6} />
         <Sparkle x={1484} y={647} size={157.9} intensity={0.9} speed={2.8} />
@@ -142,7 +174,7 @@ const HeroSection = styled.section`
   overflow: visible;
   background: #7b3830;
   ${mediaQueries.tablet} {
-    height: calc(320px + min(62vw, 322.4px));
+    height: calc(320px + min(82vw, 430px));
     overflow-y: visible;
   }
 `;
@@ -190,7 +222,6 @@ const Scene = styled.div`
       left: calc(50% - 3303px);
       top: -330px;
       width: 6336px;
-      mask-image: linear-gradient(#000 290px, transparent 370px);
     }
     & > img:nth-child(4) {
       left: -50%;
@@ -245,21 +276,14 @@ const Artwork = styled.img.attrs({ decoding: "async" })<{
   transform: rotate(${({ $rotation = 0 }) => $rotation}deg);
 `;
 
-const FireArtwork = styled(Artwork)`
-  animation: fireGlow 6s ease-in-out infinite;
+const HeroGoose = styled(Artwork)`
+  z-index: 1;
+  cursor: pointer;
+  pointer-events: auto;
 
-  @keyframes fireGlow {
-    0%, 100% {
-      filter: drop-shadow(0 0 10px #a855f7a0);
-    }
-    50% {
-      filter: drop-shadow(0 0 24px #a855f7ff);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-    filter: drop-shadow(0 0 14px #a855f7b0);
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
   }
 `;
 
@@ -340,6 +364,7 @@ const MobileNav = styled.nav`
 
 const HeroCopy = styled.div`
   position: relative;
+  pointer-events: none;
   margin: 216px auto 0;
   width: calc(100% - 200px);
   max-width: 1312px;
