@@ -1,24 +1,25 @@
 ﻿import styled from "styled-components"
+import { aboutImg1, aboutImg2, aboutImg3 } from "../assets"
 import { aboutOrangeLeaf, aboutYellowLeaf, decorativeButton, decorativeWashiTape } from "../assets/optimized"
 import Sparkle from "../components/Sparkle"
 import { mediaQueries } from "../lib/responsive"
-import { BodyRegular1, colors, Header1, Header2 } from "../lib/styles"
+import { BodyRegular1, colors, Header1 } from "../lib/styles"
 
 export default function About() {
   return (
     <Background id="about" aria-labelledby="about-title">
       <Content>
         <Copy>
-          <Header2>What is WEC?</Header2>
+          <Header1>What is WEC?</Header1>
           <BodyRegular1>The Waterloo Engineering Competition (WEC) is a design competition run in collaboration with the Engineering Society and Sandford Fleming Foundation (SSF).</BodyRegular1>
           <BodyRegular1>The competition covers topics like design, prototyping, circuits, programming, consulting, and much more!</BodyRegular1>
           <BodyRegular1>The top teams from each competition will have the opportunity to represent Waterloo at the Ontario Engineering Competition (OEC), and compete for a chance to advance to the nationals at the Canadian Engineering Competition (CEC).</BodyRegular1>
           <BodyRegular1>Each category’s top two place winners will also get prizes sponsored by SFF, the Faculty of Engineering, and EngSoc.</BodyRegular1>
         </Copy>
-        <Collage aria-label="Three photo placeholders from the design">
-          <Photo $x={0} $y={28} $rotation={-7.5}><PhotoPlaceholder /></Photo>
-          <Photo $x={103} $y={205} $rotation={0}><PhotoPlaceholder /></Photo>
-          <Photo $x={38} $y={382} $rotation={7.5}><PhotoPlaceholder /></Photo>
+        <Collage aria-label="Photos from the Waterloo Engineering Competition">
+          <Photo src={aboutImg1} alt="Waterloo Engineering Competition" $x={0} $y={28} $rotation={-7.5} />
+          <Photo src={aboutImg2} alt="Waterloo Engineering Competition" $x={103} $y={205} $rotation={0} />
+          <Photo src={aboutImg3} alt="Waterloo Engineering Competition" $x={38} $y={382} $rotation={7.5} />
           <OrangeLeaf src={aboutOrangeLeaf} alt="" />
           <YellowLeaf src={aboutYellowLeaf} alt="" />
           <Tape src={decorativeWashiTape} alt="" />
@@ -34,7 +35,6 @@ export default function About() {
 
 const Background = styled.section`
   position: relative;
-  isolation: isolate;
   width: 100%;
   min-height: 939.491px;
   overflow: hidden;
@@ -42,13 +42,13 @@ const Background = styled.section`
   color: ${colors.text.offwhite};
   ${mediaQueries.tablet} {
     min-height: auto;
-    padding-bottom: 36px;
+    margin-top: -12px;
+    padding-bottom: 48px;
   }
 `;
 
 const Content = styled.div`
   position: relative;
-  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.062fr);
   gap: 48px;
@@ -58,7 +58,7 @@ const Content = styled.div`
   padding-top: 60px;
   ${mediaQueries.tablet} {
     width: calc(100% - 60px);
-    padding-top: 30px;
+    padding-top: 42px;
     display: flex;
     flex-direction: column;
     gap: calc(8px + 28px * var(--mobile-art-scale, 1));
@@ -100,28 +100,24 @@ const Collage = styled.div`
   }
 `;
 
-const Photo = styled.div<{ $x: number; $y: number; $rotation: number }>`
+const Photo = styled.img<{ $x: number; $y: number; $rotation: number }>`
   position: absolute;
   left: ${({ $x }) => $x}px;
   top: ${({ $y }) => $y}px;
-  width: 414px;
-  height: 248px;
+  box-sizing: content-box;
+  width: 366px;
+  height: 169px;
   padding: 23px 24px 56px;
   background: white;
+  object-fit: cover;
   transform: rotate(${({ $rotation }) => $rotation}deg);
   ${mediaQueries.tablet} {
     left: calc(${({ $x }) => $x}px * 0.64);
     top: calc(${({ $y }) => $y}px * 0.64);
-    width: 265px;
-    height: 159px;
+    width: 235px;
+    height: 108px;
     padding: 15px 15px 36px;
   }
-`;
-
-const PhotoPlaceholder = styled.div`
-  width: 100%;
-  height: 100%;
-  background: conic-gradient(#eee 25%, #fff 0 50%, #eee 0 75%, #fff 0) 0 0 / 28px 28px;
 `;
 
 const OrangeLeaf = styled.img`

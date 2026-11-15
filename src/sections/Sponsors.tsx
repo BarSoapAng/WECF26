@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import {
-  competitionStreamsTopviewTree,
   sponsorsLeafLeft,
   sponsorsLeafRight,
   sponsorsWaterlooEngineering,
@@ -42,7 +41,6 @@ const sponsors = [
 function Sponsors() {
   return (
     <Background id="sponsors" aria-labelledby="sponsors-title">
-      <SecondBand src={competitionStreamsTopviewTree} alt="" aria-hidden="true" />
       <Content>
         <Intro>
           <Title as="h2" id="sponsors-title">Our Sponsors</Title>
@@ -100,25 +98,6 @@ const Background = styled(SectionWrapper)`
 
   ${mediaQueries.tablet} {
     padding: 18px 0 0;
-  }
-`;
-
-// The second yellow tree band (desktop only; the mobile Figma only has one).
-// It's the same image and size as the bottom band in Competition Streams, just
-// 170px lower, like in Figma. z-index -1 puts it behind everything else, so it
-// can never cover the Competition Streams text.
-const SecondBand = styled.img`
-  position: absolute;
-  z-index: -1;
-  left: -4.82cqw;
-  top: -24.61cqw;
-  width: 111.09cqw;
-  max-width: none;
-  height: auto;
-  pointer-events: none;
-
-  ${mediaQueries.tablet} {
-    display: none;
   }
 `;
 

@@ -296,6 +296,7 @@ export default CompetitionStreams
 // matching the "What is WEC?" section above.
 const Background = styled(SectionWrapper)`
   container-type: inline-size;
+  isolation: isolate;
   padding: 60px 0;
   background: ${colors.background.brown};
 
@@ -313,6 +314,7 @@ const Background = styled(SectionWrapper)`
 const Backdrop = styled.div`
   position: absolute;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
 `;
 
@@ -321,23 +323,20 @@ const Backdrop = styled.div`
 // On phones the bricks are drawn about 3x bigger, as in the mobile design.
 const Floor = styled.div`
   position: absolute;
-  inset: 9.26cqw 0 0;
+  inset: 9.26cqw 0 -17cqw;
   background: url(${competitionStreamsFloor}) center top / 113.15cqw auto repeat-y;
 
   ${mediaQueries.mediumTablet} {
     background-size: 370cqw auto;
-    /* Run the floor down behind the bottom band. On phones the band starts a
-       little below the section on the left, which left a straight floor edge
-       and a gap showing between them. */
-    bottom: -25cqw;
+    /* Continue the floor under the band where it extends into Sponsors. */
+    bottom: -22cqw;
   }
 `;
 
 /*
- * The yellow treetop bands. Same image, one hugging the top edge, one the bottom.
+ * The yellow treetop band hugging the top edge.
  * The image is cropped to the part of the band that can ever be on screen.
- * The top band runs up into the "What is WEC?" section and the bottom band runs
- * down into Sponsors, as in the design.
+ * The top band runs up into the "What is WEC?" section.
  */
 const Band = styled.img`
   position: absolute;
@@ -363,13 +362,16 @@ const TopBand = styled(Band)`
   }
 `;
 
-// Anchored to the section's bottom edge, so it stays at the bottom however tall
-// the section gets.
+// Continues the tree band into Sponsors. The top offset, width, and responsive
+// sizing match the former Sponsors band exactly, relative to the section boundary.
 const BottomBand = styled(Band)`
-  bottom: -39.24cqw;
+  width: 90cqw;
+  top: calc(100% - 24.61cqw + (111.09cqw - 90cqw) * 0.4);
 
   ${mediaQueries.mediumTablet} {
-    bottom: -104.81cqw;
+    top: auto;
+    width: 180cqw;
+    bottom: calc(-104.81cqw + (227.53cqw - 180cqw) * 0.4);
   }
 `;
 

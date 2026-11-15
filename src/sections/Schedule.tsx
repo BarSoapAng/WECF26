@@ -65,6 +65,7 @@ function Schedule() {
 
         <TableArea>
           {/* The sun goes behind the table, so it comes first */}
+          <SunHalo aria-hidden="true" />
           <Sun src={scheduleSun} alt="" aria-hidden="true" loading="lazy" decoding="async" />
 
           <Table>
@@ -182,8 +183,7 @@ const TableArea = styled.div`
   container-type: inline-size;
 `;
 
-// Rounded corners don't work on a normal table, so it's set up a bit differently:
-// each cell only draws its right and bottom line, and the table draws the top and
+// Each cell only draws its right and bottom line, and the table draws the top and
 // left edges. That way no two lines double up and every line is 1px thick.
 const Table = styled.table`
   position: relative;
@@ -193,23 +193,8 @@ const Table = styled.table`
   border-spacing: 0;
   border-top: 1px solid ${colors.text.black};
   border-left: 1px solid ${colors.text.black};
-  border-radius: 8px 8px 8px 0;
   background: ${colors.background.lightPurple};
   text-align: left;
-
-  /* Round the top-left, top-right and bottom-right corners. Bottom-left stays square
-     because that's how it is in Figma. */
-  thead th:first-child {
-    border-top-left-radius: 7px;
-  }
-
-  thead th:last-child {
-    border-top-right-radius: 7px;
-  }
-
-  tbody tr:last-child > * {
-    border-bottom-right-radius: 7px;
-  }
 `;
 
 const Cell = styled.td<{ $bold?: boolean }>`
@@ -313,15 +298,48 @@ const EventBox = styled.div``;
    The numbers are the Figma positions turned into % of the table width
    (e.g. something 100px from the left on a 1112px table is 9cqw). */
 
-// "Sun is shining": the sun pulses bigger and brighter, then back.
+// The sun gently pulses in size.
 const shine = keyframes`
   0%, 100% {
     transform: scale(1);
-    filter: brightness(1);
   }
   50% {
     transform: scale(1.08);
-    filter: brightness(1.15);
+  }
+`;
+
+const haloPulse = keyframes`
+  0%, 100% {
+    transform: scale(0.92);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.8;
+  }
+`;
+
+const SunHalo = styled.div`
+  position: absolute;
+  left: 69.15cqw;
+  top: -34.69cqw;
+  width: 60.97cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 100, 0.55), rgba(255, 220, 100, 0) 70%);
+  animation: ${haloPulse} 4s ease-in-out infinite;
+  pointer-events: none;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
+  ${mediaQueries.tablet} {
+    left: 50.58cqw;
+    top: -55.26cqw;
+    width: 99.12cqw;
+    height: auto;
+    aspect-ratio: auto;
   }
 `;
 

@@ -143,6 +143,7 @@ const HeroSection = styled.section`
   background: #7b3830;
   ${mediaQueries.tablet} {
     height: calc(320px + min(62vw, 322.4px));
+    overflow-y: visible;
   }
 `;
 
