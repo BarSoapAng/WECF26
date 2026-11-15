@@ -2,6 +2,7 @@ import styled from "styled-components"
 import {
   sponsorsLeafLeft,
   sponsorsLeafRight,
+  sponsorsSff,
   sponsorsWaterlooEngineering,
 } from "../assets"
 import { ContentWrapper, SectionWrapper, Sparkle } from "../components"
@@ -23,19 +24,10 @@ import { BodyRegular1, colors, Header1 } from "../lib/styles"
  * down into Schedule.
  */
 
-// The sponsors to show. To add or change one, just edit this list: give the
-// logo image (added to src/assets/index.ts) and the company name, which screen
-// readers read out instead of the logo.
-// Right now these are all the placeholder Waterloo Engineering logo from Figma.
+// The sponsors to show. Screen readers use each company name instead of its logo.
 const sponsors = [
   { name: "Waterloo Engineering", logo: sponsorsWaterlooEngineering },
-  { name: "Waterloo Engineering", logo: sponsorsWaterlooEngineering },
-  { name: "Waterloo Engineering", logo: sponsorsWaterlooEngineering },
-  { name: "Waterloo Engineering", logo: sponsorsWaterlooEngineering },
-  { name: "Waterloo Engineering", logo: sponsorsWaterlooEngineering },
-  { name: "Waterloo Engineering", logo: sponsorsWaterlooEngineering },
-  { name: "Waterloo Engineering", logo: sponsorsWaterlooEngineering },
-  { name: "Waterloo Engineering", logo: sponsorsWaterlooEngineering },
+  { name: "SFF", logo: sponsorsSff },
 ]
 
 function Sponsors() {
@@ -174,15 +166,17 @@ const Card = styled.div`
   }
 `;
 
-// 348px wide on desktop, 204px on phones (Figma sizes). Height follows the logo.
+// Keep both wide and tall logos within the card while preserving their aspect ratio.
 const Logo = styled.img`
   display: block;
   width: 348px;
   max-width: 80%;
-  height: auto;
+  height: 120px;
+  object-fit: contain;
 
   ${mediaQueries.tablet} {
     width: 204px;
+    height: 96px;
   }
 `;
 
