@@ -83,6 +83,7 @@ export default function Hero() {
         <FallingLeaf src={heroYellowLeaf} x={26} y={746} width={160} delay="-5s" spin={-92} rotationDuration={2.4} />
         <FallingLeaf src={heroOrangeLeaf} x={1316} y={257} width={112} delay="-7s" spin={80} rotationDuration={1.3} />
         <HeroGoose
+          $glowing={!gooseClicked}
           src={heroGoose}
           $x={998}
           $y={296}
@@ -304,10 +305,16 @@ const Fire = styled(Artwork)<{ $glowing: boolean }>`
   }
 `;
 
-const HeroGoose = styled(Artwork)`
+const HeroGoose = styled(Artwork)<{ $glowing: boolean }>`
   z-index: 1;
   cursor: pointer;
   pointer-events: auto;
+  animation: ${({ $glowing }) => $glowing ? "heroGooseGlow 3.2s ease-in-out infinite" : "none"};
+
+  @keyframes heroGooseGlow {
+    0%, 100% { filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.45)); }
+    50% { filter: drop-shadow(0 0 44px rgba(255, 255, 255, 1)); }
+  }
 
   &:focus-visible {
     outline: 2px solid currentColor;
