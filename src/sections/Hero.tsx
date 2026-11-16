@@ -199,6 +199,12 @@ const Scene = styled.div`
     left: min(-253px, calc(756px - 50vw));
     min-width: 150vw;
   }
+  & > img:nth-child(4) {
+    left: min(-281px, calc(756px - 50vw - 281px));
+    width: max(2074.55px, calc(100vw + 562.55px));
+    /* Keep the original ground height as it extends across wider screens. */
+    height: calc(2074.55px * 552 / 3112);
+  }
   & > img:nth-child(13) {
     height: 700px;
   }
