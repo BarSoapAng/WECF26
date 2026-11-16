@@ -42,10 +42,9 @@ const Background = styled.section`
   min-height: 939.491px;
   overflow: hidden;
   color: ${colors.text.offwhite};
-  background: linear-gradient(#7b3830, #7b3830) 0 -4px / 100% calc(100% + 4px) no-repeat;
+  background: #7b3830;
   ${mediaQueries.tablet} {
     min-height: auto;
-    margin-top: -12px;
     padding-bottom: 0;
     margin-bottom: -48px;
   }

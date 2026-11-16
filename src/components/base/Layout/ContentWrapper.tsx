@@ -10,7 +10,6 @@ const ContentWrapper = styled.div`
   width: 100%;
   padding: 0;
   z-index: 20;
-  overflow: clip;
 `;
 
 export default React.memo(ContentWrapper);

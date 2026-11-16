@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 type FallingLeafProps = {
   src: string;
@@ -30,14 +30,12 @@ const Leaf = styled.img<{
   width: ${({ $width }) => $width}px;
   height: auto;
   transform: rotate(${({ $rotation }) => $rotation}deg);
-  animation: leafFall 16s linear ${({ $delay }) => $delay} infinite;
-
-  @keyframes leafFall {
-    0%, 10% { opacity: 0; transform: translateY(-${({ $fallDistance }) => $fallDistance}px) rotate(${({ $rotation }) => $rotation}deg); }
+  animation: ${({ $fallDistance, $rotation, $spin }) => keyframes`
+    0%, 10% { opacity: 0; transform: translateY(-${$fallDistance}px) rotate(${$rotation}deg); }
     18% { opacity: 1; }
-    80% { opacity: 1; transform: translateY(0) rotate(${({ $rotation, $spin }) => $rotation + $spin}deg); }
-    100% { opacity: 0; transform: translateY(0) rotate(${({ $rotation, $spin }) => $rotation + $spin}deg); }
-  }
+    80% { opacity: 1; transform: translateY(0) rotate(${$rotation + $spin}deg); }
+    100% { opacity: 0; transform: translateY(0) rotate(${$rotation + $spin}deg); }
+  `} 16s linear ${({ $delay }) => $delay} infinite;
 
   @media (prefers-reduced-motion: reduce) { animation: none; }
 `;

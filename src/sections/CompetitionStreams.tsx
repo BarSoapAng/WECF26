@@ -344,6 +344,7 @@ const Band = styled.img`
   width: 111.09cqw;
   max-width: none;
   height: auto;
+  max-height: 40cqw;
   user-select: none;
 
   /* Phones: the mobile design uses a bigger, thicker band. */
@@ -383,22 +384,23 @@ const BottomBand = styled(Band)`
 // column's width). `overflow: visible` lets the leaves hang off the edges.
 const Content = styled(ContentWrapper)`
   container-type: inline-size;
-  width: min(1112px, 73.55%);
+  width: calc(100% - 100px);
+  max-width: 1112px;
   color: ${colors.text.brown};
   line-height: 1.34; /* Figma's "auto" line height for Host Grotesk */
   overflow: visible;
 
   ${mediaQueries.large} {
-    width: min(1112px, calc(100% - 128px));
+    width: calc(100% - 100px);
   }
 
   ${mediaQueries.medium} {
-    width: min(760px, calc(100% - 96px));
+    width: calc(100% - 60px);
   }
 
   /* Phones: 30px side margins, as in the mobile design. */
   ${mediaQueries.tablet} {
-    width: min(600px, calc(100% - 60px));
+    width: calc(100% - 60px);
     line-height: 1.31;
   }
 `;

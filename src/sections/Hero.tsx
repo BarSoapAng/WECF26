@@ -46,7 +46,9 @@ function NavigationLinks() {
 export default function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isHonking, setIsHonking] = useState(false);
+  const [gooseClicked, setGooseClicked] = useState(false);
   const honk = () => {
+    setGooseClicked(true);
     if (isHonking) return;
 
     setIsHonking(true);
@@ -59,26 +61,26 @@ export default function Hero() {
   return (
     <HeroSection id="home" aria-label="Waterloo Engineering Competition">
       <Scene>
-        <Artwork src={heroSky} $x={-133} $y={58} $width={1778} />
-        <Artwork src={heroBackgroundTrees} $x={74} $y={115.62} $width={1457} />
-        <Artwork src={heroLeafAndStump} $x={-2598} $y={-98} $width={6709} />
+        <Artwork src={heroSky} $x={-253} $y={58} $width={1778} />
+        <Artwork src={heroBackgroundTrees} $x={70} $y={115.62} $width={1457} />
+        <Artwork src={heroLeafAndStump} $x={-2598} $y={-98} $width={6909} />
         <Artwork src={heroFloor} $x={-281} $y={672.9} $width={2074.55} />
-        <FallingLeaf src={heroYellowLeaf} x={552.6} y={765.51} width={113.43} delay="-2s" spin={82} rotationDuration={1.1} />
-        <FallingLeaf src={heroOrangeLeaf} x={714} y={320} width={144} delay="-6s" spin={96} rotationDuration={2.2} />
+        <FallingLeaf src={heroYellowLeaf} x={552.6} y={765.51} width={113.43} delay="-2s" spin={-82} rotationDuration={3} fallDistance={450} />
+        <FallingLeaf src={heroOrangeLeaf} x={714} y={320} width={144} delay="-6s" spin={96} rotationDuration={2} />
         <FallingLeaf
           src={heroOrangeLeaf}
           x={1316}
           y={853}
           width={162}
-          rotation={-35}
+          rotation={35}
           delay="-4s"
           spin={-88}
           rotationDuration={1.6}
         />
-        <FallingLeaf src={heroYellowLeaf} x={1284} y={525} width={110} delay="-8s" spin={100} rotationDuration={2.8} />
-        <Artwork src={heroFire} $x={473} $y={282} $width={771} />
-        <FallingLeaf src={heroYellowLeaf} x={950} y={772} width={115} delay="-1s" spin={-84} rotationDuration={1.9} />
-        <FallingLeaf src={heroYellowLeaf} x={26} y={746} width={160} delay="-5s" spin={92} rotationDuration={3.1} />
+        <FallingLeaf src={heroYellowLeaf} x={1284} y={525} width={110} delay="-8s" spin={100} rotationDuration={2.5} />
+        <Fire src={heroFire} $x={473} $y={282} $width={771} $glowing={!gooseClicked} />
+        <FallingLeaf src={heroYellowLeaf} x={950} y={772} width={115} delay="-1s" spin={84} rotationDuration={1.9} />
+        <FallingLeaf src={heroYellowLeaf} x={26} y={746} width={160} delay="-5s" spin={-92} rotationDuration={2.4} />
         <FallingLeaf src={heroOrangeLeaf} x={1316} y={257} width={112} delay="-7s" spin={80} rotationDuration={1.3} />
         <HeroGoose
           src={heroGoose}
@@ -104,17 +106,18 @@ export default function Hero() {
         <Sparkle x={374.77} y={921.77} size={89.22} intensity={0.6} speed={3.2} />
         <MobileSparkles>
           <Sparkle
-            x="36%"
-            y="12%"
-            size={64}
+            x= "47%"
+            y="2%"
+            size={110}
             intensity={1.1}
             speed={2.6}
             hideOnMobile={false}
           />
           <Sparkle
-            x="87%"
-            y="66%"
-            size={64}
+            x="38%"
+            y="43%"
+            size={140}
+            zIndex={3}
             intensity={0.8}
             speed={3.8}
             hideOnMobile={false}
@@ -168,13 +171,14 @@ export default function Hero() {
 
 const HeroSection = styled.section`
   position: relative;
+  z-index: 1;
   isolation: isolate;
   width: 100%;
   height: 982px;
   overflow: visible;
   background: #7b3830;
   ${mediaQueries.tablet} {
-    height: calc(320px + min(82vw, 430px));
+    height: calc(max(100dvh, 874px) + 50px);
     overflow-y: visible;
   }
 `;
@@ -187,18 +191,19 @@ const Scene = styled.div`
   top: 0;
   z-index: -1;
   pointer-events: none;
-  & > img:nth-child(1) {
-    clip-path: inset(0 0 300px 0);
+  & > img:nth-child(12) {
+    z-index: 3;
   }
-  & > img:nth-child(4) {
-    mask-image: linear-gradient(#000 50%, transparent 100%);
+  & > img:nth-child(1) {
+    height: 79%;
+    min-width: 150vw;
   }
   & > img:nth-child(13) {
     height: 700px;
   }
   ${mediaQueries.tablet} {
-    width: min(100%, 520px);
-    height: min(80vw, 416px);
+    width: min(100vw, 402px);
+    height: max(100dvh, 874px);
     left: 50%;
     top: 320px;
     transform: translateX(-50%);
@@ -206,28 +211,29 @@ const Scene = styled.div`
       max-width: none;
     }
     & > img:nth-child(1) {
-      left: -100%;
-      top: -264px;
-      width: 300%;
-      height: calc(100% + 264px);
-      object-fit: cover;
-      clip-path: inset(0 0 min(32vw, 166.4px) 0);
+      left: -55%;
+      top: -9.15%;
+      width: 200%;
+      height: 60%;
     }
     & > img:nth-child(2) {
-      left: -35%;
-      top: -150px;
-      width: 170%;
+      left: 35%;
+      top: -5.72%;
+      height: 50%;
+      width: 200%;
     }
     & > img:nth-child(3) {
-      left: calc(50% - 3303px);
-      top: -330px;
-      width: 6336px;
+      left: -820.64%;
+      top: -37%;
+      height: 100%;
     }
     & > img:nth-child(4) {
-      left: -50%;
-      top: 55%;
-      width: 200%;
-      height: min(18vw, 93.6px);
+      left: -50vw;
+      top: 35%;
+      width: max(200vw, 200%);
+      height: 40%;
+      mask-image: none;
+      object-fit: fill;
     }
     & > img:nth-child(7),
     & > img:nth-child(8),
@@ -237,24 +243,25 @@ const Scene = styled.div`
       display: none;
     }
     & > img:nth-child(5) {
-      left: 14%;
-      top: 58%;
-      width: 12%;
+      left: 44%;
+      top: 48%;
+      width: 30%;
+      z-index: 100;
     }
     & > img:nth-child(6) {
-      left: 77%;
-      top: -1%;
-      width: 14%;
+      left: 60%;
+      top: 1%;
+      width: 40%;
     }
     & > img:nth-child(9) {
-      left: -3%;
-      top: -8%;
-      width: 78%;
+      left: -45%;
+      top: 10%;
+      width: 140%;
     }
     & > img:nth-child(13) {
-      left: 51%;
-      top: 8%;
-      width: 45%;
+      left: 50%;
+      top: 4%;
+      width: 103%;
       height: auto;
     }
   }
@@ -274,6 +281,20 @@ const Artwork = styled.img.attrs({ decoding: "async" })<{
   width: ${({ $width }) => $width}px;
   height: auto;
   transform: rotate(${({ $rotation = 0 }) => $rotation}deg);
+`;
+
+const Fire = styled(Artwork)<{ $glowing: boolean }>`
+  animation: ${({ $glowing }) => $glowing ? "fireGlow 3.2s ease-in-out infinite" : "none"};
+
+  @keyframes fireGlow {
+    0%, 100% { filter: drop-shadow(0 0 18px rgba(166, 85, 255, 0.65)); }
+    50% { filter: drop-shadow(0 0 48px rgba(166, 85, 255, 1)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    filter: ${({ $glowing }) => $glowing ? "drop-shadow(0 0 16px rgba(166, 85, 255, 0.6))" : "none"};
+  }
 `;
 
 const HeroGoose = styled(Artwork)`

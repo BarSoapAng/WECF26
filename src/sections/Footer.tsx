@@ -49,13 +49,17 @@ const Content = styled(ContentWrapper)`
   flex-direction: column;
   align-items: center;
   gap: 0;
-  padding: 96px 24px 20px;
+  width: calc(100% - 100px);
+  max-width: 1112px;
+  margin: 0 auto;
+  padding: 60px 0 20px;
   color: #FFFFFF;
   text-align: center;
   overflow: visible;
 
   ${mediaQueries.tablet} {
-    padding-top: 64px;
+    width: calc(100% - 60px);
+    padding-top: 42px;
   }
 `;
 

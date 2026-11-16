@@ -61,9 +61,9 @@ const Questions = styled(ContentWrapper)`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 74%;
-  max-width: 1080px;
-  padding: 64px;
+  width: calc(100% - 100px);
+  max-width: 1112px;
+  padding: 60px;
   border-radius: 8px;
   background-color: #FFF2D5;
   box-shadow: -48px 42px 0 0 rgb(0 0 0 / 22%);
@@ -92,7 +92,7 @@ const Questions = styled(ContentWrapper)`
   }
 
   ${mediaQueries.mediumTablet} {
-    width: calc(100% - 64px);
+    width: calc(100% - 60px);
     padding: 24px 16px;
   }
 `;

@@ -80,15 +80,15 @@ const Content = styled(ContentWrapper)`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: 68%;
-  max-width: 1040px;
+  width: calc(100% - 100px);
+  max-width: 1112px;
   color: ${colors.text.black};
   text-align: center;
   z-index: auto;
   overflow: visible;
 
   ${mediaQueries.mediumTablet} {
-    width: calc(100% - 64px);
+    width: calc(100% - 60px);
   }
 `;
 

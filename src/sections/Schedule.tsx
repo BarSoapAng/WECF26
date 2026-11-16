@@ -116,7 +116,7 @@ export default Schedule
 /* ---------- The section and its background ---------- */
 
 const Background = styled(SectionWrapper)`
-  padding: 96px 0 25px;
+  padding: 60px 0 25px;
 
   /* The sky. It sticks out 600px below the section so there's no gap with the
      top of Venue. (Sponsors covers the sky above this section.) z-index -1 keeps
@@ -131,7 +131,7 @@ const Background = styled(SectionWrapper)`
   }
 
   ${mediaQueries.tablet} {
-    padding: 36px 0 0;
+    padding: 42px 0 0;
   }
 `;
 
@@ -143,14 +143,14 @@ const Content = styled(ContentWrapper)`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: 1112px;
-  max-width: 100%;
+  width: calc(100% - 100px);
+  max-width: 1112px;
   color: ${colors.text.black};
   line-height: 1.32; /* matches the line spacing in Figma (the browser default is looser) */
   overflow: visible;
 
   ${mediaQueries.tablet} {
-    width: min(600px, calc(100% - 60px));
+    width: calc(100% - 60px);
     line-height: 1.31;
   }
 `;
@@ -333,9 +333,9 @@ const SunHalo = styled.div`
   }
 
   ${mediaQueries.tablet} {
-    left: 50.58cqw;
-    top: -55.26cqw;
-    width: 99.12cqw;
+    left: 57cqw;
+    top: -38.26cqw;
+    width: 82cqw;
     height: auto;
     aspect-ratio: auto;
   }
@@ -356,9 +356,9 @@ const Sun = styled.img`
   }
 
   ${mediaQueries.tablet} {
-    left: 50.58cqw;
-    top: -55.26cqw;
-    width: 99.12cqw;
+    left: 57cqw;
+    top: -38.26cqw;
+    width: 82cqw;
   }
 `;
 
@@ -405,9 +405,9 @@ const Rays = styled.img`
   }
 
   ${mediaQueries.tablet} {
-    left: -9.94cqw;
-    top: -29.82cqw;
-    width: 174.56cqw;
+    left: 6.94cqw;
+    top: -20.82cqw;
+    width: 140.56cqw;
   }
 `;
 

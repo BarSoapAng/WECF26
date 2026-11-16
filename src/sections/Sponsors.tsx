@@ -74,7 +74,7 @@ export default Sponsors
 // "container-type" lets the band use cqw, which means % of the section's width.
 const Background = styled(SectionWrapper)`
   container-type: inline-size;
-  padding: 61px 0 25px;
+  padding: 60px 0 25px;
 
   /* Light blue sky behind the section. It also goes 400px up, under the yellow
      tree band from Competition Streams, so no gaps show between the scallops.
@@ -89,7 +89,7 @@ const Background = styled(SectionWrapper)`
   }
 
   ${mediaQueries.tablet} {
-    padding: 18px 0 0;
+    padding: 42px 0 0;
   }
 `;
 
@@ -98,16 +98,18 @@ const Content = styled(ContentWrapper)`
   display: flex;
   flex-direction: column;
   gap: 48px;
-  width: 1112px;
-  max-width: 100%;
+  width: calc(100% - 100px);
+  max-width: 1112px;
   color: ${colors.text.brown};
   line-height: 1.32; /* matches the line spacing in Figma (the browser default is looser) */
   text-align: center;
   overflow: visible;
 
   ${mediaQueries.tablet} {
-    width: min(600px, calc(100% - 60px));
+    width: calc(100% - 60px);
   }
+
+  overflow: visible;
 `;
 
 const Intro = styled.div`
