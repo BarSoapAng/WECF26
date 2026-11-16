@@ -20,7 +20,7 @@ function App() {
     const page = pageRef.current!
     const resize = () => {
       const width = page.clientWidth
-      page.style.setProperty("--desktop-scale", String(width > deviceBreakpoints.tablet ? width / 1512 : 1))
+      page.style.setProperty("--desktop-scale", String(width > deviceBreakpoints.tablet ? Math.min(1, width / 1512) : 1))
       page.style.setProperty("--mobile-art-scale", String(Math.min(1, (width - 32) / 419)))
     }
     resize()
@@ -68,7 +68,7 @@ const VenueFAQFooterBackground = styled.div`
 `;
 
 const Canvas = styled.main`
-  width: 1512px;
+  width: max(100%, 1512px);
   zoom: var(--desktop-scale, 1);
   ${mediaQueries.tablet} { width: 100%; zoom: 1; }
 `;

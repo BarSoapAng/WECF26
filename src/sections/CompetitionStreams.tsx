@@ -319,11 +319,12 @@ const Backdrop = styled.div`
 `;
 
 /* Brick floor, starting 140px below the section top on the 1512px design. */
+// Cap vertical offsets at the 1512px design size while backgrounds stay full width.
 // repeat-y tiles it downwards if the section gets taller (e.g. narrow screens).
 // On phones the bricks are drawn about 3x bigger, as in the mobile design.
 const Floor = styled.div`
   position: absolute;
-  inset: 9.26cqw 0 -17cqw;
+  inset: min(9.26cqw, 140.0112px) 0 max(-17cqw, -257.04px);
   background: url(${competitionStreamsFloor}) center top / 113.15cqw auto repeat-y;
 
   ${mediaQueries.mediumTablet} {
@@ -344,7 +345,7 @@ const Band = styled.img`
   width: 111.09cqw;
   max-width: none;
   height: auto;
-  max-height: 40cqw;
+  max-height: min(40cqw, 604.8px);
   user-select: none;
 
   /* Phones: the mobile design uses a bigger, thicker band. */
@@ -356,7 +357,7 @@ const Band = styled.img`
 
 // Anchored to the section's top edge.
 const TopBand = styled(Band)`
-  top: -29.54cqw;
+  top: max(-29.54cqw, -446.6448px);
 
   ${mediaQueries.mediumTablet} {
     width: 180cqw;
@@ -367,7 +368,7 @@ const TopBand = styled(Band)`
 // Continues the tree band into Sponsors. The top offset, width, and responsive
 // sizing match the former Sponsors band exactly, relative to the section boundary.
 const BottomBand = styled(Band)`
-  top: calc(100% - 24.61cqw);
+  top: calc(100% - min(24.61cqw, 372.1032px));
 
   ${mediaQueries.mediumTablet} {
     top: auto;

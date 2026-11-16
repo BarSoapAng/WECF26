@@ -196,7 +196,8 @@ const Scene = styled.div`
   }
   & > img:nth-child(1) {
     height: 79%;
-    min-width: min(150vw, 2268px);
+    left: min(-253px, calc(756px - 50vw));
+    min-width: 150vw;
   }
   & > img:nth-child(13) {
     height: 700px;
