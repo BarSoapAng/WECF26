@@ -480,8 +480,10 @@ const ApplyButton = styled.a`
   text-decoration: none;
   pointer-events: auto;
 
-  &:hover {
-    background: ${colors.background.lightPurple};
+  &:hover,
+  &:active {
+    background: ${colors.background.brown};
+    color: ${colors.text.offwhite};
   }
 
   &:focus-visible {
