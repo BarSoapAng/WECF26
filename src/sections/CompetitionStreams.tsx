@@ -332,7 +332,7 @@ const Backdrop = styled.div`
   }
 `;
 
-// Desktop: fill from the top band's midpoint to the bottom band's midpoint.
+// Fill from the top band's midpoint to the bottom band's midpoint at every size.
 // repeat-y tiles it downwards if the section gets taller (e.g. narrow screens).
 // On phones the bricks are drawn about 3x bigger, as in the mobile design.
 const Floor = styled.div`
@@ -343,13 +343,8 @@ const Floor = styled.div`
     calc(100% - var(--bottom-band-top) - var(--tree-band-height) / 2);
   background: url(${competitionStreamsFloor}) center top / 113.15cqw auto repeat-y;
 
-  ${mediaQueries.tablet} {
-    inset: 9.26cqw 0 -17cqw;
-  }
-
   ${mediaQueries.mediumTablet} {
     background-size: 370cqw auto;
-    bottom: -22cqw;
   }
 `;
 
