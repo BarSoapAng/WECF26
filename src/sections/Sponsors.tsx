@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import {
+  competitionStreamsTopviewTree,
   sponsorsLeafLeft,
   sponsorsLeafRight,
   sponsorsRedBull,
@@ -35,6 +36,7 @@ const sponsors = [
 function Sponsors() {
   return (
     <Background id="sponsors" aria-labelledby="sponsors-title">
+      <BottomBand src={competitionStreamsTopviewTree} alt="" aria-hidden="true" />
       <Content>
         <Intro>
           <Title as="h2" id="sponsors-title">Our Sponsors</Title>
@@ -92,6 +94,21 @@ const Background = styled(SectionWrapper)`
 
   ${mediaQueries.tablet} {
     padding: 42px 0 0;
+  }
+`;
+
+// Follow the sponsor rows instead of growing into Schedule on wider screens.
+const BottomBand = styled.img`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+
+  ${mediaQueries.tablet} {
+    display: none;
   }
 `;
 

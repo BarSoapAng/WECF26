@@ -365,10 +365,14 @@ const TopBand = styled(Band)`
   }
 `;
 
-// Continues the tree band into Sponsors. The top offset, width, and responsive
-// sizing match the former Sponsors band exactly, relative to the section boundary.
+// Mobile keeps its existing band placement; the desktop band belongs to Sponsors.
 const BottomBand = styled(Band)`
+  display: none;
   top: calc(100% - min(24.61cqw, 372.1032px));
+
+  ${mediaQueries.tablet} {
+    display: block;
+  }
 
   ${mediaQueries.mediumTablet} {
     top: auto;
