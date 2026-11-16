@@ -313,15 +313,15 @@ const Background = styled(SectionWrapper)`
 // and the bands are allowed to stick out above and below it.
 const Backdrop = styled.div`
   --tree-band-height: min(46cqw, 1504.8px);
-  --top-band-top: max(-15.54cqw, -18vw);
-  --bottom-band-top: calc(100% - min(24cqw, 11vw));
+  --top-band-top: calc(max(-15.54cqw, -18vw) - 48px);
+  --bottom-band-top: calc(100% - min(24cqw, 11vw) - 48px);
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
 
   ${mediaQueries.tablet} {
-    --tree-band-height: 40cqw;
+    --tree-band-height: 80cqw;
     --top-band-top: -29.54cqw;
     --bottom-band-top: calc(100% - 24.61cqw);
   }
@@ -369,8 +369,6 @@ const Band = styled.img`
   ${mediaQueries.tablet} {
     left: -4.82cqw;
     width: 111.09cqw;
-    height: auto;
-    max-height: 40cqw;
   }
 
   /* Phones: the mobile design uses a bigger, thicker band. */
