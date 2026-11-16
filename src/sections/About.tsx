@@ -40,7 +40,6 @@ const Background = styled.section`
   position: relative;
   width: 100%;
   min-height: 939.491px;
-  padding-bottom: calc(min(29.54%, 160.6448px) + 32px);
   overflow: hidden;
   color: ${colors.text.offwhite};
   background: #7b3830;
