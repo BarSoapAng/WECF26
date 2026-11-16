@@ -236,7 +236,7 @@ const Scene = styled.div`
     & > img:nth-child(3) {
       left: -820.64%;
       top: -37%;
-      height: 100%;
+      height: calc(100% + 64px);
     }
     & > img:nth-child(4) {
       left: -50vw;
