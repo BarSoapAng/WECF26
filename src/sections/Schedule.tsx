@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { decorativeWashiTape, scheduleSun, scheduleSunray } from "../assets"
 import { ContentWrapper, SectionWrapper } from "../components"
 import { mediaQueries } from "../lib/responsive"
@@ -25,9 +25,6 @@ type ScheduleItem = {
   events?: string[]
   location?: string
   rowSpan?: number
-  // In the desktop Figma, the Lunch box is shorter than its row, so you see a
-  // purple bar above and below it. Set this to true to get that look.
-  framed?: boolean
 }
 
 // Schedule for Saturday, November 21st 2026. To change it, edit this list.
@@ -41,7 +38,7 @@ const schedule: ScheduleItem[] = [
     location: "Various",
   },
   { time: "9:15 AM", events: ["Competition Time Start"], location: "Various" },
-  { time: "12:00 PM", events: ["Lunch"], location: "E7 Event Space", rowSpan: 2, framed: true },
+  { time: "12:00 PM", events: ["Lunch"], location: "E7 Event Space", rowSpan: 2 },
   { time: "1:00 PM" },
   { time: "4:00 PM", events: ["Competition Time End"], location: "Various" },
   { time: "4:30 PM", events: ["Dinner Start & Judge Start"], location: "E7 Event Space" },
@@ -79,19 +76,17 @@ function Schedule() {
               </tr>
             </thead>
             <tbody>
-              {schedule.map(({ time, events, location, rowSpan, framed }) => (
+              {schedule.map(({ time, events, location, rowSpan }) => (
                 <tr key={time}>
                   {/* The time is a "th" so screen readers say the time before each event */}
                   <TimeCell as="th" scope="row">
                     <BodyRegular1>{time}</BodyRegular1>
                   </TimeCell>
                   {events && (
-                    <EventCell rowSpan={rowSpan} $framed={framed}>
-                      <EventBox>
-                        {events.map((event) => (
-                          <BodyRegular1 key={event}>{event}</BodyRegular1>
-                        ))}
-                      </EventBox>
+                    <EventCell rowSpan={rowSpan}>
+                      {events.map((event) => (
+                        <BodyRegular1 key={event}>{event}</BodyRegular1>
+                      ))}
                     </EventCell>
                   )}
                   {location && (
@@ -240,7 +235,7 @@ const TimeCell = styled(Cell)`
 
 // Right column with the events. The rows switch between gray and white, and the
 // header is purple.
-const EventCell = styled(Cell)<{ $framed?: boolean }>`
+const EventCell = styled(Cell)`
   padding: 24px;
   background: ${colors.background.gray};
 
@@ -261,41 +256,7 @@ const EventCell = styled(Cell)<{ $framed?: boolean }>`
     padding: 8px;
     overflow-wrap: anywhere;
   }
-
-  /* The Lunch look: the cell turns purple and the white box inside it gets its
-     own lines, so there's a purple bar above and below it. Only on desktop,
-     because on mobile the 12:00 PM row isn't taller than the box, so the mobile
-     Figma has no bars. ("tbody tr:nth-child(n)" is just there so this wins over
-     the gray/white row colours above.) */
-  ${({ $framed }) => $framed && css`
-    tbody tr:nth-child(n) & {
-      padding: 0;
-      background: ${colors.background.lightPurple};
-    }
-
-    & > div {
-      padding: 24px;
-      background: white;
-      border-top: 1px solid ${colors.text.black};
-      border-bottom: 1px solid ${colors.text.black};
-    }
-
-    ${mediaQueries.tablet} {
-      tbody tr:nth-child(n) & {
-        padding: 8px;
-        background: white;
-      }
-
-      & > div {
-        padding: 0;
-        border: none;
-      }
-    }
-  `}
 `;
-
-// Holds the event text. Only does something for the Lunch row (see above).
-const EventBox = styled.div``;
 
 /* ---------- Sun, rays and tape ----------
    The numbers are the Figma positions turned into % of the table width
