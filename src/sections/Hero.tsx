@@ -236,7 +236,8 @@ const Scene = styled.div`
     & > img:nth-child(3) {
       left: -820.64%;
       top: -37%;
-      height: calc(100% + 64px);
+      height: calc(100% + 240px);
+      clip-path: inset(0 0 176px);
     }
     & > img:nth-child(4) {
       left: -50vw;
