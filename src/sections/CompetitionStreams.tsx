@@ -312,9 +312,9 @@ const Background = styled(SectionWrapper)`
 // Holds the background layers behind the content. It covers the whole section,
 // and the bands are allowed to stick out above and below it.
 const Backdrop = styled.div`
-  --tree-band-height: min(40cqw, 604.8px);
-  --top-band-top: max(-29.54cqw, -446.6448px);
-  --bottom-band-top: calc(100% - min(24.61cqw, 372.1032px));
+  --tree-band-height: min(46cqw, 1504.8px);
+  --top-band-top: max(-15.54cqw, -18vw);
+  --bottom-band-top: calc(100% - min(24cqw, 11vw));
   position: absolute;
   inset: 0;
   z-index: 0;
