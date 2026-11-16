@@ -341,8 +341,8 @@ const Floor = styled.div`
  */
 const Band = styled.img`
   position: absolute;
-  left: -4.82cqw;
-  width: 111.09cqw;
+  left: 0;
+  width: 100%;
   max-width: none;
   height: auto;
   max-height: min(40cqw, 604.8px);
