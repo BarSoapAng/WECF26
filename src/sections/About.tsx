@@ -14,7 +14,7 @@ export default function About() {
       <Content>
         <Copy>
           <Header1>What is WEC?</Header1>
-          <BodyRegular1>The Waterloo Engineering Competition (WEC) is a design competition run in collaboration with the Engineering Society and Sandford Fleming Foundation (SSF).</BodyRegular1>
+          <BodyRegular1>The Waterloo Engineering Competition (WEC) is a design competition run in collaboration with the Engineering Society and Sanford Fleming Foundation (SSF).</BodyRegular1>
           <BodyRegular1>The competition covers topics like design, prototyping, circuits, programming, consulting, and much more!</BodyRegular1>
           <BodyRegular1>The top teams from each competition will have the opportunity to represent Waterloo at the Ontario Engineering Competition (OEC), and compete for a chance to advance to the nationals at the Canadian Engineering Competition (CEC).</BodyRegular1>
           <BodyRegular1>Each category’s top two place winners will also get prizes sponsored by SFF, the Faculty of Engineering, and EngSoc.</BodyRegular1>
