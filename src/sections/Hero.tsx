@@ -16,7 +16,7 @@ import instagram from "../assets/header/instagram.svg";
 import FallingLeaf from "../components/FallingLeaf";
 import Sparkle from "../components/Sparkle";
 import { mediaQueries } from "../lib/responsive";
-import { BodyRegular2, colors, Header1, Header2 } from "../lib/styles";
+import { BodyBold, BodyRegular2, colors, Header1, Header2 } from "../lib/styles";
 
 const navigation = ["About", "Competition", "Sponsors", "Schedule"];
 
@@ -165,6 +165,9 @@ export default function Hero() {
           </Header2>
           <Header2 as="p">November 21st 2026</Header2>
         </Date>
+        <ApplyButton href="https://bit.ly/F26RegisterWEC" target="_blank" rel="noreferrer">
+          <BodyBold as="span">Apply Now</BodyBold>
+        </ApplyButton>
       </HeroCopy>
     </HeroSection>
   );
@@ -461,6 +464,34 @@ const Date = styled.div`
       line-height: 24px;
       letter-spacing: -0.36px;
     }
+  }
+`;
+
+const ApplyButton = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-top: 24px;
+  padding: 14px 32px;
+  border-radius: 8px;
+  background: ${colors.background.orange};
+  color: ${colors.text.brown};
+  text-decoration: none;
+  pointer-events: auto;
+
+  &:hover {
+    background: ${colors.background.lightPurple};
+  }
+
+  &:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  ${mediaQueries.tablet} {
+    margin: 16px auto 0;
+    padding: 12px 28px;
   }
 `;
 
