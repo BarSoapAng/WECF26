@@ -69,6 +69,7 @@ const Content = styled.div`
 `;
 
 const Copy = styled.div`
+  z-index: 1;
   align-self: center;
   display: flex;
   flex-direction: column;
