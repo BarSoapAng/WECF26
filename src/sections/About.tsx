@@ -80,16 +80,6 @@ const Copy = styled.div`
   }
 `;
 
-const AboutHeading = styled.div`
-  // margin-bottom: -21px;
-  & > :first-child { display: none; }
-  ${mediaQueries.tablet} {
-    // margin-bottom: -13px;
-    & > :first-child { display: block; }
-    & > :last-child { display: none; }
-  }
-`;
-
 const Collage = styled.div`
   position: relative;
   z-index: 1;

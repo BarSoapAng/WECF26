@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useState } from "react"
 import styled from "styled-components"
 import { decorativeButton, decorativeWashiTape, venueBigGoose, venueGooseHonk1, venueGooseHonk2, venueGooseHonk3, venueMap } from "../assets"
 import { ClickJitterImage, ContentWrapper, SectionWrapper, Sparkle } from "../components"
