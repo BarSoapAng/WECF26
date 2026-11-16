@@ -313,8 +313,8 @@ const Background = styled(SectionWrapper)`
 // and the bands are allowed to stick out above and below it.
 const Backdrop = styled.div`
   --tree-band-height: min(46cqw, 1504.8px);
-  --top-band-top: calc(max(-15.54cqw, -18vw) - 48px);
-  --bottom-band-top: calc(100% - min(24cqw, 11vw) - 48px);
+  --top-band-top: calc(max(-15.54cqw, -18vw) - 64px);
+  --bottom-band-top: calc(100% - min(24cqw, 11vw) - 64px);
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -322,13 +322,13 @@ const Backdrop = styled.div`
 
   ${mediaQueries.tablet} {
     --tree-band-height: 80cqw;
-    --top-band-top: -29.54cqw;
-    --bottom-band-top: calc(100% - 24.61cqw);
+    --top-band-top: calc(-29.54cqw - 16px);
+    --bottom-band-top: calc(100% - 24.61cqw - 16px);
   }
 
   ${mediaQueries.mediumTablet} {
-    --top-band-top: calc(-86.12cqw + (227.53cqw - 180cqw) * 0.4);
-    --bottom-band-top: calc(100% + 104.81cqw - (227.53cqw - 180cqw) * 0.4 - var(--tree-band-height));
+    --top-band-top: calc(-86.12cqw + (227.53cqw - 180cqw) * 0.4 - 16px);
+    --bottom-band-top: calc(100% + 104.81cqw - (227.53cqw - 180cqw) * 0.4 - var(--tree-band-height) - 16px);
   }
 `;
 
