@@ -365,14 +365,9 @@ const TopBand = styled(Band)`
   }
 `;
 
-// Mobile keeps its existing band placement; the desktop band belongs to Sponsors.
+// Anchor the bottom band to Competition Streams and share the top band's sizing.
 const BottomBand = styled(Band)`
-  display: none;
   top: calc(100% - min(24.61cqw, 372.1032px));
-
-  ${mediaQueries.tablet} {
-    display: block;
-  }
 
   ${mediaQueries.mediumTablet} {
     top: auto;
