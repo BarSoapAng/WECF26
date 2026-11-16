@@ -474,7 +474,7 @@ const ApplyButton = styled.a`
   width: fit-content;
   margin-top: 24px;
   padding: 14px 32px;
-  border-radius: 8px;
+  border-radius: 16px;
   background: ${colors.background.orange};
   color: ${colors.text.brown};
   text-decoration: none;
