@@ -2,7 +2,7 @@ import styled, { css, keyframes } from "styled-components"
 import { decorativeWashiTape, scheduleSun, scheduleSunray } from "../assets"
 import { ContentWrapper, SectionWrapper } from "../components"
 import { mediaQueries } from "../lib/responsive"
-import { BodyRegular1, colors, Header1 } from "../lib/styles"
+import { BodyBold, BodyRegular1, colors, Header1 } from "../lib/styles"
 
 /*
  * Day of Schedule section
@@ -19,39 +19,35 @@ import { BodyRegular1, colors, Header1 } from "../lib/styles"
  *   glow and sway side to side.
  */
 
-// One row of the table. Some times have more than one thing happening
-// (like 3:00 PM), so events is a list and each one gets its own line.
+// Lunch shares its event and location cells across two time rows.
 type ScheduleItem = {
   time: string
-  events: string[]
+  events?: string[]
+  location?: string
+  rowSpan?: number
   // In the desktop Figma, the Lunch box is shorter than its row, so you see a
   // purple bar above and below it. Set this to true to get that look.
   framed?: boolean
 }
 
-// All the text is from the Figma. To change the schedule, just edit this list.
+// Schedule for Saturday, November 21st 2026. To change it, edit this list.
 // The table updates itself.
 const schedule: ScheduleItem[] = [
-  { time: "8:00 AM", events: ["Arrival & Check-in"] },
-  { time: "8:30 AM", events: ["Welcome Ceremony + C&D Breakfast", "Competitor Briefings"] },
+  { time: "8:00 AM", events: ["Registration"], location: "E7 Event Space" },
+  { time: "8:45 AM", events: ["Opening Ceremonies"], location: "E7 Event Space" },
   {
     time: "9:00 AM",
-    events: ["Competition time + Question period begins", "Question period ends at 9:15 AM"],
+    events: ["Transition to Rooms", "Competition Introduction & Questions Period"],
+    location: "Various",
   },
-  { time: "12:00 PM", events: ["Lunch"], framed: true },
-  { time: "1:00 PM", events: ["Competition time"] },
-  {
-    time: "3:00 PM",
-    events: [
-      "Submission deadline at 3:00 PM",
-      "All competitors must be in Floor 2 Event Space",
-      "Presentation order announced at 3:15 PM",
-    ],
-  },
-  { time: "3:30 PM", events: ["Judging time"] },
-  { time: "6:30 PM", events: ["Networking Reception + Dinner"] },
-  { time: "7:00 PM", events: ["Awards Ceremony"] },
-  { time: "7:30 PM", events: ["More Networking"] },
+  { time: "9:15 AM", events: ["Competition Time Start"], location: "Various" },
+  { time: "12:00 PM", events: ["Lunch"], location: "E7 Event Space", rowSpan: 2, framed: true },
+  { time: "1:00 PM" },
+  { time: "4:00 PM", events: ["Competition Time End"], location: "Various" },
+  { time: "4:30 PM", events: ["Dinner Start & Judge Start"], location: "E7 Event Space" },
+  { time: "5:30 PM", events: ["Dinner End"], location: "E7 Event Space" },
+  { time: "7:30 PM", events: ["Judging End"], location: "Various" },
+  { time: "8:00 PM", events: ["Award / Closing Ceremonies"], location: "E7 Event Space" },
 ]
 
 function Schedule() {
@@ -60,7 +56,7 @@ function Schedule() {
       <Content>
         <Intro>
           <Title as="h2" id="schedule-title">Day of Schedule</Title>
-          <BodyRegular1>Check out the schedule for the event!</BodyRegular1>
+          <BodyRegular1>Saturday, November 21st 2026</BodyRegular1>
         </Intro>
 
         <TableArea>
@@ -71,28 +67,38 @@ function Schedule() {
           <Table>
             <thead>
               <tr>
-                <TimeCell as="th" scope="col" $bold>
-                  <BodyRegular1>Time</BodyRegular1>
+                <TimeCell as="th" scope="col">
+                  <BodyBold>Time</BodyBold>
                 </TimeCell>
-                <EventCell as="th" scope="col" $bold>
-                  <BodyRegular1>Event</BodyRegular1>
+                <EventCell as="th" scope="col">
+                  <BodyBold>Event</BodyBold>
+                </EventCell>
+                <EventCell as="th" scope="col">
+                  <BodyBold>Location</BodyBold>
                 </EventCell>
               </tr>
             </thead>
             <tbody>
-              {schedule.map(({ time, events, framed }) => (
+              {schedule.map(({ time, events, location, rowSpan, framed }) => (
                 <tr key={time}>
                   {/* The time is a "th" so screen readers say the time before each event */}
                   <TimeCell as="th" scope="row">
                     <BodyRegular1>{time}</BodyRegular1>
                   </TimeCell>
-                  <EventCell $framed={framed}>
-                    <EventBox>
-                      {events.map((event) => (
-                        <BodyRegular1 key={event}>{event}</BodyRegular1>
-                      ))}
-                    </EventBox>
-                  </EventCell>
+                  {events && (
+                    <EventCell rowSpan={rowSpan} $framed={framed}>
+                      <EventBox>
+                        {events.map((event) => (
+                          <BodyRegular1 key={event}>{event}</BodyRegular1>
+                        ))}
+                      </EventBox>
+                    </EventCell>
+                  )}
+                  {location && (
+                    <EventCell rowSpan={rowSpan}>
+                      <BodyRegular1>{location}</BodyRegular1>
+                    </EventCell>
+                  )}
                 </tr>
               ))}
             </tbody>
@@ -195,12 +201,10 @@ const Table = styled.table`
   text-align: left;
 `;
 
-const Cell = styled.td<{ $bold?: boolean }>`
+const Cell = styled.td`
   border-right: 1px solid ${colors.text.black};
   border-bottom: 1px solid ${colors.text.black};
   vertical-align: middle;
-
-  ${({ $bold }) => $bold && `p { font-weight: 600; }`}
 `;
 
 // Left column with the times. The rows switch between two shades of purple.
@@ -216,8 +220,8 @@ const TimeCell = styled(Cell)`
   }
 
   ${mediaQueries.tablet} {
-    width: 127px;
-    padding: 8px 16px;
+    width: 100px;
+    padding: 8px;
 
     /* The times are bold on mobile in Figma but not on desktop */
     p {
@@ -255,6 +259,7 @@ const EventCell = styled(Cell)<{ $framed?: boolean }>`
 
   ${mediaQueries.tablet} {
     padding: 8px;
+    overflow-wrap: anywhere;
   }
 
   /* The Lunch look: the cell turns purple and the white box inside it gets its
