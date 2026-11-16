@@ -320,13 +320,19 @@ const Backdrop = styled.div`
   z-index: 0;
   pointer-events: none;
 
+  ${mediaQueries.tablet} {
+    --tree-band-height: 40cqw;
+    --top-band-top: -29.54cqw;
+    --bottom-band-top: calc(100% - 24.61cqw);
+  }
+
   ${mediaQueries.mediumTablet} {
     --top-band-top: calc(-86.12cqw + (227.53cqw - 180cqw) * 0.4);
     --bottom-band-top: calc(100% + 104.81cqw - (227.53cqw - 180cqw) * 0.4 - var(--tree-band-height));
   }
 `;
 
-// Fill from the top band's midpoint to the bottom band's midpoint.
+// Desktop: fill from the top band's midpoint to the bottom band's midpoint.
 // repeat-y tiles it downwards if the section gets taller (e.g. narrow screens).
 // On phones the bricks are drawn about 3x bigger, as in the mobile design.
 const Floor = styled.div`
@@ -337,8 +343,13 @@ const Floor = styled.div`
     calc(100% - var(--bottom-band-top) - var(--tree-band-height) / 2);
   background: url(${competitionStreamsFloor}) center top / 113.15cqw auto repeat-y;
 
+  ${mediaQueries.tablet} {
+    inset: 9.26cqw 0 -17cqw;
+  }
+
   ${mediaQueries.mediumTablet} {
     background-size: 370cqw auto;
+    bottom: -22cqw;
   }
 `;
 
@@ -354,6 +365,13 @@ const Band = styled.img`
   max-width: none;
   height: var(--tree-band-height);
   user-select: none;
+
+  ${mediaQueries.tablet} {
+    left: -4.82cqw;
+    width: 111.09cqw;
+    height: auto;
+    max-height: 40cqw;
+  }
 
   /* Phones: the mobile design uses a bigger, thicker band. */
   ${mediaQueries.mediumTablet} {
