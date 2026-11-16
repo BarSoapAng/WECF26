@@ -74,7 +74,7 @@ export default Sponsors
 // "container-type" lets the band use cqw, which means % of the section's width.
 const Background = styled(SectionWrapper)`
   container-type: inline-size;
-  padding: 60px 0 25px;
+  padding: max(60px, calc(min(40%, 1204.8px) - min(24.61%, 272.1032px) + 32px)) 0 25px;
 
   /* Light blue sky behind the section. It also goes 400px up, under the yellow
      tree band from Competition Streams, so no gaps show between the scallops.

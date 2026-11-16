@@ -297,12 +297,12 @@ export default CompetitionStreams
 const Background = styled(SectionWrapper)`
   container-type: inline-size;
   isolation: isolate;
-  padding: 60px 0;
+  /* Leave 32px between the full band bounds and the section copy. */
+  padding:
+    max(60px, calc(min(40%, 1204.8px) - min(29.54%, 160.6448px) + 32px))
+    0
+    max(60px, calc(min(24.61%, 272.1032px) + 32px));
   background: ${colors.background.brown};
-
-  ${mediaQueries.medium} {
-    padding: 48px 0;
-  }
 
   ${mediaQueries.tablet} {
     padding: 18px 0;
