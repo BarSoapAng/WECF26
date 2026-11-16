@@ -2,6 +2,7 @@ import styled from "styled-components"
 import {
   sponsorsLeafLeft,
   sponsorsLeafRight,
+  sponsorsRedBull,
   sponsorsSff,
   sponsorsWaterlooEngineering,
 } from "../assets"
@@ -28,6 +29,7 @@ import { BodyRegular1, colors, Header1 } from "../lib/styles"
 const sponsors = [
   { name: "Waterloo Engineering", logo: sponsorsWaterlooEngineering },
   { name: "SFF", logo: sponsorsSff },
+  { name: "Red Bull", logo: sponsorsRedBull },
 ]
 
 function Sponsors() {
