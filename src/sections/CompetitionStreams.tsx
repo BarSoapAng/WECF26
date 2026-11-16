@@ -312,25 +312,33 @@ const Background = styled(SectionWrapper)`
 // Holds the background layers behind the content. It covers the whole section,
 // and the bands are allowed to stick out above and below it.
 const Backdrop = styled.div`
+  --tree-band-height: min(40cqw, 604.8px);
+  --top-band-top: max(-29.54cqw, -446.6448px);
+  --bottom-band-top: calc(100% - min(24.61cqw, 372.1032px));
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
+
+  ${mediaQueries.mediumTablet} {
+    --top-band-top: calc(-86.12cqw + (227.53cqw - 180cqw) * 0.4);
+    --bottom-band-top: calc(100% + 104.81cqw - (227.53cqw - 180cqw) * 0.4 - var(--tree-band-height));
+  }
 `;
 
-/* Brick floor, starting 140px below the section top on the 1512px design. */
-// Cap vertical offsets at the 1512px design size while backgrounds stay full width.
+// Fill from the top band's midpoint to the bottom band's midpoint.
 // repeat-y tiles it downwards if the section gets taller (e.g. narrow screens).
 // On phones the bricks are drawn about 3x bigger, as in the mobile design.
 const Floor = styled.div`
   position: absolute;
-  inset: min(9.26cqw, 140.0112px) 0 max(-17cqw, -257.04px);
+  inset:
+    calc(var(--top-band-top) + var(--tree-band-height) / 2)
+    0
+    calc(100% - var(--bottom-band-top) - var(--tree-band-height) / 2);
   background: url(${competitionStreamsFloor}) center top / 113.15cqw auto repeat-y;
 
   ${mediaQueries.mediumTablet} {
     background-size: 370cqw auto;
-    /* Continue the floor under the band where it extends into Sponsors. */
-    bottom: -22cqw;
   }
 `;
 
@@ -344,8 +352,7 @@ const Band = styled.img`
   left: 0;
   width: 100%;
   max-width: none;
-  height: auto;
-  max-height: min(40cqw, 604.8px);
+  height: var(--tree-band-height);
   user-select: none;
 
   /* Phones: the mobile design uses a bigger, thicker band. */
@@ -357,23 +364,20 @@ const Band = styled.img`
 
 // Anchored to the section's top edge.
 const TopBand = styled(Band)`
-  top: max(-29.54cqw, -446.6448px);
+  top: var(--top-band-top);
 
   ${mediaQueries.mediumTablet} {
     width: 180cqw;
-    top: calc(-86.12cqw + (227.53cqw - 180cqw) * 0.4);
   }
 `;
 
 // Anchor the bottom band to Competition Streams and share the top band's sizing.
 const BottomBand = styled(Band)`
-  top: calc(100% - min(24.61cqw, 372.1032px));
+  top: var(--bottom-band-top);
 
   ${mediaQueries.mediumTablet} {
-    top: auto;
     left: -40.09cqw;
     width: 180cqw;
-    bottom: calc(-104.81cqw + (227.53cqw - 180cqw) * 0.4);
   }
 `;
 
