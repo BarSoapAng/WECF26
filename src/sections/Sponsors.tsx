@@ -13,7 +13,7 @@ import { BodyRegular1, colors, Header1 } from "../lib/styles"
 /*
  * Our Sponsors section
  *
- * Desktop: title + two paragraphs, then the sponsor logos in a 2-column grid of
+ * Desktop: title + two paragraphs, then the sponsor logos in a single column of
  * white cards, with a sparkle on the left.
  * Mobile: same thing in one column, plus two leaves peeking out around the cards
  * (that's how the mobile Figma has it).
@@ -139,16 +139,14 @@ const Paragraphs = styled.div`
 
 /* ---------- Logo cards ---------- */
 
-// Two columns on desktop (544px cards, 24px apart), one column on phones
-// (121px tall cards, 10px apart).
+// Full-width cards, 24px apart on desktop and 10px apart on phones.
 const Grid = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
 
   ${mediaQueries.tablet} {
-    grid-template-columns: minmax(0, 1fr);
     gap: 10px;
   }
 `;
