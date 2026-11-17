@@ -1,11 +1,12 @@
 @import 'tailwindcss';
+@source not "../.artifacts";
 
 @font-face {
   font-family: "Host Grotesk";
   src: url("/font/host-grotesk-latin.woff2") format("woff2");
   font-weight: 300 800;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -13,7 +14,7 @@
   src: url("/font/morfe.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 html {

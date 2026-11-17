@@ -1,0 +1,598 @@
+[
+  {
+    "width": 1512,
+    "firstFrame": {
+      "t": 1085.2000000029802,
+      "visible": "hidden",
+      "fonts": true,
+      "missing": 16
+    },
+    "firstReady": {
+      "t": 2850.39999999851,
+      "visible": "hidden",
+      "fonts": true,
+      "missing": 0
+    },
+    "incompleteVisibleFrames": 0,
+    "cls": 0,
+    "lcp": 3152,
+    "bytes": 3959989,
+    "resources": [
+      {
+        "name": "host-grotesk-latin.woff2",
+        "bytes": 20296,
+        "start": 123,
+        "end": 231
+      },
+      {
+        "name": "morfe.otf",
+        "bytes": 133900,
+        "start": 123.30000000447035,
+        "end": 774.2000000029802
+      },
+      {
+        "name": "hero-background-trees-CD6p78GB.webp",
+        "bytes": 60966,
+        "start": 123.39999999850988,
+        "end": 485.5
+      },
+      {
+        "name": "hero-sky-UWP5Ubtn.webp",
+        "bytes": 78144,
+        "start": 123.39999999850988,
+        "end": 561.3000000044703
+      },
+      {
+        "name": "hero-floor-DVBoTlHS.webp",
+        "bytes": 90288,
+        "start": 123.5,
+        "end": 611.2000000029802
+      },
+      {
+        "name": "hero-leaf-and-stump-BTHSM5I1.webp",
+        "bytes": 199106,
+        "start": 123.5,
+        "end": 980.7000000029802
+      },
+      {
+        "name": "hero-hero-goose-CZ8cowpo.webp",
+        "bytes": 220038,
+        "start": 123.60000000149012,
+        "end": 1165.5
+      },
+      {
+        "name": "hero-fire-p9JYELVi.webp",
+        "bytes": 725404,
+        "start": 123.60000000149012,
+        "end": 2833.39999999851
+      },
+      {
+        "name": "index-4F2qbZ9f.js",
+        "bytes": 282268,
+        "start": 123.70000000298023,
+        "end": 971.1000000014901
+      },
+      {
+        "name": "index-hCvFXCUt.css",
+        "bytes": 7934,
+        "start": 123.80000000447035,
+        "end": 330.6000000014901
+      },
+      {
+        "name": "faq-footer-floor-GC4Y0TnU.webp",
+        "bytes": 87284,
+        "start": 1043,
+        "end": 1490
+      },
+      {
+        "name": "noise-DGEer391.webp",
+        "bytes": 242794,
+        "start": 1043.7000000029802,
+        "end": 2080.60000000149
+      },
+      {
+        "name": "floor-DE3wZjSN.webp",
+        "bytes": 35506,
+        "start": 1054.5,
+        "end": 1301.5
+      },
+      {
+        "name": "hero-yellow-leaf-hero-Bc4oKxFP.webp",
+        "bytes": 65492,
+        "start": 1076.2000000029802,
+        "end": 1439.8000000044703
+      },
+      {
+        "name": "hero-orange-leaf-hero-BcEkeZt8.webp",
+        "bytes": 45314,
+        "start": 1076.3000000044703,
+        "end": 1454.2000000029802
+      },
+      {
+        "name": "decorative-sparkle--B0rIfQf.webp",
+        "bytes": 54206,
+        "start": 1076.3999999985099,
+        "end": 1592.3999999985099
+      },
+      {
+        "name": "about-img-1-CN_Wwymb.webp",
+        "bytes": 45430,
+        "start": 1078.1000000014901,
+        "end": 1764.8000000044703
+      },
+      {
+        "name": "about-img-2-2HPQOQEn.webp",
+        "bytes": 43570,
+        "start": 1078.2000000029802,
+        "end": 1770.8999999985099
+      },
+      {
+        "name": "about-img-3-DrYzfqbv.webp",
+        "bytes": 47044,
+        "start": 1078.2000000029802,
+        "end": 1849.7000000029802
+      },
+      {
+        "name": "about-orange-leaf-DHkLyJhq.webp",
+        "bytes": 61986,
+        "start": 1078.3000000044703,
+        "end": 2116.8000000044703
+      },
+      {
+        "name": "decorative-washi-tape-Byskf3X8.webp",
+        "bytes": 23246,
+        "start": 1078.3999999985099,
+        "end": 1961.1000000014901
+      },
+      {
+        "name": "about-yellow-leaf-QVMMwrU0.webp",
+        "bytes": 68092,
+        "start": 1078.3999999985099,
+        "end": 2136.39999999851
+      },
+      {
+        "name": "decorative-button-uLVkF4Gq.webp",
+        "bytes": 52330,
+        "start": 1078.3999999985099,
+        "end": 2142.60000000149
+      },
+      {
+        "name": "1-2-BxJkvj_2.webp",
+        "bytes": 26190,
+        "start": 1078.5,
+        "end": 2248.39999999851
+      },
+      {
+        "name": "topview-tree-CntbUCpW.webp",
+        "bytes": 262270,
+        "start": 1078.5,
+        "end": 2908.3000000044703
+      },
+      {
+        "name": "2-3-Daw2ULMT.webp",
+        "bytes": 22258,
+        "start": 1078.6000000014901,
+        "end": 2307.5
+      },
+      {
+        "name": "4-5-CSRbJw4I.webp",
+        "bytes": 29906,
+        "start": 1078.7000000029802,
+        "end": 2346.10000000149
+      },
+      {
+        "name": "3-4-BtMvIWJA.webp",
+        "bytes": 30684,
+        "start": 1078.8000000044703,
+        "end": 2340.7000000029802
+      },
+      {
+        "name": "orange-leaf-2-BlUsUuYw.webp",
+        "bytes": 18308,
+        "start": 1078.8000000044703,
+        "end": 2399.7000000029802
+      },
+      {
+        "name": "orange-leaf-1-XRek8wLI.webp",
+        "bytes": 16720,
+        "start": 1078.8999999985099,
+        "end": 2450
+      },
+      {
+        "name": "yellow-leaf-2-RFCvFrNG.webp",
+        "bytes": 21350,
+        "start": 1078.8999999985099,
+        "end": 2506.5
+      },
+      {
+        "name": "yellow-leaf-1-D2FdnzCC.webp",
+        "bytes": 18698,
+        "start": 1078.8999999985099,
+        "end": 2506.8000000044703
+      },
+      {
+        "name": "leaf-right-Bt_P7vCr.png",
+        "bytes": 32707,
+        "start": 1078.8999999985099,
+        "end": 2591.7000000029802
+      },
+      {
+        "name": "sff-C-93yJrH.webp",
+        "bytes": 24588,
+        "start": 1079.1000000014901,
+        "end": 2683.39999999851
+      },
+      {
+        "name": "waterloo-engineering-Dr0C0-ir.png",
+        "bytes": 70956,
+        "start": 1079.1000000014901,
+        "end": 2796
+      },
+      {
+        "name": "rebull-logo-K9tVZivP.webp",
+        "bytes": 5922,
+        "start": 1079.2000000029802,
+        "end": 2621.60000000149
+      },
+      {
+        "name": "leaf-left-BROt4XGi.png",
+        "bytes": 26104,
+        "start": 1079.3000000044703,
+        "end": 2783.10000000149
+      },
+      {
+        "name": "sun-BJPOtkYE.webp",
+        "bytes": 226188,
+        "start": 1079.3999999985099,
+        "end": 3324.89999999851
+      },
+      {
+        "name": "big-goose-DPX3_3yR.webp",
+        "bytes": 86220,
+        "start": 1079.5,
+        "end": 3183.3000000044703
+      },
+      {
+        "name": "sunray-n40015Cf.webp",
+        "bytes": 175574,
+        "start": 1079.5,
+        "end": 3282.89999999851
+      },
+      {
+        "name": "faq-yellow-leaf-CLLfDzi0.webp",
+        "bytes": 16168,
+        "start": 1079.7000000029802,
+        "end": 2989.7000000029802
+      },
+      {
+        "name": "faq-leaf-orange-BGJ02DcH.webp",
+        "bytes": 16998,
+        "start": 1079.7000000029802,
+        "end": 3066.3000000044703
+      },
+      {
+        "name": "venue-map-BIfDiJ0k.webp",
+        "bytes": 81884,
+        "start": 1079.7000000029802,
+        "end": 3199.39999999851
+      },
+      {
+        "name": "script.js",
+        "bytes": 0,
+        "start": 1090.5,
+        "end": 3084.60000000149
+      },
+      {
+        "name": "Logo.png",
+        "bytes": 59658,
+        "start": 1091.8000000044703,
+        "end": 1772.5
+      }
+    ],
+    "lazy": [],
+    "scroll": {
+      "missing": [],
+      "maxFrame": 100.70000000298023,
+      "medianFrame": 16.799999997019768
+    },
+    "errors": []
+  },
+  {
+    "width": 402,
+    "firstFrame": {
+      "t": 1051.1000000014901,
+      "visible": "hidden",
+      "fonts": true,
+      "missing": 6
+    },
+    "firstReady": {
+      "t": 2804.2000000029802,
+      "visible": "hidden",
+      "fonts": true,
+      "missing": 0
+    },
+    "incompleteVisibleFrames": 0,
+    "cls": 0,
+    "lcp": 3020,
+    "bytes": 3959989,
+    "resources": [
+      {
+        "name": "host-grotesk-latin.woff2",
+        "bytes": 20296,
+        "start": 110.60000000149012,
+        "end": 227.70000000298023
+      },
+      {
+        "name": "morfe.otf",
+        "bytes": 133900,
+        "start": 111.10000000149012,
+        "end": 752
+      },
+      {
+        "name": "hero-sky-UWP5Ubtn.webp",
+        "bytes": 78144,
+        "start": 111.30000000447035,
+        "end": 545.4000000059605
+      },
+      {
+        "name": "hero-background-trees-CD6p78GB.webp",
+        "bytes": 60966,
+        "start": 111.40000000596046,
+        "end": 471.20000000298023
+      },
+      {
+        "name": "hero-leaf-and-stump-BTHSM5I1.webp",
+        "bytes": 199106,
+        "start": 111.40000000596046,
+        "end": 965.6000000014901
+      },
+      {
+        "name": "hero-floor-DVBoTlHS.webp",
+        "bytes": 90288,
+        "start": 111.60000000149012,
+        "end": 602.9000000059605
+      },
+      {
+        "name": "hero-fire-p9JYELVi.webp",
+        "bytes": 725404,
+        "start": 111.60000000149012,
+        "end": 2787.60000000149
+      },
+      {
+        "name": "hero-hero-goose-CZ8cowpo.webp",
+        "bytes": 220038,
+        "start": 111.70000000298023,
+        "end": 1185.4000000059605
+      },
+      {
+        "name": "index-4F2qbZ9f.js",
+        "bytes": 282268,
+        "start": 111.90000000596046,
+        "end": 953.6000000014901
+      },
+      {
+        "name": "index-hCvFXCUt.css",
+        "bytes": 7934,
+        "start": 112.10000000149012,
+        "end": 334.20000000298023
+      },
+      {
+        "name": "faq-footer-floor-GC4Y0TnU.webp",
+        "bytes": 87284,
+        "start": 1022.4000000059605,
+        "end": 1469.1000000014901
+      },
+      {
+        "name": "noise-DGEer391.webp",
+        "bytes": 242794,
+        "start": 1022.6000000014901,
+        "end": 2050.9000000059605
+      },
+      {
+        "name": "floor-DE3wZjSN.webp",
+        "bytes": 35506,
+        "start": 1028.3000000044703,
+        "end": 1269.1000000014901
+      },
+      {
+        "name": "hero-yellow-leaf-hero-Bc4oKxFP.webp",
+        "bytes": 65492,
+        "start": 1045.2000000029802,
+        "end": 1418.7000000029802
+      },
+      {
+        "name": "hero-orange-leaf-hero-BcEkeZt8.webp",
+        "bytes": 45314,
+        "start": 1045.3000000044703,
+        "end": 1535.5
+      },
+      {
+        "name": "decorative-sparkle--B0rIfQf.webp",
+        "bytes": 54206,
+        "start": 1045.4000000059605,
+        "end": 1694.8000000044703
+      },
+      {
+        "name": "about-img-1-CN_Wwymb.webp",
+        "bytes": 45430,
+        "start": 1046.8000000044703,
+        "end": 1761.9000000059605
+      },
+      {
+        "name": "about-img-2-2HPQOQEn.webp",
+        "bytes": 43570,
+        "start": 1046.9000000059605,
+        "end": 1788.5
+      },
+      {
+        "name": "about-img-3-DrYzfqbv.webp",
+        "bytes": 47044,
+        "start": 1047,
+        "end": 1818.6000000014901
+      },
+      {
+        "name": "about-orange-leaf-DHkLyJhq.webp",
+        "bytes": 61986,
+        "start": 1047,
+        "end": 2012.6000000014901
+      },
+      {
+        "name": "about-yellow-leaf-QVMMwrU0.webp",
+        "bytes": 68092,
+        "start": 1047.1000000014901,
+        "end": 2096.4000000059605
+      },
+      {
+        "name": "decorative-washi-tape-Byskf3X8.webp",
+        "bytes": 23246,
+        "start": 1047.2000000029802,
+        "end": 1996
+      },
+      {
+        "name": "decorative-button-uLVkF4Gq.webp",
+        "bytes": 52330,
+        "start": 1047.3000000044703,
+        "end": 2097.60000000149
+      },
+      {
+        "name": "1-2-BxJkvj_2.webp",
+        "bytes": 26190,
+        "start": 1047.4000000059605,
+        "end": 2168.2000000029802
+      },
+      {
+        "name": "topview-tree-CntbUCpW.webp",
+        "bytes": 262270,
+        "start": 1047.4000000059605,
+        "end": 2909.9000000059605
+      },
+      {
+        "name": "2-3-Daw2ULMT.webp",
+        "bytes": 22258,
+        "start": 1047.5,
+        "end": 2213.5
+      },
+      {
+        "name": "4-5-CSRbJw4I.webp",
+        "bytes": 29906,
+        "start": 1047.5,
+        "end": 2321.8000000044703
+      },
+      {
+        "name": "3-4-BtMvIWJA.webp",
+        "bytes": 30684,
+        "start": 1047.6000000014901,
+        "end": 2322.5
+      },
+      {
+        "name": "orange-leaf-2-BlUsUuYw.webp",
+        "bytes": 18308,
+        "start": 1047.6000000014901,
+        "end": 2328.2000000029802
+      },
+      {
+        "name": "orange-leaf-1-XRek8wLI.webp",
+        "bytes": 16720,
+        "start": 1047.7000000029802,
+        "end": 2370.4000000059605
+      },
+      {
+        "name": "yellow-leaf-1-D2FdnzCC.webp",
+        "bytes": 18698,
+        "start": 1047.7000000029802,
+        "end": 2504.3000000044703
+      },
+      {
+        "name": "yellow-leaf-2-RFCvFrNG.webp",
+        "bytes": 21350,
+        "start": 1047.7000000029802,
+        "end": 2509.9000000059605
+      },
+      {
+        "name": "leaf-right-Bt_P7vCr.png",
+        "bytes": 32707,
+        "start": 1047.8000000044703,
+        "end": 2553.5
+      },
+      {
+        "name": "sff-C-93yJrH.webp",
+        "bytes": 24588,
+        "start": 1047.8000000044703,
+        "end": 2693.7000000029802
+      },
+      {
+        "name": "waterloo-engineering-Dr0C0-ir.png",
+        "bytes": 70956,
+        "start": 1047.8000000044703,
+        "end": 2711.10000000149
+      },
+      {
+        "name": "rebull-logo-K9tVZivP.webp",
+        "bytes": 5922,
+        "start": 1047.9000000059605,
+        "end": 2637.3000000044703
+      },
+      {
+        "name": "leaf-left-BROt4XGi.png",
+        "bytes": 26104,
+        "start": 1047.9000000059605,
+        "end": 2730
+      },
+      {
+        "name": "faq-yellow-leaf-CLLfDzi0.webp",
+        "bytes": 16168,
+        "start": 1048,
+        "end": 2951.9000000059605
+      },
+      {
+        "name": "big-goose-DPX3_3yR.webp",
+        "bytes": 86220,
+        "start": 1048,
+        "end": 3128.7000000029802
+      },
+      {
+        "name": "venue-map-BIfDiJ0k.webp",
+        "bytes": 81884,
+        "start": 1048,
+        "end": 3129.10000000149
+      },
+      {
+        "name": "sunray-n40015Cf.webp",
+        "bytes": 175574,
+        "start": 1048,
+        "end": 3263
+      },
+      {
+        "name": "sun-BJPOtkYE.webp",
+        "bytes": 226188,
+        "start": 1048,
+        "end": 3288.3000000044703
+      },
+      {
+        "name": "faq-leaf-orange-BGJ02DcH.webp",
+        "bytes": 16998,
+        "start": 1048.2000000029802,
+        "end": 3070.8000000044703
+      },
+      {
+        "name": "script.js",
+        "bytes": 0,
+        "start": 1055.9000000059605,
+        "end": 3035.10000000149
+      },
+      {
+        "name": "Logo.png",
+        "bytes": 59658,
+        "start": 1057.3000000044703,
+        "end": 1512.2000000029802
+      }
+    ],
+    "lazy": [],
+    "scroll": {
+      "missing": [],
+      "maxFrame": 118,
+      "medianFrame": 16.899999998509884
+    },
+    "errors": []
+  }
+]

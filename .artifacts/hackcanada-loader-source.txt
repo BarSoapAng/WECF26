@@ -1,0 +1,12 @@
+
+			// Run before first paint. No JavaScript means the site stays accessible.
+			document.documentElement.setAttribute('data-page-loading', '');
+			// Fail open even if a module, font, or image never finishes loading.
+			window.setTimeout(() => {
+				document.documentElement.removeAttribute('data-page-loading');
+				const content = document.querySelector('[data-page-content]');
+				if (content) content.inert = false;
+				document.querySelector('[data-page-loader]')?.remove();
+			}, 15000);
+		
+function e(){let e=document.documentElement,t=document.querySelector(`[data-page-loader]`),n=document.querySelector(`[data-page-progress]`),r=document.querySelector(`[data-page-percent]`),i=document.querySelector(`[data-page-content]`);if(!t||!n||!r||!e.hasAttribute(`data-page-loading`))return;let a=window.matchMedia(`(prefers-reduced-motion: reduce)`).matches,o=performance.now();i&&(i.inert=!0);let s=e=>{n.value=e,r.textContent=`${e}%`},c=()=>new Promise(e=>requestAnimationFrame(()=>e())),l=e=>new Promise(t=>window.setTimeout(t,e)),u=async e=>{e.complete||await new Promise(t=>{let n=()=>{e.removeEventListener(`load`,n),e.removeEventListener(`error`,n),t()};e.addEventListener(`load`,n,{once:!0}),e.addEventListener(`error`,n,{once:!0})}),e.naturalWidth&&await e.decode().catch(()=>{})},d=Array.from(document.images).filter(e=>{if(e.loading!==`lazy`)return!0;let t=e.getBoundingClientRect();return t.width>0&&t.height>0&&t.bottom>0&&t.top<innerHeight&&t.right>0&&t.left<innerWidth}),f=new Promise(e=>{document.readyState===`complete`?e():window.addEventListener(`load`,()=>e(),{once:!0})}),p=[...d.map(u),document.fonts.ready,f],m=0;Promise.allSettled(p.map(async e=>{try{await e}finally{m+=1,s(Math.round(m/p.length*95))}})).then(async()=>{e.hasAttribute(`data-page-loading`)&&(window.dispatchEvent(new Event(`resize`)),await c(),await c(),await l(Math.max(0,600-(performance.now()-o))),s(100),await l(a?0:150),t.classList.add(`is-ready`),await l(a?0:200),e.removeAttribute(`data-page-loading`),i&&(i.inert=!1),t.remove())})}e();

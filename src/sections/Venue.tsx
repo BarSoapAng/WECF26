@@ -43,7 +43,7 @@ function Venue() {
                 honk()
               }
             }}
-            loading="lazy"
+            fetchPriority="low"
             decoding="async"
           />
           <Map
@@ -51,7 +51,7 @@ function Venue() {
             alt="PSE floor 4 venue map: Bio-engineering in room 4043, Re-engineering in 4053, judges in 4417, Consulting in 4433, and Programming in 4437."
             width={1040}
             height={515}
-            loading="lazy"
+            fetchPriority="low"
             decoding="async"
           />
           <Button src={decorativeButton} alt="" />

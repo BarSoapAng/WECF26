@@ -1,7 +1,5 @@
 // DECORATIVE ELEMENTS
-export { default as decorativeButton } from "./decorative/button.png";
-export { default as decorativeSparkle } from "./decorative/sparkle.png";
-export { default as decorativeWashiTape } from "./decorative/washi-tape.png";
+export { decorativeButton, decorativeSparkle, decorativeWashiTape } from "./optimized";
 
 // HERO
 export { default as heroBackgroundTrees } from "./hero/background-trees.png";

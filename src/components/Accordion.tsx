@@ -10,7 +10,7 @@ type Props = {
 
 function Accordion({ items }: Props) {
   const id = useId()
-  const [openIndices, setOpenIndices] = useState<number[]>([0])
+  const [openIndices, setOpenIndices] = useState<number[]>([])
   const transitioning = useRef(false)
 
   useLayoutEffect(() => {

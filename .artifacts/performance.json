@@ -1,0 +1,111 @@
+{
+  "result": {
+    "zoom": "0.846561",
+    "heroHeight": 831.3125,
+    "canvasWidth": 1280,
+    "images": [
+      {
+        "url": "hero-background-trees.webp?t=1794518814697",
+        "bytes": 60966
+      },
+      {
+        "url": "hero-sky.webp?t=1794518814555",
+        "bytes": 712930
+      },
+      {
+        "url": "hero-leaf-and-stump.webp?t=1794518823030",
+        "bytes": 1290368
+      },
+      {
+        "url": "hero-floor.webp?t=1794518818764",
+        "bytes": 371240
+      },
+      {
+        "url": "hero-yellow-leaf-hero.webp?t=1794518819832",
+        "bytes": 65492
+      },
+      {
+        "url": "hero-orange-leaf-hero.webp?t=1794518819641",
+        "bytes": 45314
+      },
+      {
+        "url": "hero-hero-goose.webp?t=1794518819348",
+        "bytes": 220038
+      },
+      {
+        "url": "hero-fire.webp?t=1794518817668",
+        "bytes": 1469128
+      },
+      {
+        "url": "decorative-sparkle.webp?t=1794518820968",
+        "bytes": 54206
+      },
+      {
+        "url": "about-orange-leaf.webp?t=1794518820006",
+        "bytes": 61986
+      },
+      {
+        "url": "about-yellow-leaf.webp?t=1794518820271",
+        "bytes": 68092
+      },
+      {
+        "url": "decorative-washi-tape.webp?t=1794518820677",
+        "bytes": 23246
+      },
+      {
+        "url": "decorative-button.webp?t=1794518820493",
+        "bytes": 52330
+      },
+      {
+        "url": "about-tree.webp?t=1794518827410",
+        "bytes": 1055262
+      }
+    ],
+    "animations": 0,
+    "load": 152.80000007152557,
+    "resources": []
+  },
+  "frameTimes": {
+    "median": 16.699999928474426,
+    "max": 17
+  },
+  "widths": [
+    {
+      "width": 375,
+      "zoom": "1",
+      "heroHeight": 874,
+      "overflow": false
+    },
+    {
+      "width": 834,
+      "zoom": "1",
+      "heroHeight": 874,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "zoom": "0.677249",
+      "heroHeight": 665.046875,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "zoom": "0.846561",
+      "heroHeight": 831.3125,
+      "overflow": false
+    },
+    {
+      "width": 1512,
+      "zoom": "1",
+      "heroHeight": 982,
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "zoom": "1",
+      "heroHeight": 982,
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

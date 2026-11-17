@@ -279,7 +279,7 @@ const Scene = styled.div`
   }
 `;
 
-const Artwork = styled.img.attrs({ decoding: "async" })<{
+const Artwork = styled.img.attrs({ decoding: "async", fetchPriority: "high" })<{
   $x: number;
   $y: number;
   $width: number;
