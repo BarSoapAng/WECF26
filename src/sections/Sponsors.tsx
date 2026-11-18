@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import {
+  sponsorsIsaacOperations,
   sponsorsLeafLeft,
   sponsorsLeafRight,
   sponsorsRedBull,
@@ -30,6 +31,7 @@ const sponsors = [
   { name: "Waterloo Engineering", logo: sponsorsWaterlooEngineering },
   { name: "SFF", logo: sponsorsSff },
   { name: "Red Bull", logo: sponsorsRedBull },
+  { name: "Isaac Operations", logo: sponsorsIsaacOperations },
 ]
 
 function Sponsors() {
