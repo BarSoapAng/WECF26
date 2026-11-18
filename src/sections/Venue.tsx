@@ -95,7 +95,7 @@ const Content = styled(ContentWrapper)`
 const MapFrame = styled.div`
   position: relative;
   margin-top: 8px;
-  border: 8px solid #4f0f87;
+  border: 8px solid ${colors.text.brown};
   border-radius: 10px;
 
   ${mediaQueries.tablet} {
