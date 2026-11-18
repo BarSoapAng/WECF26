@@ -29,12 +29,8 @@ export async function preparePage(page: HTMLElement, onProgress?: (progress: num
     image.src = src
     return image
   })
-  // Count each URL once: `<img>` and CSS background instances may share assets.
-  const imageByUrl = new Map<string, HTMLImageElement>()
-  for (const image of [...page.querySelectorAll("img"), ...backgrounds]) {
-    imageByUrl.set(image.currentSrc || image.src, image)
-  }
-  const images = [...imageByUrl.values()]
+  // Each DOM image needs its own error handling, even when URLs are shared.
+  const images = [...page.querySelectorAll("img"), ...backgrounds]
 
   const tasks = [...images.map(image => image.decode().catch(() => {
       // A failed request must not block the page or show a broken-image icon.

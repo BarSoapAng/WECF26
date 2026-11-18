@@ -4,80 +4,11 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/Logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- loader-styles -->
-    <style>
-      html:not([data-page-ready]) { background: #4D130D; }
-      html:not([data-page-layout]) { overflow: hidden; }
-      body { margin: 0; }
-      #root { visibility: hidden; }
-      html[data-page-ready] #root { visibility: visible; }
-      html:not([data-page-ready]) #root *,
-      html:not([data-page-ready]) #root *::before,
-      html:not([data-page-ready]) #root *::after { animation-play-state: paused !important; }
-      #page-loader {
-        position: fixed;
-        inset: 0;
-        z-index: 2147483647;
-        background: #4D130D;
-        display: grid;
-        place-items: center;
-        opacity: 1;
-        transition: opacity 360ms ease-out, visibility 0s 360ms;
-      }
-      .page-loader-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 48px;
-        width: min(320px, calc(100% - 48px));
-        text-align: center;
-      }
-      .page-loader-leaf {
-        width: 96px;
-        height: 104px;
-        object-fit: contain;
-        animation: loader-leaf-fall 2.4s ease-in-out infinite;
-      }
-      #loader-copy { display: flex; justify-content: center; width: 100%; min-height: 136px; }
-      @keyframes loader-leaf-fall {
-        0% { opacity: 0; transform: translate(-16px, -24px) rotate(-20deg); }
-        15%, 80% { opacity: 1; }
-        50% { transform: translate(16px, 0) rotate(12deg); }
-        100% { opacity: 0; transform: translate(0, 24px) rotate(44deg); }
-      }
-      html[data-page-ready] #page-loader { opacity: 0; visibility: hidden; pointer-events: none; }
-      html[data-page-ready] .page-loader-leaf { animation-play-state: paused; }
-      @media (prefers-reduced-motion: reduce) {
-        #page-loader { transition: none; }
-        .page-loader-leaf { animation: none; }
-      }
-    </style>
-    <script>
-      history.scrollRestoration = 'manual';
-      if (performance.getEntriesByType('navigation')[0]?.type === 'reload') {
-        history.replaceState(history.state, '', location.pathname + location.search);
-      }
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    </script>
-    <link rel="preload" href="/src/assets/optimized/loader-leaf.webp" as="image" fetchpriority="high" />
     <link rel="preload" href="/font/host-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/font/morfe.otf" as="font" type="font/otf" crossorigin />
-    <link rel="preload" href="/src/assets/optimized/hero-sky.webp" as="image" fetchpriority="high" />
-    <link rel="preload" href="/src/assets/optimized/hero-background-trees.webp" as="image" fetchpriority="high" />
-    <link rel="preload" href="/src/assets/optimized/hero-leaf-and-stump.webp" as="image" fetchpriority="high" />
-    <link rel="preload" href="/src/assets/optimized/hero-floor.webp" as="image" fetchpriority="high" />
-    <link rel="preload" href="/src/assets/optimized/hero-fire.webp" as="image" fetchpriority="high" />
-    <link rel="preload" href="/src/assets/optimized/hero-hero-goose.webp" as="image" fetchpriority="high" />
     <title>Waterloo Engineering Competition</title>
   </head>
   <body>
-    <div id="page-loader" role="status" aria-live="polite" aria-label="Loading Waterloo Engineering Competition">
-      <div class="page-loader-content">
-        <img class="page-loader-leaf" src="/src/assets/optimized/loader-leaf.webp" width="128" height="122" alt="" fetchpriority="high" />
-        <div id="loader-copy"><!-- loader-copy --></div>
-      </div>
-    </div>
-    <div id="root" inert aria-busy="true"></div>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

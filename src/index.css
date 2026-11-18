@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@source not "../.artifacts";
 
 @font-face {
   font-family: "Host Grotesk";
