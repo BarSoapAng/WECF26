@@ -26,7 +26,7 @@ function Venue() {
       <Content>
         <Header1 id="venue-title">Venue Map</Header1>
         <BodyRegular2>
-          WEC will run exclusively within PSE, with competition rooms located on floor 4.
+          WEC will run exclusively within PSE, with competition rooms located on floors 1, 2, 4, and 5.
         </BodyRegular2>
         <MapFrame>
           <Goose
@@ -48,10 +48,10 @@ function Venue() {
           />
           <Map
             src={venueMap}
-            alt="PSE floor 4 venue map: Bio-engineering in room 4043, Re-engineering in 4053, judges in 4417, Consulting in 4433, and Programming in 4437."
-            width={1040}
-            height={515}
-            fetchPriority="low"
+            alt="PSE venue map: Junior Design in 2409; Senior Design in 1427 with judging in 1327 and 1331; Consulting in 5343; Programming in 4043; Re-engineering in 5353; Bio-engineering in 4053."
+            width={3514}
+            height={2176}
+            loading="lazy"
             decoding="async"
           />
           <Button src={decorativeButton} alt="" />
@@ -95,12 +95,20 @@ const Content = styled(ContentWrapper)`
 const MapFrame = styled.div`
   position: relative;
   margin-top: 8px;
+  border: 8px solid ${colors.text.brown};
+  border-radius: 10px;
+
+  ${mediaQueries.tablet} {
+    border-width: 4px;
+    border-radius: 6px;
+  }
 `;
 
 const Map = styled.img`
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 2px;
   pointer-events: none;
 `;
 

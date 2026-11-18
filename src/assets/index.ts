@@ -22,6 +22,7 @@ export { default as aboutImg3 } from "./about/about-img-3.webp";
 export { default as sponsorsWaterlooEngineering } from "./sponsors/waterloo-engineering.png";
 export { default as sponsorsSff } from "./sponsors/sff.webp";
 export { default as sponsorsRedBull } from "./sponsors/rebull-logo.webp";
+export { default as sponsorsIsaacOperations } from "./sponsors/Issac-operations-logo.webp";
 export { default as sponsorsLeafLeft } from "./sponsors/leaf-left.png";
 export { default as sponsorsLeafRight } from "./sponsors/leaf-right.png";
 
@@ -43,7 +44,7 @@ export { default as scheduleSunray } from "./schedule/sunray.webp";
 
 // VENUE
 export { default as venueBigGoose } from "./venue/big-goose.webp";
-export { default as venueMap } from "./venue/venue-map.webp";
+export { default as venueMap } from "./venue/WEC_rooms_map_v2.webp";
 export { default as venueGooseHonk1 } from "./venue/goose-1.mp3";
 export { default as venueGooseHonk2 } from "./venue/goose-2.mp3";
 export { default as venueGooseHonk3 } from "./venue/goose-3.mp3";
