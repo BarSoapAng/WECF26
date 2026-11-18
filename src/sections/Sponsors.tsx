@@ -56,7 +56,7 @@ function Sponsors() {
 
           {sponsors.map((sponsor, index) => (
             <Card key={index}>
-              <Logo src={sponsor.logo} alt={sponsor.name} loading="lazy" decoding="async" />
+              <Logo src={sponsor.logo} alt={sponsor.name} fetchPriority="low" decoding="async" />
             </Card>
           ))}
 

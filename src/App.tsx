@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react"
+import { useLayoutEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { faqFooterFloor } from "./assets"
 import { PageWrapper } from "./components"
@@ -12,9 +12,12 @@ import Footer from "./sections/Footer"
 import Venue from "./sections/Venue"
 import { mediaQueries } from "./lib/responsive"
 import { deviceBreakpoints } from "./lib/responsive"
+import PageLoader from "./components/PageLoader"
 
 function App() {
   const pageRef = useRef<HTMLDivElement>(null)
+  const [sectionCount, setSectionCount] = useState(() => location.hash ? 6 : 1)
+  const [ready, setReady] = useState(false)
 
   useLayoutEffect(() => {
     const page = pageRef.current!
@@ -30,20 +33,29 @@ function App() {
   }, [])
 
   return (
+    <>
+    <PageLoader pageRef={pageRef} sectionCount={sectionCount} setSectionCount={setSectionCount} ready={ready} setReady={setReady} />
+    <PageContent $ready={ready} inert={!ready} aria-busy={!ready} onErrorCapture={event => {
+      if (event.target instanceof HTMLImageElement) event.target.style.visibility = "hidden"
+    }}>
     <PageWrapper ref={pageRef}>
       <Canvas>
-      <Hero />
-      <About />
-      <CompetitionStreams />
-      <Sponsors />
-      <Schedule />
-      <VenueFAQFooterBackground>
+      {[
+      <Hero key="hero" />,
+      <About key="about" />,
+      <CompetitionStreams key="competition" />,
+      <Sponsors key="sponsors" />,
+      <Schedule key="schedule" />,
+      <VenueFAQFooterBackground key="venue-faq-footer">
         <Venue />
         <FAQ />
         <Footer />
-      </VenueFAQFooterBackground>
+      </VenueFAQFooterBackground>,
+      ].slice(0, sectionCount)}
       </Canvas>
     </PageWrapper>
+    </PageContent>
+    </>
   )
 }
 
@@ -71,4 +83,9 @@ const Canvas = styled.main`
   width: max(100%, 1512px);
   zoom: var(--desktop-scale, 1);
   ${mediaQueries.tablet} { width: 100%; zoom: 1; }
+`;
+
+const PageContent = styled.div<{ $ready: boolean }>`
+  visibility: ${({ $ready }) => $ready ? "visible" : "hidden"};
+  ${({ $ready }) => !$ready && "&, & *, & *::before, & *::after { animation-play-state: paused !important; }"}
 `;

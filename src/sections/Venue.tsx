@@ -43,7 +43,7 @@ function Venue() {
                 honk()
               }
             }}
-            loading="lazy"
+            fetchPriority="low"
             decoding="async"
           />
           <Map

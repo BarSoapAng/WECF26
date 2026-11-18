@@ -59,7 +59,7 @@ function Schedule() {
         <TableArea>
           {/* The sun goes behind the table, so it comes first */}
           <SunHalo aria-hidden="true" />
-          <Sun src={scheduleSun} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+          <Sun src={scheduleSun} alt="" aria-hidden="true" fetchPriority="low" decoding="async" />
 
           <Table>
             <thead>
@@ -101,7 +101,7 @@ function Schedule() {
 
           {/* The rays and tape go on top of the table */}
           <Decorations aria-hidden="true">
-            <Rays src={scheduleSunray} alt="" loading="lazy" decoding="async" />
+            <Rays src={scheduleSunray} alt="" fetchPriority="low" decoding="async" />
             <SunGlow />
             <TopTape src={decorativeWashiTape} alt="" />
             <BottomTape src={decorativeWashiTape} alt="" />
