@@ -95,12 +95,20 @@ const Content = styled(ContentWrapper)`
 const MapFrame = styled.div`
   position: relative;
   margin-top: 8px;
+  border: 8px solid #4f0f87;
+  border-radius: 10px;
+
+  ${mediaQueries.tablet} {
+    border-width: 4px;
+    border-radius: 6px;
+  }
 `;
 
 const Map = styled.img`
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 2px;
   pointer-events: none;
 `;
 
