@@ -5,7 +5,7 @@ import Sparkle from "./Sparkle"
 import ClickJitterImage from "./ClickJitterImage"
 import { decorativeButton, decorativeWashiTape, faqLeafOrange, faqYellowLeaf, faqNoise } from "../assets"
 import { mediaQueries } from "../lib/responsive"
-import { colors, Header1 } from "../lib/styles"
+import { Header2, colors, Header1 } from "../lib/styles"
 
 const faqItems = [
   {
@@ -48,6 +48,9 @@ function FAQ() {
       <div>
         <Accordion items={faqItems} />
       </div>
+      <SignupLink href="https://bit.ly/F26RegisterWEC" target="_blank" rel="noreferrer">
+        <Header2 as="span">See you there!</Header2>
+      </SignupLink>
     </Questions>
   )
 }
@@ -91,6 +94,24 @@ const Questions = styled(ContentWrapper)`
   ${mediaQueries.mediumTablet} {
     width: calc(100% - 60px);
     padding: 24px 16px;
+  }
+`;
+
+const SignupLink = styled.a`
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  color: ${colors.text.brown};
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+
+  &:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 4px;
   }
 `;
 
