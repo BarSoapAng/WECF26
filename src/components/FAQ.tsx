@@ -49,7 +49,7 @@ function FAQ() {
         <Accordion items={faqItems} />
       </div>
       <SignupLink href="https://bit.ly/F26RegisterWEC" target="_blank" rel="noreferrer">
-        <Header2 as="span">Sign up now!</Header2>
+        <Header2 as="span">See you there!</Header2>
       </SignupLink>
     </Questions>
   )
